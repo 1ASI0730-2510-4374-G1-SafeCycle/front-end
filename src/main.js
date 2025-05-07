@@ -8,6 +8,8 @@ import Lara from '@primevue/themes/lara'
 import { definePreset } from '@primeuix/themes';
 import './assets/main.css'
 
+import router from "./router/index.js";
+
 import {Avatar,Toolbar,Menu, Button} from "primevue";
 
 const SafeCyclePreset = definePreset(Lara, {
@@ -50,8 +52,10 @@ app
     .component('pv-menu',Menu)
     .component('pv-toolbar',Toolbar)
     .component('pv-image',Image)
-    .component('pv-button',Button)
+    .component('pv-button',Button);
 
-    .mount('#app')
+    app.use(router);
+
+    app.mount('#app');
 
 
