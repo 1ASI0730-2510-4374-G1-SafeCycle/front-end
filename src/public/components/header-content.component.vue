@@ -1,0 +1,75 @@
+<script>
+import {Avatar as PvAvatar, Button as PvButton, Menu as PvMenu, Toolbar as PvToolbar} from "primevue";
+
+export default {
+  name: "header-content",
+  components: {PvMenu, PvAvatar, PvButton, PvToolbar},
+  data() {
+    return{
+      items: [{label: 'My Profile', icon: 'pi pi-user', url: '#profile'},
+        {label: 'Payment Information', icon: 'pi pi-credit-card', url: '#paymentInfo'},
+        {label: 'Current Rentals', icon: 'pi pi-book', url: '#currentRental'},
+        {separator: true},
+        {label: 'Logout', icon: 'pi pi-sign-out',
+          command: () => {
+            console.log('Logout clicked');
+          }
+        }
+      ]
+
+    }
+  },
+  created() {
+//cuando se inicia
+  },
+  methods: {
+    toggleMenu(event) {
+      this.$refs.menu.toggle(event);
+    }
+  }
+}
+
+</script>
+
+<template>
+
+    <pv-toolbar style="border-radius: 0; padding: 0 2rem; background-color:#A7E3EF" class="flex items-center">
+      <template #start>
+        <div class="flex items-center">
+          <img class="h-2rem w-auto" src="../../assets/logo.svg" alt="Logo SafeCycle"/>
+        </div>
+      </template>
+
+      <template #end>
+        <div class="flex align-items-center gap-5 h-4rem">
+          <pv-button class="w-8rem h-full text-xs p-0 rounded-0" style="border-radius: 0"  label="Rent" text plain />
+          <pv-button class="w-8rem h-full text-xs p-0 rounded-0" style="border-radius: 0" label="Touring" text plain/>
+          <pv-button class="w-8rem h-full text-xs p-0 rounded-0" style="border-radius: 0" label="Booking" text plain/>
+          <pv-button class="w-8rem h-full text-xs p-0 rounded-0" style="border-radius: 0"  label="Fees" text plain/>
+
+
+          <pv-avatar image="https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png" @click="toggleMenu" ref="menu" class="w-2rem h-2rem"/>
+            <pv-menu ref="menu" :model="items" :popup="true" class="p-3" style="background-color: #C9F0C4;">
+            <template #start>
+            <span class="inline-flex items-center gap-1 px-2 py-2">
+            <span style="color: #124611; font-weight: bold">Hola Luciana 👋</span>
+            </span>
+            </template>
+            <template #item="{ item, props }">
+                <a :href="item.url" v-bind="props.action" >
+                  <span :class="item.icon" />
+                  <span class="ml-2">{{ item.label }}</span>
+                </a>
+            </template>
+
+          </pv-menu>
+
+        </div>
+      </template>
+    </pv-toolbar>
+
+</template>
+
+<style scoped>
+
+</style>
