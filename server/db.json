@@ -1,0 +1,20 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Pablo Pueblo",
+      "email": "clavito123@gmail.com",
+      "password": "clavocalvo",
+      "type": "student",
+      "maxDailyReservationHours": 6
+    },
+    {
+      "id": 2,
+      "name": "Luciana Sanchez",
+      "email": "lucianasalsa@gmail.com",
+      "password": "lu123",
+      "type": "tourist",
+      "maxDailyReservationHours": 24
+    }
+  ]
+}
