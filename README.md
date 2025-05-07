@@ -9,8 +9,6 @@ A Vue.js application for renting and booking bicycles
 - Gonzales Valverde, Carlos Matthew - U202314130
 - Jonseck Choque, Oliver - U202312912
 
-## 🚀 Features
-
 ## 🚲 Features
 
 - **Bike Booking System**  
@@ -26,13 +24,15 @@ A Vue.js application for renting and booking bicycles
   Spanish/English support for both local and international users.
 
 
-## Recommended IDE Setup
+## Technology
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- **Vue 3** – The main JavaScript framework used to build the application.
 
-## Customize configuration
+- **PrimeVue** – A rich UI component library tailored for Vue.
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+- **JSON Server** – A fake REST API used for prototyping and development.
+
+- **Vite** - Build tool and development server for modern web apps.
 
 ## Project Setup
 
