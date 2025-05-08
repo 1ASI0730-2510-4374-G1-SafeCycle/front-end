@@ -1,9 +1,7 @@
 <script>
-import {Avatar as PvAvatar, Button as PvButton, Menu as PvMenu, Toolbar as PvToolbar} from "primevue";
 
 export default {
   name: "header-content",
-  components: {PvMenu, PvAvatar, PvButton, PvToolbar},
   data() {
     return{
       items: [{label: 'My Profile', icon: 'pi pi-user', url: '#profile'},
