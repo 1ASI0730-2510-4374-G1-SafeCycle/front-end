@@ -2,7 +2,8 @@
 </script>
 
 <template>
-
+  <pv-toast ref="toast"/>
+  <router-view/>
 </template>
 
 <style>

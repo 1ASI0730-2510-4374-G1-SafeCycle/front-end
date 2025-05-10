@@ -1,20 +1,31 @@
 {
   "users": [
     {
-      "id": 1,
-      "name": "Pablo Pueblo",
-      "email": "clavito123@gmail.com",
-      "password": "clavocalvo",
+      "username": "andraice",
+      "email": "albertosanchez@upc.edu.pe",
+      "password": "vue",
+      "repeatPassword": "vue",
       "type": "student",
-      "maxDailyReservationHours": 6
+      "maxDailyReservationHours": 7,
+      "id": 1
     },
     {
-      "id": 2,
-      "name": "Luciana Sanchez",
-      "email": "lucianasalsa@gmail.com",
-      "password": "lu123",
+      "username": "carlo123",
+      "email": "carlo@upc.edu.pe",
+      "password": "123",
+      "repeatPassword": "123",
+      "type": "student",
+      "maxDailyReservationHours": 7,
+      "id": 2
+    },
+    {
+      "username": "FranchiscoItaly",
+      "email": "franchiscoSpaguetti@gmail.com",
+      "password": "pasta",
+      "repeatPassword": "pasta",
       "type": "tourist",
-      "maxDailyReservationHours": 24
+      "maxDailyReservationHours": 7,
+      "id": 3
     }
   ]
 }
