@@ -1,9 +1,9 @@
   <script>
-  import EmptyHeader from "@/Authentication/components/empty-header.component.vue";
+  import EmptyHeader from "@/UserManagement/components/empty-header.component.vue";
   import { zodResolver } from '@primevue/forms/resolvers/zod';
   import { z } from 'zod';
   import {Form as PvForm} from "@primevue/forms";
-  import FormsAuthentication from "@/Authentication/components/forms-authentication.component.vue";
+  import FormsAuthentication from "@/UserManagement/components/forms-authentication.component.vue";
   import {useToast} from "primevue";
 
   export default {
@@ -57,7 +57,7 @@
         }
 
         const studentToSend = {
-          id: undefined, // JSON Server lo sobrescribirá automáticamente
+          id: undefined,
           username: values.username,
           email: values.educationalEmail,
           password: values.password,
@@ -70,9 +70,9 @@
           const response = await fetch("http://localhost:3000/users", {
             method: "POST",
             headers: {
-              "Content-Type": "application/json", // we are sending a json type file
+              "Content-Type": "application/json",
             },
-            body: JSON.stringify(studentToSend), // convertir a json - '{"email":"juan@email.com","password":"1234"}'
+            body: JSON.stringify(studentToSend),
           });
 
           if (!response.ok){ console.error("Failed to register") ; return ;}

@@ -89,7 +89,8 @@ app
     .component('pv-input-text',InputText)
     .component('pv-message', Message)
     .component('pv-password', Password)
-    .component('pv-toast', Toast);
+    .component('pv-toast', Toast)
+    .component('pv-input-text', InputText)
 
 app.use(router);
 app.use(ToastService);
