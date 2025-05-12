@@ -2,7 +2,7 @@
 
 import { zodResolver } from '@primevue/forms/resolvers/zod';
 import { z } from 'zod';
-import EmptyHeader from "@/Authentication/components/empty-header.component.vue";
+import EmptyHeader from "@/UserManagement/components/empty-header.component.vue";
 
 export default {
   name: 'app-entry-screen',

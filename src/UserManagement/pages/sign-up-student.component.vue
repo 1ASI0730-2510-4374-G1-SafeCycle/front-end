@@ -1,10 +1,9 @@
   <script>
-  import EmptyHeader from "@/Authentication/components/empty-header.component.vue";
+  import EmptyHeader from "@/UserManagement/components/empty-header.component.vue";
   import { zodResolver } from '@primevue/forms/resolvers/zod';
   import { z } from 'zod';
   import {Form as PvForm} from "@primevue/forms";
-  import FormsAuthentication from "@/Authentication/components/forms-authentication.component.vue";
-  import {useToast} from "primevue";
+  import FormsAuthentication from "@/UserManagement/components/forms-authentication.component.vue";
 
   export default {
     name: "sign-up-student",

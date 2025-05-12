@@ -1,6 +1,4 @@
 <script>
-import { zodResolver } from '@primevue/forms/resolvers/zod';
-import { z } from 'zod';
 export default {
   name: "forms-authentication",
   props: {

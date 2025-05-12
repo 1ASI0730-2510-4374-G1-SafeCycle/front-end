@@ -7,7 +7,12 @@
       "repeatPassword": "vue",
       "type": "student",
       "maxDailyReservationHours": 7,
-      "id": 1
+      "id": 1,
+      "paymentInformation": {
+        "cardNumber": "94949494949494",
+        "type": "VISA",
+        "holder": "Alberto Sanchez"
+      }
     },
     {
       "username": "carlo123",
@@ -16,7 +21,12 @@
       "repeatPassword": "123",
       "type": "student",
       "maxDailyReservationHours": 7,
-      "id": 2
+      "id": 2,
+      "paymentInformation": {
+        "cardNumber": "191919191919",
+        "type": "VISA",
+        "holder": "Carlo Aguilar"
+      }
     },
     {
       "username": "FranchiscoItaly",
@@ -25,7 +35,12 @@
       "repeatPassword": "pasta",
       "type": "tourist",
       "maxDailyReservationHours": 7,
-      "id": 3
+      "id": 3,
+      "paymentInformation": {
+        "cardNumber": "91919191919191",
+        "type": "MASTER",
+        "holder": "Franchesco Virgolini"
+      }
     }
   ],
   "bikeStations": [
