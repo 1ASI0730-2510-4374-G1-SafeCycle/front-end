@@ -8,23 +8,31 @@ import Lara from '@primevue/themes/lara'
 import { definePreset } from '@primeuix/themes';
 import './assets/main.css'
 
+import router from "./router/index.js";
 
-import {Avatar, Toolbar, Menu, Button, Card} from "primevue";
+import {Avatar,Toolbar,Menu,Image,RadioButton, RadioButtonGroup,InputText,Password} from "primevue";
+import { Form,FormField} from '@primevue/forms';
+import Button from 'primevue/button';
+import Toast from 'primevue/toast';
+import Message from 'primevue/message';
+
+
+import ToastService from 'primevue/toastservice';
 
 const SafeCyclePreset = definePreset(Lara, {
     semantic: {
         primary: {
-            50: '#0091AD',
-            100: '#00829B',
-            200: '#007389',
-            300: '#006477',
-            400: '#005565',
-            500: '#004653',
-            600: '#003741',
-            700: '#00282F',
-            800: '#00191D',
-            900: '#000A0B',
-            950: '#000507'
+            50:  '#CCEFF5',
+            100: '#99DFEB',
+            200: '#66CFE1',
+            300: '#33BFD7',
+            400: '#00AFCD',
+            500: '#0091AD',
+            600: '#007B91',
+            700: '#006475',
+            800: '#004D59',
+            900: '#00363D',
+            950: '#001F21'
         },
         colorScheme: {
             light: {
@@ -61,19 +69,29 @@ const SafeCyclePreset = definePreset(Lara, {
                     background: '{teal.900}'
                 }
             }}}});
+
 const app = createApp(App)
 app
     .use(PrimeVue, {ripple:true,  theme: {
             preset: SafeCyclePreset
         }})
+
+
     .component('pv-avatar',Avatar)
     .component('pv-menu',Menu)
     .component('pv-toolbar',Toolbar)
     .component('pv-image',Image)
     .component('pv-button',Button)
-    .component('pv-card',Card)
-    app.use(router);
+    .component('pv-radio-button',RadioButton)
+    .component('pv-form',Form)
+    .component('pv-form-field',FormField)
+    .component('pv-radio-button-group',RadioButtonGroup)
+    .component('pv-input-text',InputText)
+    .component('pv-message', Message)
+    .component('pv-password', Password)
+    .component('pv-toast', Toast);
 
-    app.mount('#app');
+app.use(router);
+app.use(ToastService);
 
-
+app.mount('#app');

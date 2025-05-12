@@ -34,6 +34,24 @@ A Vue.js application for renting and booking bicycles
 
 - **Vite** - Build tool and development server for modern web apps.
 
+## Run Commands of Installation
+```sh
+npm install primevue primeicons primeflex "@primevue/themes"
+```
+
+```sh
+npm install @primevue/forms
+```
+Verification:
+```sh
+npm i zod
+```
+### Compile and Hot-Reload for Development
+
+```sh
+npm run dev
+```
+
 ## Project Setup
 
 ```sh
