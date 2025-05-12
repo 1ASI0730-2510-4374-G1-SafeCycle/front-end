@@ -5,6 +5,8 @@ import signUpTouristComponent from "@/UserManagement/pages/sign-up-tourist.compo
 import signInComponent from "@/UserManagement/pages/signIn.component.vue";
 import notFoundPageComponent from "@/public/components/notFoundPage.component.vue";
 import touringSelectComponent from "@/Touring/pages/touringSelectComponent.vue";
+import paymentInformationComponent from "@/UserManagement/pages/payment-information.component.vue";
+import paymentInformationEditComponent from "@/UserManagement/pages/payment-information-edit.component.vue";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -17,8 +19,11 @@ const router = createRouter({
         { path: '/landing', name: 'landing', beforeEnter() {
                 window.location.href = 'https://1asi0730-2510-4374-g1-safecycle.github.io/landing_page/';
             } },
-        {path: '/:pathMatch(.*)', name: '404 - nor found', component: notFoundPageComponent}
-    ]
+        { path: '/paymentInformation', name: 'payment-information', component: paymentInformationComponent },
+        { path: '/paymentInformation/edit', name: 'payment-information-edit', component: paymentInformationEditComponent },
+        {path: '/:pathMatch(.*)', name: '404 - nor found', component: notFoundPageComponent},
+
+           ]
 });
 
 export default router;

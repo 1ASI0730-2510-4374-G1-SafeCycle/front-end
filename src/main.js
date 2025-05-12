@@ -9,7 +9,6 @@ import { definePreset } from '@primeuix/themes';
 import './assets/main.css'
 import 'primeicons/primeicons.css';
 
-
 import {Avatar, Toolbar, Menu, Image, RadioButton, RadioButtonGroup, InputText, Password, Card} from "primevue";
 import { Form,FormField} from '@primevue/forms';
 import Button from 'primevue/button';
@@ -90,6 +89,7 @@ app
     .component('pv-input-text',InputText)
     .component('pv-message', Message)
     .component('pv-password', Password)
+    .component('pv-input-text', InputText)
     .component('pv-card', Card)
     .component('pv-toast', Toast);
 
