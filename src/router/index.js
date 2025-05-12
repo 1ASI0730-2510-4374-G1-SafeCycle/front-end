@@ -1,8 +1,8 @@
 import {createRouter, createWebHistory} from "vue-router";
-import entryScreenComponent from "@/Authentication/pages/entry-screen.component.vue";
-import signUpStudentComponent from "@/Authentication/pages/sign-up-student.component.vue";
-import signUpTouristComponent from "@/Authentication/pages/sign-up-tourist.component.vue";
-import signInComponent from "@/Authentication/pages/signIn.component.vue";
+import entryScreenComponent from "@/UserManagement/pages/entry-screen.component.vue";
+import signUpStudentComponent from "@/UserManagement/pages/sign-up-student.component.vue";
+import signUpTouristComponent from "@/UserManagement/pages/sign-up-tourist.component.vue";
+import signInComponent from "@/UserManagement/pages/signIn.component.vue";
 import notFoundPageComponent from "@/public/components/notFoundPage.component.vue";
 
 const router = createRouter({
