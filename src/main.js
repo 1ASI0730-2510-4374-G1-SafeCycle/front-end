@@ -7,15 +7,16 @@ import 'primeflex/primeflex.css'
 import Lara from '@primevue/themes/lara'
 import { definePreset } from '@primeuix/themes';
 import './assets/main.css'
+import 'primeicons/primeicons.css';
 
-import router from "./router/index.js";
 
-import {Avatar,Toolbar,Menu,Image,RadioButton, RadioButtonGroup,InputText,Password} from "primevue";
+import {Avatar, Toolbar, Menu, Image, RadioButton, RadioButtonGroup, InputText, Password, Card} from "primevue";
 import { Form,FormField} from '@primevue/forms';
 import Button from 'primevue/button';
 import Toast from 'primevue/toast';
 import Message from 'primevue/message';
 
+import router from "@/router/index.js";
 
 import ToastService from 'primevue/toastservice';
 
@@ -89,6 +90,7 @@ app
     .component('pv-input-text',InputText)
     .component('pv-message', Message)
     .component('pv-password', Password)
+    .component('pv-card', Card)
     .component('pv-toast', Toast);
 
 app.use(router);
