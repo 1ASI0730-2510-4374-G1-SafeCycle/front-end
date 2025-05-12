@@ -1,27 +1,34 @@
 <script>
-import TouringCard from "@/Touring/components/touring-card.component.vue";
 import {TouringEntity} from "@/Touring/model/touringEntity.js";
+import HeaderContent from "@/public/components/header-content.component.vue";
+import {TourApiService} from "@/Touring/services/tour-api.service.js";
+import TouringList from "@/Touring/components/touring-list.component.vue";
 
 export default {
   name: "touringSelectComponent",
-  components: {TouringCard},
+  components: {TouringList, HeaderContent},
   data(){
     return {
-      tourData: new TouringEntity(
-          "City Tour",
-          "10:00 AM",
-          "https://www.infobae.com/resizer/v2/JIJZTMOTYNGSHGI7S22JZSJ65A.jpg?auth=d32c05c95ae4fe628d89d320ab0b13ff30b55cf004f437c5fd575b9fabee1f70&smart=true&width=1200&height=675&quality=85",
-          "2h 30m"
-      ),
-      
+      tourData : Array[TouringEntity]
+    }
+  },
+  created(){
+    this.tourData = this.getTourData();
+    console.log(this.tourData);
+  }
+  ,
+  methods:{
+    getTourData(){
+      const tourApiService = new TourApiService();
+      return tourApiService.getAllTours();
     }
   }
 }
 </script>
 
 <template>
-
-  <touring-card :tour="tourData"></touring-card>
+ <header-content></header-content>
+  <touring-list :tour-list=tourData></touring-list>
 </template>
 
 <style scoped>
