@@ -4,6 +4,7 @@ import signUpStudentComponent from "@/Authentication/pages/sign-up-student.compo
 import signUpTouristComponent from "@/Authentication/pages/sign-up-tourist.component.vue";
 import signInComponent from "@/Authentication/pages/signIn.component.vue";
 import notFoundPageComponent from "@/public/components/notFoundPage.component.vue";
+import touringSelectComponent from "@/Touring/pages/touringSelectComponent.vue";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -11,6 +12,7 @@ const router = createRouter({
         { path: '/signup', name: 'signup-page-entry', component: entryScreenComponent },
         { path: '/signup/student', name: 'signup-page-student', component: signUpStudentComponent },
         { path: '/signup/tourist', name: 'signup-page-tourist', component: signUpTouristComponent },
+        { path : '/touring', name: 'touring-page', component : touringSelectComponent},
         { path: '/signIn', name: 'signIn', component: signInComponent },
         { path: '/landing', name: 'landing', beforeEnter() {
                 window.location.href = 'https://1asi0730-2510-4374-g1-safecycle.github.io/landing_page/';
