@@ -1,5 +1,4 @@
 <script>
-import {string} from "zod";
 
 export default {
   name: "empty-header",

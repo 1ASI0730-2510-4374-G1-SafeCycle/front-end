@@ -4,7 +4,6 @@
   import { z } from 'zod';
   import {Form as PvForm} from "@primevue/forms";
   import FormsAuthentication from "@/UserManagement/components/forms-authentication.component.vue";
-  import {useToast} from "primevue";
 
   export default {
     name: "sign-up-student",
