@@ -1,13 +1,10 @@
-import axios from "axios";
+import http from '@/shared/services/http-common.js'
 
 const tourApiURL =  import.meta.env.VITE_API_TOUR;
 const tourApiEndpoint = import.meta.env.VITE_API_TOUR_ENDPOINT;
 
-const http = axios.create({
-    baseURL: tourApiURL,
-})
 
-export class TourService {
+export class TourApiService {
     getAllTours() {
         return http.get(`${tourApiURL}/${tourApiEndpoint}`);
     }
