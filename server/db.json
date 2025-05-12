@@ -27,5 +27,22 @@
       "maxDailyReservationHours": 7,
       "id": 3
     }
+  ],
+  "tours" : [
+    {
+      "name" : "Cultural Places Tour",
+      "hour" : "1:30 hours",
+      "img" : "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/12/6a/a0/24/20180322-145842-largejpg.jpg?w=1200&h=1200&s=1"
+    },
+    {
+      "name" : "Culinary Places Tour",
+      "hour" : "1:00 hours",
+      "img" : "https://incaexperience.com/wp-content/uploads/2024/07/ceviche-peruano.webp"
+    },
+    {
+      "name" : "Status Tour",
+      "hour" : "2:30 hours",
+      "img" : "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/07/a6/13/14/francisco-pizzaro.jpg?w=500&h=500&s=1"
+    }
   ]
 }
