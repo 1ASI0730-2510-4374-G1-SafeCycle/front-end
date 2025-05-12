@@ -27,5 +27,47 @@
       "maxDailyReservationHours": 7,
       "id": 3
     }
+  ],
+  "bikeStations": [
+    {
+      "id": 1,
+      "name": "Centro Civico",
+      "address": "Av. Centro Civico 124",
+      "capacidadMax": 10
+    },
+    {
+      "id": 2,
+      "name": "Villa Maria",
+      "address": "Av. Villa Maria 323",
+      "capacidadMax": 10
+    },
+    {
+      "id": 3,
+      "name": "Camacho",
+      "address": "Av. La Molina Camacho 123",
+      "capacidadMax": 5
+    }
+  ],
+  "bikes": [
+    {
+      "id": 1,
+      "condition": "Good",
+      "idStation": 1
+    },
+    {
+      "id": 2,
+      "condition": "Good",
+      "idStation": 1
+    },
+    {
+      "id": 4,
+      "condition": "Broken",
+      "idStation": 2
+    },
+    {
+      "id": 4,
+      "condition": "Good",
+      "idStation": 2
+    }
   ]
 }
