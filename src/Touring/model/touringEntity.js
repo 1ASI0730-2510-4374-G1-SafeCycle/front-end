@@ -2,12 +2,10 @@ export class TouringEntity {
     constructor(
         name = "",
         hour = "",
-        img = "",
-        timeDuration = ""
+        img = ""
     ) {
         this.name = name;
         this.hour = hour;
         this.img = img;
-        this.timeDuration = timeDuration;
     }
 }
