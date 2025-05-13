@@ -14,13 +14,15 @@ export default {
 <template>
 <pv-card style="width: 25rem; overflow: hidden">
   <template #header>
-    <img alt="user header" :src=tour.img
-         style="width: 100%; height: 200px; object-fit: cover;"/>
+    <img alt="user header"
+        :src="tour.img"
+        style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;"
+    />
   </template>
   <template #title>{{tour.name}}</template>
   <template #content>
     <p class="m-0">
-      {{tour.timeDuration}}
+      {{tour.hour}}
     </p>
   </template>
   <template #footer>
