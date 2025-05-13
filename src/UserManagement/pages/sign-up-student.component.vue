@@ -3,7 +3,7 @@
   import { zodResolver } from '@primevue/forms/resolvers/zod';
   import { z } from 'zod';
   import {Form as PvForm} from "@primevue/forms";
-  import FormsAuthentication from "@/UserManagement/components/forms-authentication.component.vue";
+  import FormsAuthentication from "@/public/components/forms-authentication.component.vue";
 
   export default {
     name: "sign-up-student",
@@ -92,6 +92,7 @@
 
   <template>
     <empty-header button-text="Sign In" button-route="/signIn" ></empty-header>
+    <h1 class="font-bold" style="font-size: 35px">One more step</h1>
     <forms-authentication
         :resolver="resolver"
         :fields="fields"

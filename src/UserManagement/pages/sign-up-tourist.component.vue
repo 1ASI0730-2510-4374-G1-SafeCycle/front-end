@@ -3,7 +3,7 @@ import EmptyHeader from "@/UserManagement/components/empty-header.component.vue"
 
 import {zodResolver} from "@primevue/forms/resolvers/zod";
 import {z} from "zod";
-import FormsAuthentication from "@/UserManagement/components/forms-authentication.component.vue";
+import FormsAuthentication from "@/public/components/forms-authentication.component.vue";
 
 export default {
   name: "sign-up-tourist",
@@ -94,6 +94,7 @@ export default {
 
 <template>
   <empty-header button-text="Sign In" button-route="/signIn" ></empty-header>
+  <h1 class="font-bold" style="font-size: 35px">One more step</h1>
   <forms-authentication
       :resolver="resolver"
       :fields="fields"
