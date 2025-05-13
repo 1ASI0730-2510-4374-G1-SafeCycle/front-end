@@ -29,6 +29,9 @@ export default {
       console.log(this.tourId);
       const tourEnt = (await tourApiService.getTourById(this.tourId)).data
       this.tour = TouringAssembler.TourFromResponse(tourEnt);
+    },
+    sendSuccess(){
+      this.$router.push({name:'touring-success',params:{id:this.tourId}});
     }
   }
 }
@@ -42,7 +45,7 @@ export default {
   </div>
   <div class="main">
     <touring-card :show-card=false :tour=tour></touring-card>
-    <touring-form></touring-form>
+    <touring-form @sendToSuccess="sendSuccess"></touring-form>
   </div>
 
 </template>
