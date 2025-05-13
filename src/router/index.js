@@ -10,6 +10,7 @@ import paymentInformationEditComponent from "@/UserManagement/pages/payment-info
 import rentPageComponent from "@/Renting/pages/rent-page.component.vue";
 import rentChoosePageComponent from "@/Renting/pages/rent-choose-page.component.vue";
 import successRentPageComponent from "@/Renting/pages/success-rent-page.component.vue";
+import currentRentalPageComponent from "@/Renting/pages/current-rental-page.component.vue";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -23,6 +24,7 @@ const router = createRouter({
         { path: '/rent', name: 'rent', component: rentPageComponent },
         { path: '/rent/choose', name: 'rent-choose-station', component: rentChoosePageComponent },
         { path: '/rent/successRent', name: 'rent-success', component: successRentPageComponent },
+        { path: '/currentRent', name: 'current-rent', component: currentRentalPageComponent },
 
         { path: '/landing', name: 'landing', beforeEnter() {
                 window.location.href = 'https://1asi0730-2510-4374-g1-safecycle.github.io/landing_page/';
