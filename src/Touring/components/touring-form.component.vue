@@ -9,6 +9,12 @@ export default {
       selectedStation: null
     };
   },
+  methods :{
+    sendToSuccess(){
+      this.$emit("sendToSuccess");
+
+    }
+  }
 };
 </script>
 
@@ -39,7 +45,7 @@ export default {
           placeholder="Select a Station"
       />
     </div>
-    <pv-button on-submit="" label="Book" class="w-full" />
+    <pv-button @click="sendToSuccess" label="Book" class="w-full" />
   </div>
   </form>
 </template>
