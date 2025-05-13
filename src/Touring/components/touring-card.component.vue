@@ -5,7 +5,16 @@ import {TouringEntity} from "@/Touring/model/touringEntity.js";
 export default {
   name: "touring-card",
   props: {
-    tour : TouringEntity
+    tour : TouringEntity,
+    showCard : {
+      type: Boolean,
+      default: true
+    }
+  },
+  methods:{
+    sendId(){
+      this.$emit("send-id", this.tour.id);
+    }
   }
 
 }
@@ -27,7 +36,7 @@ export default {
 
     <template #footer>
       <div class="flex gap-4 mt-1">
-        <pv-button label="Go" class="w-full" />
+        <pv-button v-if="showCard" @click="sendId" label="Go" class="w-full" />
       </div>
     </template>
   </pv-card>
