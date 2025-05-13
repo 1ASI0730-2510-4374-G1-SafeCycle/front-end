@@ -29,6 +29,9 @@ export default {
       catch(error){
         console.log(error)
       }
+    },
+    createCard(){
+      this.router.push({name: 'touring-detail', params: {tourId: this.tourData.id}});
     }
   }
 }
@@ -36,7 +39,8 @@ export default {
 
 <template>
  <header-content></header-content>
-  <touring-list :tourList=tourData></touring-list>
+  <touring-list
+     @selectedTour="createCard" :tourList=tourData></touring-list>
 </template>
 
 <style scoped>
