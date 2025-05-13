@@ -41,6 +41,20 @@
         "type": "MASTER",
         "holder": "Franchesco Virgolini"
       }
+    },
+    {
+      "username": "tourist123",
+      "email": "turista@gmail.com",
+      "password": "123",
+      "repeatPassword": "123",
+      "type": "tourist",
+      "maxDailyReservationHours": 7,
+      "paymentInformation": {
+        "cardNumber": "",
+        "type": "",
+        "holder": ""
+      },
+      "id": 4
     }
   ],
   "bikeStations": [

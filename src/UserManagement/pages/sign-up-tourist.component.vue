@@ -4,6 +4,10 @@ import EmptyHeader from "@/UserManagement/components/empty-header.component.vue"
 import {zodResolver} from "@primevue/forms/resolvers/zod";
 import {z} from "zod";
 import FormsAuthentication from "@/public/components/forms-authentication.component.vue";
+import {UserService} from "@/UserManagement/services/users.service.js";
+
+const userService = new UserService();
+
 
 export default {
   name: "sign-up-tourist",
@@ -44,10 +48,9 @@ export default {
         return;
       }
 
-      const checkResponse = await fetch(`http://localhost:3000/users?email=${values.email}`);
-      const existingUsers = await checkResponse.json();
+      const checkResponse = await userService.getByEmail(values.educationalEmail);
 
-      if (existingUsers.length > 0) {
+      if (checkResponse.data.length > 0) {
         this.$root.$refs.toast.add({
           severity: 'warn',
           summary: 'A user with this email already exists',
@@ -58,43 +61,37 @@ export default {
       }
 
       const touristToSend = {
-        id: undefined, // JSON Server lo sobrescribirá automáticamente
+        id: undefined,
         username: values.username,
         email: values.email,
         password: values.password,
         repeatPassword: values.repeatPassword,
         type: "tourist",
-        maxDailyReservationHours: 7
+        maxDailyReservationHours: 7,
+        paymentInformation:
+            {
+              cardNumber:"",
+              type: "",
+              holder: ""
+            }
       };
 
       try {
-        const response = await fetch("http://localhost:3000/users", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json", // we are sending a json type file
-          },
-          body: JSON.stringify(touristToSend), // convertir a json - '{"email":"juan@email.com","password":"1234"}'
-        });
-
-        if (!response.ok){ console.error("Failed to register") ; return ;}
-
-        const newUser = await response.json();
-        console.log("User created:", newUser);
-
+        const response = await userService.create(touristToSend);
+        console.log("User created:", response.data);
+        this.$router.push("/signIn");
 
         this.$router.push("/signIn");
 
       } catch (err) {
         console.error("Registration failed:", err);
-      }
-    }
+      }}
   }
 };
 </script>
 
 <template>
   <empty-header button-text="Sign In" button-route="/signIn" ></empty-header>
-  <h1 class="font-bold" style="font-size: 35px">One more step</h1>
   <forms-authentication
       :resolver="resolver"
       :fields="fields"

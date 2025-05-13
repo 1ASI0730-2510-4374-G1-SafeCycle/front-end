@@ -4,6 +4,9 @@
   import { z } from 'zod';
   import {Form as PvForm} from "@primevue/forms";
   import FormsAuthentication from "@/public/components/forms-authentication.component.vue";
+  import { UserService } from "../services/users.service.js";
+
+  const userService = new UserService();
 
   export default {
     name: "sign-up-student",
@@ -42,10 +45,9 @@
         console.log("failed validation")
          return;
         }
-        const checkResponse = await fetch(`http://localhost:3000/users?email=${values.educationalEmail}`);
-        const existingUsers = await checkResponse.json();
-
-        if (existingUsers.length > 0) {
+        const checkResponse = await userService.getByEmail(values.educationalEmail);
+        console.log(checkResponse.data.length);
+        if (checkResponse.data.length > 0) {
           this.$root.$refs.toast.add({
             severity: 'warn',
             summary: 'A user with this email already exists',
@@ -56,29 +58,25 @@
         }
 
         const studentToSend = {
-          id: undefined, // JSON Server lo sobrescribirá automáticamente
+          id: undefined,
           username: values.username,
           email: values.educationalEmail,
           password: values.password,
           repeatPassword: values.repeatPassword,
           type: "student",
-          maxDailyReservationHours: 7
+          maxDailyReservationHours: 7,
+          paymentInformation:
+            {
+              cardNumber:"",
+              type: "",
+              holder: ""
+            }
         };
 
         try {
-          const response = await fetch("http://localhost:3000/users", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json", // we are sending a json type file
-            },
-            body: JSON.stringify(studentToSend), // convertir a json - '{"email":"juan@email.com","password":"1234"}'
-          });
-
-          if (!response.ok){ console.error("Failed to register") ; return ;}
-
-          const newUser = await response.json();
-          console.log("User created:", newUser);
-
+          const response = await userService.create(studentToSend);
+          console.log("User created:", response.data);
+          this.$router.push("/signIn");
 
           this.$router.push("/signIn");
 
@@ -92,7 +90,6 @@
 
   <template>
     <empty-header button-text="Sign In" button-route="/signIn" ></empty-header>
-    <h1 class="font-bold" style="font-size: 35px">One more step</h1>
     <forms-authentication
         :resolver="resolver"
         :fields="fields"
