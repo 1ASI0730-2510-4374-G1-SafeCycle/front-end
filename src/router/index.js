@@ -14,7 +14,7 @@ const router = createRouter({
         { path: '/signup/student', name: 'signup-page-student', component: signUpStudentComponent },
         { path: '/signup/tourist', name: 'signup-page-tourist', component: signUpTouristComponent },
         { path : '/touring', name: 'touring-page', component : touringSelectComponent},
-        {path : '/touring/test', name: 'touring-test-page', component: touringBookComponent},
+        {path : '/touring/:id', name: 'touring-detail', component: touringBookComponent},
         { path: '/signIn', name: 'signIn', component: signInComponent },
         { path: '/landing', name: 'landing', beforeEnter() {
                 window.location.href = 'https://1asi0730-2510-4374-g1-safecycle.github.io/landing_page/';
