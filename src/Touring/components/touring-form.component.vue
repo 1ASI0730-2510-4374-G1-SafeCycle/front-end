@@ -6,51 +6,81 @@ export default {
       fechaSeleccionada: null,
       startHour: null,
       endHour: null,
-      selectedStation: null
+      selectedStation: null,
+      errors: {
+        fecha: false,
+        startHour: false,
+        endHour: false,
+        station: false,
+        hours : false
+      }
     };
   },
-  methods :{
-    sendToSuccess(){
-      this.$emit("sendToSuccess");
+  methods: {
+    sendToSuccess() {
+      this.errors = {
+        fecha: !this.fechaSeleccionada,
+        startHour: !this.startHour,
+        endHour: !this.endHour,
+        station: !this.selectedStation
+      };
 
+      const hasErrors = Object.values(this.errors).some(e => e);
+      if (hasErrors) return;
+
+      if (this.endHour < this.startHour) {
+        this.errors.hours = true;
+        return;
+      }
+      else{
+        this.errors.hours = false;
+      }
+
+      this.$emit("sendToSuccess");
     }
   }
 };
 </script>
 
 <template>
-  <form>
-  <div class="form-grid">
-    <div class="form-item">
-      <label for="fecha" class="form-label">Date</label>
-      <pv-date-picker id="fecha" v-model="fechaSeleccionada" showIcon />
-    </div>
+  <form @submit.prevent="sendToSuccess">
+    <div class="form-grid">
+      <div class="form-item">
+        <label for="fecha" class="form-label">Date</label>
+        <pv-date-picker id="fecha" v-model="fechaSeleccionada" showIcon />
+        <pv-message v-if="errors.fecha" severity="error" variant="simple" size="small"> Date is required</pv-message>
+      </div>
 
-    <div class="form-item">
-      <label for="start-hour" class="form-label">Start Hour</label>
-      <pv-date-picker id="start-hour" v-model="startHour" timeOnly fluid />
-    </div>
+      <div class="form-item">
+        <label for="start-hour" class="form-label">Start Hour</label>
+        <pv-date-picker id="start-hour" v-model="startHour" timeOnly fluid />
+        <pv-message v-if="errors.startHour" severity="error" variant="simple" size="small">Start hour is required</pv-message>
+      </div>
 
-    <div class="form-item">
-      <label for="end-hour" class="form-label">End Hour</label>
-      <pv-date-picker id="end-hour" v-model="endHour" timeOnly fluid />
-    </div>
+      <div class="form-item">
+        <label for="end-hour" class="form-label">End Hour</label>
+        <pv-date-picker id="end-hour" v-model="endHour" timeOnly fluid />
+        <pv-message v-if="errors.endHour" severity="error" variant="simple" size="small">End Hour is required </pv-message>
+      </div>
 
-    <div class="form-item">
-      <label for="station" class="form-label">Bike Station</label>
-      <pv-select
-          id="station"
-          v-model="selectedStation"
-          :options="['Centro civico', 'San Isidro']"
-          placeholder="Select a Station"
-      />
+      <div class="form-item">
+        <label for="station" class="form-label">Bike Station</label>
+        <pv-select
+            id="station"
+            v-model="selectedStation"
+            :options="['Centro civico', 'San Isidro']"
+            placeholder="Select a Station"
+        />
+        <pv-message v-if="errors.station" severity="error" variant="simple" size="small">Station is required</pv-message>
+      </div>
+      <div class="final">
+        <pv-message v-if="errors.hours" severity="error" variant="simple" size="small">Start Hour cant be greater than End Hour</pv-message>
+        <pv-button type="submit" label="Book" class="w-full" />
+      </div>
+
     </div>
-    <pv-button @click="sendToSuccess" label="Book" class="w-full" />
-  </div>
   </form>
 </template>
-
-
 
 <style scoped>
 .form-grid {
@@ -61,7 +91,11 @@ export default {
   max-width: 800px;
   margin: 0 auto;
 }
-
+.final{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
 .form-item {
   display: flex;
   flex-direction: column;
