@@ -8,11 +8,12 @@ export default {
       endHour: null,
       selectedStation: null
     };
-  }
+  },
 };
 </script>
 
 <template>
+  <form>
   <div class="form-grid">
     <div class="form-item">
       <label for="fecha" class="form-label">Date</label>
@@ -38,8 +39,9 @@ export default {
           placeholder="Select a Station"
       />
     </div>
-    <pv-button label="Book" class="w-full" />
+    <pv-button on-submit="" label="Book" class="w-full" />
   </div>
+  </form>
 </template>
 
 
