@@ -78,7 +78,6 @@
           console.log("User created:", response.data);
           this.$router.push("/signIn");
 
-          this.$router.push("/signIn");
 
         } catch (err) {
           console.error("Registration failed:", err);

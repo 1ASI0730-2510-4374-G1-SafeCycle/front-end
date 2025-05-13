@@ -6,9 +6,9 @@ export default {
   name: "header-content",
   data() {
     return{
-      items: [{label: 'My Profile', icon: 'pi pi-user', url: '#profile'},
-        {label: 'Payment Information', icon: 'pi pi-credit-card', url: '#paymentInfo'},
-        {label: 'Current Rentals', icon: 'pi pi-book', url: '#currentRental'},
+      items: [{label: 'My Profile', icon: 'pi pi-user', to: "/profile"},
+        {label: 'Payment Information', icon: 'pi pi-credit-card', to: '/paymentInformation'},
+        {label: 'Current Rentals', icon: 'pi pi-book', to: '#currentRental'},
         {separator: true},
         {label: 'Logout', icon: 'pi pi-sign-out',
           command: () => {
@@ -58,14 +58,14 @@ export default {
             </span>
             </template>
             <template #item="{ item, props }">
-              <a
-                  :href="item.url"
+              <router-link
+                  :to="item.to"
                   v-bind="props.action"
                   class="flex items-center w-full px-3 py-2 hover:bg-green-100 rounded-md"
               >
                   <span :class="item.icon" />
                   <span class="ml-2">{{ item.label }}</span>
-                </a>
+                </router-link>
             </template>
 
           </pv-menu>
