@@ -53,7 +53,7 @@ export default {
   font-weight: bold;
   text-align: center;
   margin-bottom: 0.5rem;
-  color: #fff; /* o usa un color más llamativo si el fondo lo permite */
+  color: #fff;
 }
 
 .tour-desc {
