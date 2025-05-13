@@ -2,6 +2,9 @@
 import BackButton from "@/public/components/back-button.component.vue";
 import HeaderContent from "@/public/components/header-content.component.vue";
 import {Select as PvSelect} from "primevue";
+import {BikeService} from "@/Renting/services/renting.service.js";
+
+const rentingService = new BikeService();
 
 export default {
   name: "rent-choose-page",
@@ -10,7 +13,6 @@ export default {
     return {
       selectedStation: null,
       stations: [],
-      bikesInStation:[]
     };
   },
 
@@ -18,25 +20,25 @@ export default {
     const minutes = this.$route.query.minutes;
     console.log("Minutes from previous page:", minutes);
 
-      const response = await fetch("http://localhost:3000/bikeStations");
-      if (!response.ok) {
+      const response = await rentingService.getBikeStations();
+      if (!response.status === "OK") {
         console.error("Failed to fetch stations");
         return;
       }
-      this.stations = await response.json();
+      this.stations = await response.data;
   }
   ,
   methods: {
     async onRentClick(){
-        const response = await fetch(`http://localhost:3000/bikes?idStation=${this.selectedStation.id}&available=true`);
-        if (!response.ok) {
+        const bikesInStation = await rentingService.getAvailableBikesByStationId(this.selectedStation.id);
+        console.log(bikesInStation)
+        if (!bikesInStation.status === "OK") {
         console.error("Failed to fetch bikes");
         return;
         }
-        this.bikesInStation = await response.json();
-        console.log("Bikes found:", this.bikesInStation);
+        console.log("Bikes found:", bikesInStation.data);
 
-        if(this.bikesInStation.length === 0){
+        if(bikesInStation.data.length === 0){
           console.log("No bikes in Station.");
           this.$root.$refs.toast.add({
             severity: 'warn',
@@ -45,7 +47,7 @@ export default {
           });
         }
         else{
-          const bike = this.bikesInStation[0];
+          const bike = bikesInStation.data[0];
           const minutes = this.$route.query.minutes;
           const price = ((minutes * 0.045) + 1).toFixed(2);
 
