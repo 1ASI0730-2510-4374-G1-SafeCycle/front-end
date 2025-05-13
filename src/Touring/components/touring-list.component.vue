@@ -2,6 +2,7 @@
 import {TouringEntity} from "@/Touring/model/touringEntity.js";
 import TouringCard from "@/Touring/components/touring-card.component.vue";
 
+
 export default {
   name: "touring-list",
   components: {TouringCard},
@@ -10,6 +11,11 @@ export default {
       type:Array[TouringEntity],
       required: true
     }
+  },
+  methods:{
+    selectTour(tourId){
+      this.$router.push({ name: 'touring-detail', params: { id: tourId } });
+    }
   }
 }
 </script>
@@ -17,6 +23,7 @@ export default {
 <<template>
   <div class="card-container">
     <touring-card
+        @send-id = "selectTour"
         v-for="tour in tourList"
         :key="tour.name"
         :tour="tour"
