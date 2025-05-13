@@ -7,7 +7,7 @@ export default {
   data() {
     return{
       items: [{label: 'My Profile', icon: 'pi pi-user', to: "/profile"},
-        {label: 'Payment Information', icon: 'pi pi-credit-card', to: '#paymentInfo'},
+        {label: 'Payment Information', icon: 'pi pi-credit-card', to: '/paymentInformation'},
         {label: 'Current Rentals', icon: 'pi pi-book', to: '#currentRental'},
         {separator: true},
         {label: 'Logout', icon: 'pi pi-sign-out',
