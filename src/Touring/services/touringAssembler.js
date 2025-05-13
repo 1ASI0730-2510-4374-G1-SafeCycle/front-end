@@ -8,6 +8,6 @@ export class TouringAssembler {
     }
     static TourFromResponse(tour){
         console.log(tour);
-        return new TouringEntity(tour.name, tour.hour, tour.img, tour.price);
+        return new TouringEntity(tour.id,tour.name, tour.hour, tour.img, tour.price);
     }
 }
