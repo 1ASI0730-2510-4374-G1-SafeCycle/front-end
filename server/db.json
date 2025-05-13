@@ -48,41 +48,52 @@
       "id": 1,
       "name": "Centro Civico",
       "address": "Av. Centro Civico 124",
-      "capacidadMax": 10
+      "maxCapacity": 10
     },
     {
       "id": 2,
       "name": "Villa Maria",
       "address": "Av. Villa Maria 323",
-      "capacidadMax": 10
+      "maxCapacity": 10
     },
     {
       "id": 3,
       "name": "Camacho",
       "address": "Av. La Molina Camacho 123",
-      "capacidadMax": 5
+      "maxCapacity": 5
     }
   ],
   "bikes": [
     {
       "id": 1,
       "condition": "Good",
+      "available": true,
       "idStation": 1
     },
     {
       "id": 2,
       "condition": "Good",
+      "available": true,
       "idStation": 1
     },
     {
       "id": 4,
       "condition": "Broken",
+      "available": false,
       "idStation": 2
     },
     {
       "id": 4,
       "condition": "Good",
+      "available": false,
       "idStation": 2
+    }
+  ],
+  "rentals": [
+    {
+      "id": 1,
+      "idUser": 1,
+      "idBike": 4
     }
   ]
 }
