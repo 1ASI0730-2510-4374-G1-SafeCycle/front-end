@@ -49,27 +49,24 @@ export default {
   padding: 1rem;
   box-sizing: border-box;
 }
-
 .tour-img {
   width: 100%;
   height: 200px;
   object-fit: cover;
+  object-position: top;
   border-radius: 8px;
 }
-
 .tour-title {
   font-size: 1.6rem;
   font-weight: bold;
   text-align: center;
   margin-bottom: 0.5rem;
-  color: #fff;
 }
 
 .tour-desc {
   font-size: 1.2rem;
   text-align: center;
   margin: 0.5rem 0;
-  color: #ccc;
 }
 </style>
 
