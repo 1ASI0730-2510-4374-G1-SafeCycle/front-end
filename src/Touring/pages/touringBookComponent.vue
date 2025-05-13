@@ -37,6 +37,9 @@ export default {
 <template>
 
   <header-content></header-content>
+  <div class="tittle">
+    <h1>Welcome to the {{this.tour.name}} for <span class="font-bold">{{this.tour.price}} soles</span></h1>
+  </div>
   <div class="main">
     <touring-card :show-card=false :tour=tour></touring-card>
     <touring-form></touring-form>
@@ -51,6 +54,13 @@ export default {
   height: 100%;
   align-items: center;
   justify-content: center;
-  margin-top: 100px;
+  margin-top: 30px;
+}
+.tittle{
+  width: 100%;
+  height: 100px;
+  text-align: center;
+  align-content: center;
+  margin-top: 30px;
 }
 </style>
