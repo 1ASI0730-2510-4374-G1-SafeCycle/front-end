@@ -10,7 +10,18 @@ import './assets/main.css'
 import 'primeicons/primeicons.css';
 
 
-import {Avatar, Toolbar, Menu, Image, RadioButton, RadioButtonGroup, InputText, Password, Card} from "primevue";
+import {
+    Avatar,
+    Toolbar,
+    Menu,
+    Image,
+    RadioButton,
+    RadioButtonGroup,
+    InputText,
+    Password,
+    Card,
+    DatePicker, Select
+} from "primevue";
 import { Form,FormField} from '@primevue/forms';
 import Button from 'primevue/button';
 import Toast from 'primevue/toast';
@@ -85,6 +96,8 @@ app
     .component('pv-button',Button)
     .component('pv-radio-button',RadioButton)
     .component('pv-form',Form)
+    .component('pv-date-picker',DatePicker)
+    .component('pv-select',Select)
     .component('pv-form-field',FormField)
     .component('pv-radio-button-group',RadioButtonGroup)
     .component('pv-input-text',InputText)
