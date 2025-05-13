@@ -1,5 +1,7 @@
 <script>
 
+import router from "@/router/index.js";
+
 export default {
   name: "header-content",
   data() {
@@ -18,9 +20,11 @@ export default {
     }
   },
   created() {
-//cuando se inicia
   },
   methods: {
+    router() {
+      return router
+    },
     toggleMenu(event) {
       this.$refs.menu.toggle(event);
     }
@@ -40,7 +44,7 @@ export default {
 
       <template #end>
         <div class="flex align-items-center gap-5 h-4rem">
-          <pv-button class="w-8rem h-full text-xs p-0 rounded-0" style="border-radius: 0"  label="Rent" text plain />
+          <pv-button class="w-8rem h-full text-xs p-0 rounded-0" style="border-radius: 0" label="Rent" @click="this.$router.push('/rent')" text plain />
           <pv-button class="w-8rem h-full text-xs p-0 rounded-0" style="border-radius: 0" label="Touring" text plain/>
           <pv-button class="w-8rem h-full text-xs p-0 rounded-0" style="border-radius: 0" label="Booking" text plain/>
           <pv-button class="w-8rem h-full text-xs p-0 rounded-0" style="border-radius: 0"  label="Fees" text plain/>
@@ -49,12 +53,16 @@ export default {
           <pv-avatar image="https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png" @click="toggleMenu" ref="menu" class="w-2rem h-2rem"/>
             <pv-menu ref="menu" :model="items" :popup="true" class="p-3" style="background-color: #C9F0C4;">
             <template #start>
-            <span class="inline-flex items-center gap-1 px-2 py-2">
+            <span class="inline-flex items-center h-20 gap-1 px-2 py-2">
             <span style="color: #124611; font-weight: bold">Hola Luciana 👋</span>
             </span>
             </template>
             <template #item="{ item, props }">
-                <a :href="item.url" v-bind="props.action" >
+              <a
+                  :href="item.url"
+                  v-bind="props.action"
+                  class="flex items-center w-full px-3 py-2 hover:bg-green-100 rounded-md"
+              >
                   <span :class="item.icon" />
                   <span class="ml-2">{{ item.label }}</span>
                 </a>

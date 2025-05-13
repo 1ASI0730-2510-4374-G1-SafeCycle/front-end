@@ -1,0 +1,59 @@
+<script>
+import HeaderContent from "@/public/components/header-content.component.vue";
+import {zodResolver} from "@primevue/forms/resolvers/zod";
+import {z} from "zod";
+import FormsAuthentication from "@/public/components/forms-authentication.component.vue";
+
+export default {
+  name: "rent-page",
+  components: {FormsAuthentication, HeaderContent},
+  data() {
+    return {
+      resolver: zodResolver(
+          z.object({
+            minutes : z.coerce.number({
+              required_error: "Minutes to rent is required",
+            }).int().gte(5,"You must rent more than 5 minutes"),
+          })
+      ),
+      fields: [
+        { name: 'minutes', type: 'number', inputType: 'number', placeholder: 'Minutes to Rent', initialValue: '' }
+      ]
+    };
+},
+  methods: {
+    async onFormSubmit({valid, values}) {
+      if (!valid) {
+        console.log("INVALID MINUTES ENTERED")
+        return;
+      }
+
+      this.$router.push({
+        path: "/rent/choose",
+        query: { minutes: values.minutes }
+      });
+
+    }
+  }}
+</script>
+
+<template>
+  <div class="flex flex-column min-h-screen">
+    <header-content />
+    <div class="flex-1 flex align-items-center justify-content-center">
+      <div class="flex flex-column justify-center gap-2">
+        <h1 class="font-bold">Enter total minutes</h1>
+        <p>Provide access to Localization in web browser</p>
+        <forms-authentication
+            :resolver="resolver"
+            :fields="fields"
+            :onFormSubmit="onFormSubmit"
+        />
+      </div>
+    </div>
+  </div>
+</template>
+
+<style scoped>
+
+</style>

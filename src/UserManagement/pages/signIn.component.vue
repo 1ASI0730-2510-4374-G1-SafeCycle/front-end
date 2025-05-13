@@ -1,9 +1,9 @@
 <script>
 
-import EmptyHeader from "@/Authentication/components/empty-header.component.vue";
+import EmptyHeader from "@/UserManagement/components/empty-header.component.vue";
 import { zodResolver } from '@primevue/forms/resolvers/zod';
 import { z } from 'zod';
-import FormsAuthentication from "@/Authentication/components/forms-authentication.component.vue";
+import FormsAuthentication from "@/public/components/forms-authentication.component.vue";
 
 export default {
   name: "signIn",
