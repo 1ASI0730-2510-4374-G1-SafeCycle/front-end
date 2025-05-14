@@ -5,6 +5,7 @@
   import {Form as PvForm} from "@primevue/forms";
   import FormsAuthentication from "@/public/components/forms-authentication.component.vue";
   import { UserService } from "../services/users.service.js";
+  import { Student } from "../model/student.entity.js";
 
   export default {
     name: "sign-up-student",
@@ -76,21 +77,17 @@
           return;
         }
 
-        const studentToSend = {
-          id: undefined,
+        const studentToSend = new Student({
+          id: 0, // or undefined if your class allows it
           username: values.username,
-          email: values.educationalEmail,
+          educationalEmail: values.educationalEmail,
           password: values.password,
-          repeatPassword: values.repeatPassword,
-          type: "student",
-          maxDailyReservationHours: 7,
-          paymentInformation:
-            {
-              cardNumber:"",
-              type: "",
-              holder: ""
-            }
-        };
+          paymentInformation: {
+            cardNumber: "",
+            type: "",
+            holder: ""
+          }
+        });
 
         try {
           const response = await this.userService.create(studentToSend);

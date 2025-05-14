@@ -5,6 +5,8 @@ import {zodResolver} from "@primevue/forms/resolvers/zod";
 import {z} from "zod";
 import FormsAuthentication from "@/public/components/forms-authentication.component.vue";
 import {UserService} from "@/UserManagement/services/users.service.js";
+import {Student} from "@/UserManagement/model/student.entity.js";
+import {Tourist} from "@/UserManagement/model/tourist.entity.js";
 
 
 export default {
@@ -57,6 +59,7 @@ export default {
      *  @param {boolean} valid - Indicates whether the form is valid.
      *  @param {Object} values - The form input values.
      *  @param {string} values.username - The user's chosen username.
+     *   @param {string} values.passport - The user's passport.
      *  @param {string} values.email - The user's school email.
      *  @param {string} values.password - The user's password.
      *  @param {string} values.repeatPassword - The repeated password for confirmation.
@@ -79,28 +82,24 @@ export default {
         return;
       }
 
-      const touristToSend = {
-        id: undefined,
+      const touristToSend = new Tourist({
+        id: 0, // or undefined if your class allows it
         username: values.username,
+        passport: values.passport,
         email: values.email,
         password: values.password,
-        repeatPassword: values.repeatPassword,
-        type: "tourist",
-        maxDailyReservationHours: 7,
-        paymentInformation:
-            {
-              cardNumber:"",
-              type: "",
-              holder: ""
-            }
-      };
+        paymentInformation: {
+          cardNumber: "",
+          type: "",
+          holder: ""
+        }
+      });
 
       try {
         const response = await this.userService.create(touristToSend);
         console.log("User created:", response.data);
         this.$router.push("/signIn");
 
-        this.$router.push("/signIn");
 
       } catch (err) {
         console.error("Registration failed:", err);
