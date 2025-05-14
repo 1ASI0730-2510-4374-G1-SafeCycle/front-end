@@ -78,7 +78,7 @@
         }
 
         const studentToSend = new Student({
-          id: 0, // or undefined if your class allows it
+          id: 0,
           username: values.username,
           educationalEmail: values.educationalEmail,
           password: values.password,

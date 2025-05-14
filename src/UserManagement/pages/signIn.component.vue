@@ -75,7 +75,7 @@ export default {
           severity: 'warn',
           summary: 'Wrong Password',
           life: 3000});
-          console.warn("wrong passwore");
+          console.warn("wrong password");
       }
       else{
         this.$router.push("/rent");

@@ -46,7 +46,17 @@ export default {
      * @description Handles the bike rental process when the user clicks to rent.
      * Fetches available bikes for the selected station and navigates to the success page if bikes are available.
      */
+    noBikesAvailable() {
+      console.log("No bikes in Station.");
+      this.$root.$refs.toast.add({
+        severity: 'warn',
+        summary: 'No bikes in Station, Please choose another one',
+        life: 3000
+      });
+    },
+
     async onRentClick(){
+      try {
         const bikesInStation = await rentingService.getAvailableBikesByStationId(this.selectedStation.id);
         console.log(bikesInStation)
         if (!bikesInStation.status === "OK") {
@@ -56,12 +66,7 @@ export default {
         console.log("Bikes found:", bikesInStation.data);
 
         if(bikesInStation.data.length === 0){
-          console.log("No bikes in Station.");
-          this.$root.$refs.toast.add({
-            severity: 'warn',
-            summary: 'No bikes in Station, Please choose another one',
-            life: 3000
-          });
+          this.noBikesAvailable();
         }
         else{
           // First available bike selected
@@ -78,9 +83,14 @@ export default {
               bikeId: bike.id
             }})
         }
+      }catch (error) {
+        if (error.response.status === 404) {
+          this.noBikesAvailable();
+          console.log("No bikes in Station (404).");
+      }
     }
   }
-}
+}}
 </script>
 
 <template>

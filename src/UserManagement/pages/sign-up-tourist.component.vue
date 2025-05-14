@@ -5,7 +5,6 @@ import {zodResolver} from "@primevue/forms/resolvers/zod";
 import {z} from "zod";
 import FormsAuthentication from "@/public/components/forms-authentication.component.vue";
 import {UserService} from "@/UserManagement/services/users.service.js";
-import {Student} from "@/UserManagement/model/student.entity.js";
 import {Tourist} from "@/UserManagement/model/tourist.entity.js";
 
 
@@ -83,7 +82,7 @@ export default {
       }
 
       const touristToSend = new Tourist({
-        id: 0, // or undefined if your class allows it
+        id: 0,
         username: values.username,
         passport: values.passport,
         email: values.email,

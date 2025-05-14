@@ -5,7 +5,7 @@ export class Student {
     constructor({
                     id = 0,
                     username = '',
-                    educationalEmail = '',
+                    email = '',
                     password = '',
                     paymentInformation = {
                         cardNumber: '',
@@ -15,7 +15,7 @@ export class Student {
                 }){
         this.id = id;
         this.username = username;
-        this.educationalEmail = educationalEmail;
+        this.email = email;
         this.password = password;
         this.paymentInformation = paymentInformation;
     }

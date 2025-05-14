@@ -13,6 +13,7 @@ export class UserService {
      * @returns {Promise<AxiosResponse<any>>} Promise that resolves to the category object
      */
     getByEmail(email) {
+        console.log(`${this.resourceEndpoint}?email=${email}`);
         return http.get(`${this.resourceEndpoint}?email=${email}`);
     }
     /**

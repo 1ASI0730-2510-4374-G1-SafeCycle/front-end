@@ -1,4 +1,4 @@
-import http from "@/shared/services/http-common.js"
+import { http, httpBikes } from "@/shared/services/http-common.js";
 
 /**
  * @class BikeService
@@ -13,12 +13,12 @@ export class BikeService {
 
 
     /**
-     * Retrieves all available bikes from a specific station Id
+     * Retrieves all available bikes from a specific station id
      * * @param {number} id - The ID of the station to access
      * * @returns {Promise<AxiosResponse<any>>} Promise that resolves to the category object
      * */
     getAvailableBikesByStationId(stationId) {
-        return http.get(`${this.bikes}?idStation=${stationId}&available=true`);
+        return httpBikes.get(`${this.bikes}?idStation=${stationId}&available=true`);
     }
 
     /**
