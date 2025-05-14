@@ -6,8 +6,6 @@
   import FormsAuthentication from "@/public/components/forms-authentication.component.vue";
   import { UserService } from "../services/users.service.js";
 
-  const userService = new UserService();
-
   export default {
     name: "sign-up-student",
     components: {FormsAuthentication, PvForm, EmptyHeader},
@@ -47,6 +45,8 @@
           { name: 'repeatPassword', type: 'password', inputType: 'password', placeholder: 'Repeat Password', initialValue: '' }
         ]
       };
+    }, created() {
+      this.userService = new UserService();
     },
     methods: {
       /**
@@ -64,7 +64,7 @@
         console.log("failed validation")
          return;
         }
-        const checkResponse = await userService.getByEmail(values.educationalEmail);
+        const checkResponse = await this.userService.getByEmail(values.educationalEmail);
         console.log(checkResponse.data.length);
         if (checkResponse.data.length > 0) {
           this.$root.$refs.toast.add({
@@ -93,7 +93,7 @@
         };
 
         try {
-          const response = await userService.create(studentToSend);
+          const response = await this.userService.create(studentToSend);
           console.log("User created:", response.data);
           this.$router.push("/signIn");
 

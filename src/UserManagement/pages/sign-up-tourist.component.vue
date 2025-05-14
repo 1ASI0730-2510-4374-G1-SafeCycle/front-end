@@ -47,7 +47,9 @@ export default {
         { name: 'repeatPassword', type: 'password', inputType: 'password', placeholder: 'Repeat Password', initialValue: '' }
       ]
     };
-  },
+  },created() {
+  this.userService = new UserService();
+},
   methods: {
     /**
      * @function onFormSubmit
@@ -65,7 +67,7 @@ export default {
         return;
       }
 
-      const checkResponse = await userService.getByEmail(values.email);
+      const checkResponse = await this.userService.getByEmail(values.email);
 
       if (checkResponse.data.length > 0) {
         this.$root.$refs.toast.add({
@@ -94,7 +96,7 @@ export default {
       };
 
       try {
-        const response = await userService.create(touristToSend);
+        const response = await this.userService.create(touristToSend);
         console.log("User created:", response.data);
         this.$router.push("/signIn");
 

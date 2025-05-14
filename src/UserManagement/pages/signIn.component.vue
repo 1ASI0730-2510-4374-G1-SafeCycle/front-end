@@ -4,6 +4,7 @@ import EmptyHeader from "@/UserManagement/components/empty-header.component.vue"
 import { zodResolver } from '@primevue/forms/resolvers/zod';
 import { z } from 'zod';
 import FormsAuthentication from "@/public/components/forms-authentication.component.vue";
+import {UserService} from "@/UserManagement/services/users.service.js";
 
 export default {
   name: "signIn",
@@ -39,6 +40,8 @@ export default {
         { name: 'password', type: 'password', inputType: 'password', placeholder: 'Password', initialValue: '' }
       ]
     };
+  }, created() {
+    this.userService = new UserService();
   },
   methods: {
     /**
@@ -53,10 +56,9 @@ export default {
       if (!valid) {
         console.log("INVALID USER")
       }
-      const checkResponse = await fetch(`http://localhost:3000/users?email=${values.email}`);
-      const existingUsers = await checkResponse.json();
+      const checkResponse = await this.userService.getByEmail(values.email);
 
-      if(existingUsers.length === 0) {
+      if(checkResponse.data.length === 0) {
         this.$root.$refs.toast.add({
           severity: 'warn',
           summary: 'No registered email found',
@@ -66,11 +68,9 @@ export default {
         return;
       }
 
-      const checkPassResponse = await fetch(`http://localhost:3000/users?email=${values.email}&password=${values.password}`);
+      const checkPassResponse = await this.userService.getUserByEmailAndPassword(values.email, values.password);
 
-      const existingUserswithPass = await checkPassResponse.json();
-
-      if(existingUserswithPass.length === 0) {
+      if(checkPassResponse.data.length === 0) {
         this.$root.$refs.toast.add({
           severity: 'warn',
           summary: 'Wrong Password',
