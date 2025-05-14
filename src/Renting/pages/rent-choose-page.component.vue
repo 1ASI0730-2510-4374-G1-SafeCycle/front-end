@@ -24,7 +24,7 @@ export default {
   },
 
   /**
-   * @lifecycle mounted
+   * @function mounted
    * @description Lifecycle hook that runs after the component is created.
    * Fetches all available bike stations from the API for the list.
    */
