@@ -31,7 +31,7 @@ export default {
     async obtenerDetalle() {
       const tourApiService = new TourApiService();
       console.log(this.tourId);
-      const tourEnt = (await tourApiService.getTourById(this.tourId)).data
+      const tourEnt = (await tourApiService.getTourById(this.tourId)).data[0]
       this.tour = TouringAssembler.TourFromResponse(tourEnt);
     },
     /**
