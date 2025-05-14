@@ -12,9 +12,9 @@ import signInComponent from "@/UserManagement/pages/signIn.component.vue";
 import notFoundPageComponent from "@/public/components/notFoundPage.component.vue";
 import touringSelectComponent from "@/Touring/pages/touringSelectComponent.vue";
 
-import profilePageComponent from "@/UserManagement/pages/profile-page.component.vue";
-import changePasswordPageComponent from "@/UserManagement/pages/change-password-page.component.vue";
-import editProfilePageComponent from "@/UserManagement/pages/edit-profile-page.component.vue";
+const ProfilePageComponent = () => import("@/UserManagement/pages/profile-page.component.vue");
+const ChangePasswordPageComponent = () => import("@/UserManagement/pages/change-password-page.component.vue");
+const EditProfilePageComponent = () => import("@/UserManagement/pages/edit-profile-page.component.vue");
 
 const CurrentRentalPageComponent = () => import('@/Renting/pages/current-rental-page.component.vue');
 const RentPageComponent = () => import('@/Renting/pages/rent-page.component.vue');
@@ -58,11 +58,11 @@ const router = createRouter({
                 window.location.href = 'https://1asi0730-2510-4374-g1-safecycle.github.io/landing_page/';
             } },
 
-        { path: '/profile', name: 'profile-page', component: profilePageComponent },
-        { path: '/profile/changePassword', name: 'changePassword', component: changePasswordPageComponent },
-        { path: '/profile/edit', name: 'edit-profile', component: editProfilePageComponent },
-        { path: '/paymentInformation', name: 'payment-information', component: PaymentInformationComponent },
-        { path: '/paymentInformation/edit', name: 'payment-information-edit', component: PaymentInformationEditComponent },
+        { path: '/profile', name: 'profile-page', component: ProfilePageComponent, meta: {title: 'Profile Page'} },
+        { path: '/profile/changePassword', name: 'changePassword', component: ChangePasswordPageComponent, meta: {title: 'Change Password Page'} },
+        { path: '/profile/edit', name: 'edit-profile', component: EditProfilePageComponent, meta: {title: 'Edit Profile Page'} },
+        { path: '/paymentInformation', name: 'payment-information', component: PaymentInformationComponent, meta: {title: 'Payment Information Page'} },
+        { path: '/paymentInformation/edit', name: 'payment-information-edit', component: PaymentInformationEditComponent, meta: {title: 'Edit Payment Information Page'} },
         {path: '/:pathMatch(.*)', name: '404 - nor found', component: notFoundPageComponent},
 
            ]
