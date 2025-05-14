@@ -12,7 +12,7 @@ import rentChoosePageComponent from "@/Renting/pages/rent-choose-page.component.
 import successRentPageComponent from "@/Renting/pages/success-rent-page.component.vue";
 import touringBookComponent from "@/Touring/pages/touringBookComponent.vue";
 import touringSuccessComponent from "@/Touring/pages/touringSuccessComponent.vue";
-
+import touringBookDetailsComponent from "@/Touring/pages/touringBookDetailsComponent.vue";
 const router = createRouter({
     history: createWebHistory(),
     routes: [
@@ -22,6 +22,7 @@ const router = createRouter({
         { path : '/touring', name: 'touring-page', component : touringSelectComponent},
         {path : '/touring/:id', name: 'touring-detail', component: touringBookComponent},
         { path : '/touring/success/:id', name: 'touring-success', component: touringSuccessComponent },
+        { path : '/touring/details', name: 'touring-details', component: touringBookDetailsComponent },
         { path: '/signIn', name: 'signIn', component: signInComponent },
 
         { path: '/rent', name: 'rent', component: rentPageComponent },
