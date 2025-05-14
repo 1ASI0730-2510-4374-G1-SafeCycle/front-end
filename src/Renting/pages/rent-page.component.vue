@@ -21,6 +21,10 @@ export default {
             }).int().gte(5,"You must rent more than 5 minutes"),
           })
       ),
+      /**
+       * @property {Array<Object>} fields
+       * @description Defines the structure of form fields to be rendered dynamically
+       */
       fields: [
         { name: 'minutes', type: 'number', inputType: 'number', placeholder: 'Minutes to Rent', initialValue: '' }
       ]
