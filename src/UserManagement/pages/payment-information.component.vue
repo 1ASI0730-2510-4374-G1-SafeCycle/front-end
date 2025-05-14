@@ -5,6 +5,10 @@ export default {
   name: "payment-information",
   components: {HeaderContent},
   methods:{
+    /**
+     * @function editPayment
+     * @description Handles the redirection to Payment Information page.
+     * */
     editPayment(){
       this.$router.push("/paymentInformation/edit");
     }

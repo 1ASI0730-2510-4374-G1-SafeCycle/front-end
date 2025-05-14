@@ -13,6 +13,10 @@ export default {
     }
   },
   methods: {
+    /**
+     * @function saveChanges
+     * @description Handles the redirection back to the Payment Information page.
+     * */
     saveChanges(){
       history.back();
     }
