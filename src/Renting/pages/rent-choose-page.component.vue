@@ -4,8 +4,6 @@ import HeaderContent from "@/public/components/header-content.component.vue";
 import {Select as PvSelect} from "primevue";
 import {BikeService} from "@/Renting/services/renting.service.js";
 
-const rentingService = new BikeService();
-
 export default {
   name: "rent-choose-page",
   components: {PvSelect, HeaderContent, BackButton},
@@ -20,19 +18,20 @@ export default {
     return {
       selectedStation: null,
       stations: [],
+      rentingService: new BikeService()
     };
   },
 
   /**
-   * @function mounted
+   * @function created
    * @description Lifecycle hook that runs after the component is created.
    * Fetches all available bike stations from the API for the list.
    */
-  async mounted() {
+  async created() {
     const minutes = this.$route.query.minutes;
     console.log("Minutes from previous page:", minutes);
 
-      const response = await rentingService.getBikeStations();
+      const response = await this.rentingService.getBikeStations();
       if (!response.status === "OK") {
         console.error("Failed to fetch stations");
         return;
@@ -47,7 +46,7 @@ export default {
      * Fetches available bikes for the selected station and navigates to the success page if bikes are available.
      */
     async onRentClick(){
-        const bikesInStation = await rentingService.getAvailableBikesByStationId(this.selectedStation.id);
+        const bikesInStation = await this.rentingService.getAvailableBikesByStationId(this.selectedStation.id);
         console.log(bikesInStation)
         if (!bikesInStation.status === "OK") {
         console.error("Failed to fetch bikes");
