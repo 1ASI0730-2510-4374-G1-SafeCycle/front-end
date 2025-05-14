@@ -11,8 +11,7 @@ import signUpTouristComponent from "@/UserManagement/pages/sign-up-tourist.compo
 import signInComponent from "@/UserManagement/pages/signIn.component.vue";
 import notFoundPageComponent from "@/public/components/notFoundPage.component.vue";
 import touringSelectComponent from "@/Touring/pages/touringSelectComponent.vue";
-import paymentInformationComponent from "@/UserManagement/pages/payment-information.component.vue";
-import paymentInformationEditComponent from "@/UserManagement/pages/payment-information-edit.component.vue";q
+
 import profilePageComponent from "@/UserManagement/pages/profile-page.component.vue";
 import changePasswordPageComponent from "@/UserManagement/pages/change-password-page.component.vue";
 import editProfilePageComponent from "@/UserManagement/pages/edit-profile-page.component.vue";
@@ -22,13 +21,13 @@ const RentPageComponent = () => import('@/Renting/pages/rent-page.component.vue'
 const RentChoosePageComponent = () => import('@/Renting/pages/rent-choose-page.component.vue');
 const SuccessRentPageComponent = () => import('@/Renting/pages/success-rent-page.component.vue');
 
+const PaymentInformationComponent = () => import("@/UserManagement/pages/payment-information.component.vue");
+const PaymentInformationEditComponent = () => import("@/UserManagement/pages/payment-information-edit.component.vue");
 
 /**
  * @description Lazy-loaded component imports for route configuration
  * Using dynamic imports to enable code splitting and improve initial load performance
  */
-
-
 const router = createRouter({
 
 
@@ -62,8 +61,8 @@ const router = createRouter({
         { path: '/profile', name: 'profile-page', component: profilePageComponent },
         { path: '/profile/changePassword', name: 'changePassword', component: changePasswordPageComponent },
         { path: '/profile/edit', name: 'edit-profile', component: editProfilePageComponent },
-        { path: '/paymentInformation', name: 'payment-information', component: paymentInformationComponent },
-        { path: '/paymentInformation/edit', name: 'payment-information-edit', component: paymentInformationEditComponent },
+        { path: '/paymentInformation', name: 'payment-information', component: PaymentInformationComponent },
+        { path: '/paymentInformation/edit', name: 'payment-information-edit', component: PaymentInformationEditComponent },
         {path: '/:pathMatch(.*)', name: '404 - nor found', component: notFoundPageComponent},
 
            ]
