@@ -11,8 +11,13 @@
   export default {
     name: "sign-up-student",
     components: {FormsAuthentication, PvForm, EmptyHeader},
-    data() {
 
+    /**
+     * @function data
+     * @description Defines the reactive properties of the component
+     * @returns {Object} Reactive object for form validation
+     */
+    data() {
       return {
         resolver: zodResolver(
             z.object({
@@ -31,6 +36,10 @@
                   path: ['repeatPassword'],
                 })
         ),
+        /**
+         * @property {Array<Object>} fields
+         * @description Defines the structure of form fields to be rendered dynamically
+         */
         fields: [
           { name: 'educationalEmail', type: 'text', inputType: 'text', placeholder: 'Educational Email', initialValue: '' },
           { name: 'username', type: 'text', inputType: 'text', placeholder: 'Username', initialValue: '' },
@@ -40,7 +49,17 @@
       };
     },
     methods: {
-      async onFormSubmit({ valid,values  }) {
+      /**
+       * @function onFormSubmit
+       * @description Handles the registration form submission. Validates input, checks for existing email, and registers a new student if everything is valid, then redirects to sign in page.
+       *  @param {boolean} valid - Indicates whether the form is valid.
+       *  @param {Object} values - The form input values.
+       *  @param {string} values.username - The user's chosen username.
+       *  @param {string} values.educationalEmail - The user's school email.
+       *  @param {string} values.password - The user's password.
+       *  @param {string} values.repeatPassword - The repeated password for confirmation.
+       */
+      async onFormSubmit({ valid,values}) {
         if (!valid) {
         console.log("failed validation")
          return;

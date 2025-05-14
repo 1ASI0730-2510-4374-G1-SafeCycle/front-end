@@ -6,12 +6,15 @@ import {z} from "zod";
 import FormsAuthentication from "@/public/components/forms-authentication.component.vue";
 import {UserService} from "@/UserManagement/services/users.service.js";
 
-const userService = new UserService();
-
 
 export default {
   name: "sign-up-tourist",
   components: {FormsAuthentication, EmptyHeader},
+  /**
+   * @function data
+   * @description Defines the reactive properties of the component
+   * @returns {Object} Reactive object for form validation
+   */
   data() {
     return {
       resolver: zodResolver(
@@ -32,6 +35,10 @@ export default {
                 path: ['repeatPassword'],
               })
       ),
+      /**
+       * @property {Array<Object>} fields
+       * @description Defines the structure of form fields to be rendered dynamically
+       */
       fields: [
         { name: 'email', type: 'text', inputType: 'text', placeholder: 'Email', initialValue: '' },
         { name: 'passport', type: 'text', inputType: 'text', placeholder: 'Passport', initialValue: '' },
@@ -42,13 +49,23 @@ export default {
     };
   },
   methods: {
+    /**
+     * @function onFormSubmit
+     * @description Handles the registration form submission. Validates input, checks for existing email, and registers a new tourist if everything is valid, then redirects to sign in page.
+     *  @param {boolean} valid - Indicates whether the form is valid.
+     *  @param {Object} values - The form input values.
+     *  @param {string} values.username - The user's chosen username.
+     *  @param {string} values.email - The user's school email.
+     *  @param {string} values.password - The user's password.
+     *  @param {string} values.repeatPassword - The repeated password for confirmation.
+     */
     async onFormSubmit({ valid, values }) {
       if (!valid) {
         console.log("INVALID TOURIST")
         return;
       }
 
-      const checkResponse = await userService.getByEmail(values.educationalEmail);
+      const checkResponse = await userService.getByEmail(values.email);
 
       if (checkResponse.data.length > 0) {
         this.$root.$refs.toast.add({

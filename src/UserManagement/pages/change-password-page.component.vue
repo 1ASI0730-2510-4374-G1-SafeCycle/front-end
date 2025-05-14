@@ -40,6 +40,7 @@ export default {
     /**
      * @function onFormSubmit
      * @description Handles the form submission for changing password and validates it.
+     *  * @param {boolean} valid - Indicates whether the form is valid.
      */
     async onFormSubmit({valid}){
       if (!valid) {
