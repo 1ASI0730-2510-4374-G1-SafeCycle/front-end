@@ -5,7 +5,7 @@ import {TouringEntity} from "@/Touring/model/touringEntity.js";
 import {TourApiService} from "@/Touring/services/tour-api.service.js";
 import {TouringAssembler} from "@/Touring/services/touringAssembler.js";
 import TouringCard from "@/Touring/components/touring-card.component.vue";
-import router from "@/router/index.js";
+
 
 export default {
   name: "touringBookComponent",
