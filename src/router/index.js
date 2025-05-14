@@ -5,12 +5,12 @@
  */
 
 import {createRouter, createWebHistory} from "vue-router";
-import entryScreenComponent from "@/UserManagement/pages/entry-screen.component.vue";
-import signUpStudentComponent from "@/UserManagement/pages/sign-up-student.component.vue";
-import signUpTouristComponent from "@/UserManagement/pages/sign-up-tourist.component.vue";
-import signInComponent from "@/UserManagement/pages/signIn.component.vue";
-import notFoundPageComponent from "@/public/components/notFoundPage.component.vue";
-import touringSelectComponent from "@/Touring/pages/touringSelectComponent.vue";
+const EntryScreenComponent = () => import("@/UserManagement/pages/entry-screen.component.vue");
+const SignUpStudentComponent = () => import("@/UserManagement/pages/sign-up-student.component.vue");
+const SignUpTouristComponent = () => import("@/UserManagement/pages/sign-up-tourist.component.vue");
+const SignInComponent = () => import("@/UserManagement/pages/signIn.component.vue");
+const NotFoundPageComponent = () => import("@/public/components/notFoundPage.component.vue");
+const TouringSelectComponent = () => import("@/Touring/pages/touringSelectComponent.vue");
 
 const ProfilePageComponent = () => import("@/UserManagement/pages/profile-page.component.vue");
 const ChangePasswordPageComponent = () => import("@/UserManagement/pages/change-password-page.component.vue");
@@ -43,11 +43,11 @@ const router = createRouter({
 
     history: createWebHistory(),
     routes: [
-        { path: '/signup', name: 'signup-page-entry', component: entryScreenComponent },
-        { path: '/signup/student', name: 'signup-page-student', component: signUpStudentComponent },
-        { path: '/signup/tourist', name: 'signup-page-tourist', component: signUpTouristComponent },
-        { path : '/touring', name: 'touring-page', component : touringSelectComponent},
-        { path: '/signIn', name: 'signIn', component: signInComponent },
+        { path: '/signup', name: 'signup-page-entry', component: EntryScreenComponent , meta: {title: 'Entry screen for sign up Page'} },
+        { path: '/signup/student', name: 'signup-page-student', component: SignUpStudentComponent , meta: {title: 'Sign Up Student Page'} },
+        { path: '/signup/tourist', name: 'signup-page-tourist', component: SignUpTouristComponent , meta: {title: 'Sign Up Tourist Page'} },
+        { path : '/touring', name: 'touring-page', component : TouringSelectComponent , meta: {title: 'Rent Choose Station Page'} },
+        { path: '/signIn', name: 'signIn', component: SignInComponent },
 
         { path: '/rent', name: 'rent', component: RentPageComponent, meta: {title: 'Rent Page'}},
         { path: '/rent/choose', name: 'rent-choose-station', component: RentChoosePageComponent, meta: {title: 'Rent Choose Station Page'} },
@@ -63,7 +63,8 @@ const router = createRouter({
         { path: '/profile/edit', name: 'edit-profile', component: EditProfilePageComponent, meta: {title: 'Edit Profile Page'} },
         { path: '/paymentInformation', name: 'payment-information', component: PaymentInformationComponent, meta: {title: 'Payment Information Page'} },
         { path: '/paymentInformation/edit', name: 'payment-information-edit', component: PaymentInformationEditComponent, meta: {title: 'Edit Payment Information Page'} },
-        {path: '/:pathMatch(.*)', name: '404 - nor found', component: notFoundPageComponent},
+        { path: '/', name: 'start-page', component: EntryScreenComponent , meta: {title: 'Entry screen for sign up Page'} },
+        {path: '/:pathMatch(.*)', name: '404 - nor found', component: NotFoundPageComponent, meta: {title: 'Not Found Page'} },
 
            ]
 });
