@@ -13,6 +13,10 @@ export default {
     }
   },
   methods:{
+    /**
+     * @function selectTour
+     * @description Send to another view and create a query with tourId
+     */
     selectTour(tourId){
       this.$router.push({ name: 'touring-detail', params: { id: tourId } });
     }

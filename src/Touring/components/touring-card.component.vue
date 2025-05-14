@@ -12,8 +12,14 @@ export default {
     }
   },
   methods:{
+    /**
+     * @function sendId
+     * @description Emit an event that sends Tour's id to the father
+     * @returns {this.tour.id} Reactive object containing Tour's Id
+     */
     sendId(){
       this.$emit("send-id", this.tour.id);
+
     }
   }
 

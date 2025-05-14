@@ -17,6 +17,10 @@ export default {
     };
   },
   methods: {
+    /**
+     * @function sendToSuccess
+     * @description Validate that all the sub-components send information
+     */
     sendToSuccess() {
       this.errors = {
         fecha: !this.fechaSeleccionada,

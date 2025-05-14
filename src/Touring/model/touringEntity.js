@@ -1,3 +1,6 @@
+/**
+ * Represents a Touring on the web application
+ */
 export class TouringEntity {
     constructor(
         id = 0,

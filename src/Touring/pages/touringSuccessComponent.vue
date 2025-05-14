@@ -17,11 +17,19 @@ export default {
     this.fetchTour();
   }
   ,methods:{
+    /**
+     * @function fetchTour
+     * @description Send a request with TourApiService and then converts to Touring Entity
+     */
     async fetchTour(){
       const tourApi = new TourApiService();
       this.tour = TouringAssembler.TourFromResponse((await tourApi.getTourById(this.$route.params.id)).data);
       console.log(this.tour);
     },
+    /**
+     * @function returnToMain
+     * @description With the router the user is sent to the main page
+     */
     returnToMain(){
       this.$router.push("/touring");
     }

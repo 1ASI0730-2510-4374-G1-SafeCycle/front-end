@@ -17,6 +17,10 @@ export default {
     this.fetchTourBook();
   },
   methods:{
+    /**
+     * @function fetchTourBook
+     * @description Send a request with TourApiService and then converts to Touring Entity
+     */
     async fetchTourBook(){
       const tourBookApi = new TourBookApiService();
       const tourRaw = await tourBookApi.getTourBook(1);
