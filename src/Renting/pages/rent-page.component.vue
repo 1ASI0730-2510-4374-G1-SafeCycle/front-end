@@ -7,6 +7,11 @@ import FormsAuthentication from "@/public/components/forms-authentication.compon
 export default {
   name: "rent-page",
   components: {FormsAuthentication, HeaderContent},
+  /**
+   * @function data
+   * @description Defines the reactive properties of the component
+   * @returns {Object} Reactive object for form validation and input fields
+   */
   data() {
     return {
       resolver: zodResolver(
@@ -16,12 +21,22 @@ export default {
             }).int().gte(5,"You must rent more than 5 minutes"),
           })
       ),
+      /**
+       * @property {Array<Object>} fields
+       * @description Defines the structure of form fields to be rendered dynamically
+       */
       fields: [
         { name: 'minutes', type: 'number', inputType: 'number', placeholder: 'Minutes to Rent', initialValue: '' }
       ]
     };
 },
   methods: {
+    /**
+     * @function onFormSubmit
+     * @description Handles form submission. If valid, navigates to the rent-choose page with minutes as query param.
+     * @param {boolean} valid - Indicates if the form is valid with the resolver
+     * @param {Object} values - the minutes entered
+     */
     async onFormSubmit({valid, values}) {
       if (!valid) {
         console.log("INVALID MINUTES ENTERED")

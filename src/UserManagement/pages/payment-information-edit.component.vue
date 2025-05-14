@@ -1,9 +1,10 @@
 <script>
 import HeaderContent from "@/public/components/header-content.component.vue";
+import BackButton from "@/public/components/back-button.component.vue";
 
 export default {
   name: "payment-information-edit",
-  components: { HeaderContent },
+  components: {BackButton, HeaderContent },
   data() {
     return {
       cardNumber: '',
@@ -12,6 +13,10 @@ export default {
     }
   },
   methods: {
+    /**
+     * @function saveChanges
+     * @description Handles the redirection back to the Payment Information page.
+     * */
     saveChanges(){
       history.back();
     }
@@ -20,9 +25,11 @@ export default {
 </script>
 
 <template>
-  <header-content />
+  <div class="flex flex-column min-h-screen">
+  <header-content></header-content>
+    <back-button></back-button>
 
-  <div class="flex h-full align-items-center justify-content-center">
+  <div class="flex flex-1 align-items-center justify-content-center">
     <div class="flex flex-column w-3 gap-4">
       <h1 class="font-bold">Payment Information</h1>
 
@@ -43,6 +50,7 @@ export default {
 
       <pv-button label="Confirm Changes" class="mt-2" @click="saveChanges()"></pv-button>
     </div>
+  </div>
   </div>
 </template>
 

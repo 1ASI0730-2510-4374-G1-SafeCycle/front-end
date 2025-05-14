@@ -9,6 +9,13 @@ const rentingService = new BikeService();
 export default {
   name: "rent-choose-page",
   components: {PvSelect, HeaderContent, BackButton},
+
+  /**
+   * @function data
+   * @description Defines the reactive properties of the component
+   * @returns {Object} Reactive object containing selected station and list of stations
+   */
+
   data() {
     return {
       selectedStation: null,
@@ -16,6 +23,11 @@ export default {
     };
   },
 
+  /**
+   * @function mounted
+   * @description Lifecycle hook that runs after the component is created.
+   * Fetches all available bike stations from the API for the list.
+   */
   async mounted() {
     const minutes = this.$route.query.minutes;
     console.log("Minutes from previous page:", minutes);
@@ -29,7 +41,22 @@ export default {
   }
   ,
   methods: {
+    /**
+     * @function onRentClick
+     * @description Handles the bike rental process when the user clicks to rent.
+     * Fetches available bikes for the selected station and navigates to the success page if bikes are available.
+     */
+    noBikesAvailable() {
+      console.log("No bikes in Station.");
+      this.$root.$refs.toast.add({
+        severity: 'warn',
+        summary: 'No bikes in Station, Please choose another one',
+        life: 3000
+      });
+    },
+
     async onRentClick(){
+      try {
         const bikesInStation = await rentingService.getAvailableBikesByStationId(this.selectedStation.id);
         console.log(bikesInStation)
         if (!bikesInStation.status === "OK") {
@@ -39,18 +66,15 @@ export default {
         console.log("Bikes found:", bikesInStation.data);
 
         if(bikesInStation.data.length === 0){
-          console.log("No bikes in Station.");
-          this.$root.$refs.toast.add({
-            severity: 'warn',
-            summary: 'No bikes in Station, Please choose another one',
-            life: 3000
-          });
+          this.noBikesAvailable();
         }
         else{
+          // First available bike selected
           const bike = bikesInStation.data[0];
           const minutes = this.$route.query.minutes;
           const price = ((minutes * 0.045) + 1).toFixed(2);
 
+          // Navigation to the success rent page with query params to access data
           this.$router.push({
             path: "/rent/successRent",
             query: {
@@ -59,9 +83,14 @@ export default {
               bikeId: bike.id
             }})
         }
+      }catch (error) {
+        if (error.response.status === 404) {
+          this.noBikesAvailable();
+          console.log("No bikes in Station (404).");
+      }
     }
   }
-}
+}}
 </script>
 
 <template>

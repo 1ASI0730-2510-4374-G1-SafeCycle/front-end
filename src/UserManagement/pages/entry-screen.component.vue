@@ -7,6 +7,11 @@ import EmptyHeader from "@/UserManagement/components/empty-header.component.vue"
 export default {
   name: 'app-entry-screen',
   components: {EmptyHeader},
+  /**
+   * @function data
+   * @description Defines the reactive properties of the component
+   * @returns {Object} Reactive object for form validation
+   */
   data() {
     return {
       initialValues: {
@@ -20,6 +25,13 @@ export default {
     }
   },
   methods: {
+    /**
+     * @function onFormSubmit
+     * @description Handles the form submission for the user type and validates it.
+     * @param {boolean} valid - Indicates whether the form is valid.
+     * @param {Object} values - The form input values.
+     * Redirects the user to its selected user type page signup
+     */
       onFormSubmit({ valid, values }) {
         if (valid) {
           const userType = values.typeOfUser.toLowerCase(); // 'student' o 'tourist'

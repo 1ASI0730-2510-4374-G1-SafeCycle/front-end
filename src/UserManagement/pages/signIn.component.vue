@@ -4,10 +4,16 @@ import EmptyHeader from "@/UserManagement/components/empty-header.component.vue"
 import { zodResolver } from '@primevue/forms/resolvers/zod';
 import { z } from 'zod';
 import FormsAuthentication from "@/public/components/forms-authentication.component.vue";
+import {UserService} from "@/UserManagement/services/users.service.js";
 
 export default {
   name: "signIn",
   components: {FormsAuthentication, EmptyHeader},
+  /**
+   * @function data
+   * @description Defines the reactive properties of the component
+   * @returns {Object} Reactive object for form validation
+   */
   data() {
     return {
       resolver: zodResolver(
@@ -25,21 +31,34 @@ export default {
             password: z.string().min(3, { message: 'Password is required.' }),
           })
       ),
+      /**
+       * @property {Array<Object>} fields
+       * @description Defines the structure of form fields to be rendered dynamically
+       */
       fields: [
         { name: 'email', type: 'text', inputType: 'text', placeholder: 'Email', initialValue: '' },
         { name: 'password', type: 'password', inputType: 'password', placeholder: 'Password', initialValue: '' }
       ]
     };
+  }, created() {
+    this.userService = new UserService();
   },
   methods: {
+    /**
+     * @function onFormSubmit
+     * @description Handles the registration form submission. Validates input, checks for existing email, and logs in a user if everything is valid.
+     *  @param {boolean} valid - Indicates whether the form is valid.
+     *  @param {Object} values - The form input values.
+     *  @param {string} values.email - The user's school email.
+     *  @param {string} values.password - The user's password.
+     */
     async onFormSubmit({ valid, values }) {
       if (!valid) {
         console.log("INVALID USER")
       }
-      const checkResponse = await fetch(`http://localhost:3000/users?email=${values.email}`);
-      const existingUsers = await checkResponse.json();
+      const checkResponse = await this.userService.getByEmail(values.email);
 
-      if(existingUsers.length === 0) {
+      if(checkResponse.data.length === 0) {
         this.$root.$refs.toast.add({
           severity: 'warn',
           summary: 'No registered email found',
@@ -49,16 +68,14 @@ export default {
         return;
       }
 
-      const checkPassResponse = await fetch(`http://localhost:3000/users?email=${values.email}&password=${values.password}`);
+      const checkPassResponse = await this.userService.getUserByEmailAndPassword(values.email, values.password);
 
-      const existingUserswithPass = await checkPassResponse.json();
-
-      if(existingUserswithPass.length === 0) {
+      if(checkPassResponse.data.length === 0) {
         this.$root.$refs.toast.add({
           severity: 'warn',
           summary: 'Wrong Password',
           life: 3000});
-          console.warn("wrong passwore");
+          console.warn("wrong password");
       }
       else{
         this.$router.push("/rent");
