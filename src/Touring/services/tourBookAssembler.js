@@ -1,5 +1,7 @@
 import {TourBookEntity} from "@/Touring/model/tourBookEntity.js";
-
+/**
+ * Represents a Assembler Tour Booked on the application
+ */
 export class TourBookAssembler {
     static EntityFromResponse(response){
         const tourBookRaw = response.data;

@@ -20,6 +20,10 @@ export default {
   }
   ,
   methods:{
+    /**
+     * @function getTourData
+     * @description Send a request with TourApiService and then converts to Touring Entity
+     */
     async getTourData(){
       try {
         const tourApiService = new TourApiService();
@@ -30,6 +34,10 @@ export default {
         console.log(error)
       }
     },
+    /**
+     * @function createCard
+     * @description Push to touring-detail view with tour id
+     */
     createCard(){
       this.router.push({name: 'touring-detail', params: {tourId: this.tourData.id}});
     }

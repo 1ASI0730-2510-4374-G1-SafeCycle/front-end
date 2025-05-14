@@ -24,12 +24,20 @@ export default {
     this.obtenerDetalle();
   },
   methods: {
+    /**
+     * @function obtenerDetalle
+     * @description Send a request with TourApiService and then converts to Touring Entity
+     */
     async obtenerDetalle() {
       const tourApiService = new TourApiService();
       console.log(this.tourId);
       const tourEnt = (await tourApiService.getTourById(this.tourId)).data
       this.tour = TouringAssembler.TourFromResponse(tourEnt);
     },
+    /**
+     * @function sendSuccess
+     * @description Handler a emit and if is true the Book was correctly created
+     */
     sendSuccess(){
       this.$router.push({name:'touring-success',params:{id:this.tourId}});
     }

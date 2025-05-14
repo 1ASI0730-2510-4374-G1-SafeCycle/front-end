@@ -1,5 +1,7 @@
 import {TouringEntity} from "@/Touring/model/touringEntity.js";
-
+/**
+ * Represents a Assembler Tour  on the application
+ */
 export class TouringAssembler {
     static ToursFromResponse(response){
         const toursData = response.data;

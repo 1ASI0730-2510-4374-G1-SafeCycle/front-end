@@ -1,3 +1,6 @@
+/**
+ * Represents a Booked Tour on the application
+ */
 export class TourBookEntity{
     constructor(
         id=0,
