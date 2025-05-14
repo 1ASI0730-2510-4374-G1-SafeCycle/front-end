@@ -69,6 +69,8 @@ export default {
         return;
       }
 
+
+      try {
       const checkResponse = await this.userService.getByEmail(values.email);
 
       if (checkResponse.data.length > 0) {
@@ -79,6 +81,8 @@ export default {
         });
         console.warn("Email already exists");
         return;
+      }}catch (err){
+
       }
 
       const touristToSend = new Tourist({
@@ -87,6 +91,7 @@ export default {
         passport: values.passport,
         email: values.email,
         password: values.password,
+        maxDailyReservationHours: 12,
         paymentInformation: {
           cardNumber: "",
           type: "",

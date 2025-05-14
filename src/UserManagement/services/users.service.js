@@ -1,4 +1,4 @@
-import http from "@/shared/services/http-common.js"
+import {http} from "@/shared/services/http-common.js"
 /**
  * @class UserService
  * @description Service class for handling CRUD operations on users using HTTP requests

@@ -6,7 +6,9 @@ export class Tourist {
                     id = 0,
                     username = '',
                     email = '',
+                    type = 'tourist',
                     passport = '',
+                    maxDailyReservationHours = 0,
                     password = '',
                     paymentInformation = {
                         cardNumber: '',
@@ -17,6 +19,8 @@ export class Tourist {
         this.id = id;
         this.username = username;
         this.email = email;
+        this.maxDailyReservationHours = 12;
+        this.type = 'tourist';
         this.passport = passport;
         this.password = password;
         this.paymentInformation = paymentInformation;

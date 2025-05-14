@@ -20,7 +20,7 @@
       return {
         resolver: zodResolver(
             z.object({
-              educationalEmail:z.string()
+              email:z.string()
             .min(3, { message: 'Educational Peruvian Email is required.' })
             .email({ message: 'Invalid Educational email address.' })
             .refine(val => val.endsWith('.edu.pe'),{
@@ -40,7 +40,7 @@
          * @description Defines the structure of form fields to be rendered dynamically
          */
         fields: [
-          { name: 'educationalEmail', type: 'text', inputType: 'text', placeholder: 'Educational Email', initialValue: '' },
+          { name: 'email', type: 'text', inputType: 'text', placeholder: 'Educational Email', initialValue: '' },
           { name: 'username', type: 'text', inputType: 'text', placeholder: 'Username', initialValue: '' },
           { name: 'password', type: 'password', inputType: 'password', placeholder: 'Password', initialValue: '' },
           { name: 'repeatPassword', type: 'password', inputType: 'password', placeholder: 'Repeat Password', initialValue: '' }
@@ -56,7 +56,7 @@
        *  @param {boolean} valid - Indicates whether the form is valid.
        *  @param {Object} values - The form input values.
        *  @param {string} values.username - The user's chosen username.
-       *  @param {string} values.educationalEmail - The user's school email.
+       *  @param {string} values.email - The user's school email.
        *  @param {string} values.password - The user's password.
        *  @param {string} values.repeatPassword - The repeated password for confirmation.
        */
@@ -65,7 +65,8 @@
         console.log("failed validation")
          return;
         }
-        const checkResponse = await this.userService.getByEmail(values.educationalEmail);
+        try{
+        const checkResponse = await this.userService.getByEmail(values.email);
         console.log(checkResponse.data.length);
         if (checkResponse.data.length > 0) {
           this.$root.$refs.toast.add({
@@ -75,20 +76,23 @@
           });
           console.warn("Email already exists");
           return;
+        }}
+        catch(err) {
+
         }
 
         const studentToSend = new Student({
           id: 0,
           username: values.username,
-          educationalEmail: values.educationalEmail,
+          email: values.email,
           password: values.password,
+          maxDailyReservationHours: 7,
           paymentInformation: {
             cardNumber: "",
             type: "",
             holder: ""
           }
         });
-
         try {
           const response = await this.userService.create(studentToSend);
           console.log("User created:", response.data);
