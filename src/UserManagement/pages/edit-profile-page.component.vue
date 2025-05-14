@@ -8,6 +8,11 @@ import {z} from "zod";
 export default {
   name: "edit-profile-page",
   components: {BackButton, FormsAuthentication, HeaderContent},
+  /**
+   * @function data
+   * @description Defines the reactive properties of the component
+   * @returns {Object} Reactive object for form validation and input fields
+   */
   data(){
   return {
     resolver: zodResolver(
@@ -16,6 +21,10 @@ export default {
           email: z.string().min(1, { message: 'Email is required.' }).email({ message: 'Must be a valid email address.' })
         })
     ),
+    /**
+     * @property {Array<Object>} fields
+     * @description Defines the structure of form fields to be rendered dynamically
+     */
     fields: [
       { name: 'username', type: 'text', inputType: 'text', placeholder: 'Username', initialValue: '' },
       { name: 'email', type: 'text', inputType: 'text', placeholder: 'Email', initialValue: '' },
@@ -23,6 +32,10 @@ export default {
   };
 },
 methods: {
+  /**
+   * @function onFormSubmit
+   * @description Handles the form submission for editing profile and validates it.
+   */
   async onFormSubmit({valid}){
     if (!valid) {
       console.log("failed validation")

@@ -8,8 +8,12 @@ import {z} from "zod";
 export default {
   name: "change-password-page",
   components: {FormsAuthentication, BackButton, HeaderContent},
+  /**
+   * @function data
+   * @description Defines the reactive properties of the component
+   * @returns {Object} Reactive object for form validation and input fields
+   */
   data() {
-
     return {
       resolver: zodResolver(
           z.object({
@@ -21,6 +25,10 @@ export default {
                 path: ['repeatPassword'],
               })
       ),
+      /**
+       * @property {Array<Object>} fields
+       * @description Defines the structure of form fields to be rendered dynamically
+       */
       fields: [
         { name: 'currentPassword', type: 'password', inputType: 'password', placeholder: 'Current Password', initialValue: '' },
         { name: 'newPassword', type: 'password', inputType: 'password', placeholder: 'New Password', initialValue: '' },
@@ -29,6 +37,10 @@ export default {
     };
   },
   methods: {
+    /**
+     * @function onFormSubmit
+     * @description Handles the form submission for changing password and validates it.
+     */
     async onFormSubmit({valid}){
       if (!valid) {
         console.log("failed validation")
