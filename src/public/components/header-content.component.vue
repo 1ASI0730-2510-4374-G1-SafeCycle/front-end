@@ -46,7 +46,7 @@ export default {
         <div class="flex align-items-center gap-5 h-4rem">
           <pv-button class="w-8rem h-full text-xs p-0 rounded-0" style="border-radius: 0" label="Rent" @click="this.$router.push('/rent')" text plain />
           <pv-button class="w-8rem h-full text-xs p-0 rounded-0" style="border-radius: 0" label="Touring" text plain/>
-          <pv-button class="w-8rem h-full text-xs p-0 rounded-0" style="border-radius: 0" label="Booking" text plain/>
+          <pv-button class="w-8rem h-full text-xs p-0 rounded-0" style="border-radius: 0" label="Booking" @click="this.$router.push('/booking')" text plain/> 
           <pv-button class="w-8rem h-full text-xs p-0 rounded-0" style="border-radius: 0"  label="Fees" text plain/>
 
 
