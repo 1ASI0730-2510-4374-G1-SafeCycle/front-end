@@ -23,6 +23,10 @@ const SuccessRentPageComponent = () => import('@/Renting/pages/success-rent-page
 
 const PaymentInformationComponent = () => import("@/UserManagement/pages/payment-information.component.vue");
 const PaymentInformationEditComponent = () => import("@/UserManagement/pages/payment-information-edit.component.vue");
+const bookingPageComponent = () => import "@/Booking/pages/booking-page.component.vue";
+const BookingSuccessComponent = () => import "@/Booking/pages/booking-success.component.vue";
+const BookingConfirmComponent = () => import "@/Booking/pages/booking-confirm.component.vue";
+const BookingCancelComponent = () => import "@/Booking/pages/booking-cancel.component.vue";
 
 /**
  * @description Lazy-loaded component imports for route configuration
@@ -48,10 +52,13 @@ const router = createRouter({
         { path: '/signup/tourist', name: 'signup-page-tourist', component: SignUpTouristComponent , meta: {title: 'Sign Up Tourist Page'} },
         { path : '/touring', name: 'touring-page', component : TouringSelectComponent , meta: {title: 'Rent Choose Station Page'} },
         { path: '/signIn', name: 'signIn', component: SignInComponent },
-
+        { path: '/booking/confirm', name: 'booking-confirm', component: BookingConfirmComponent },
         { path: '/rent', name: 'rent', component: RentPageComponent, meta: {title: 'Rent Page'}},
         { path: '/rent/choose', name: 'rent-choose-station', component: RentChoosePageComponent, meta: {title: 'Rent Choose Station Page'} },
         { path: '/rent/successRent', name: 'rent-success', component: SuccessRentPageComponent, meta: {title: 'Rent Success Page'} },
+        { path: '/booking', name: 'booking-page', component: bookingPageComponent },
+        { path: '/booking/success', name: 'booking-success', component: BookingSuccessComponent },
+        { path: '/booking/cancel', name: 'booking-cancel', component: BookingCancelComponent },
         { path: '/currentRent', name: 'current-rent', component: CurrentRentalPageComponent, meta: {title: 'Current Rent Page'} },
 
         { path: '/landing', name: 'landing', beforeEnter() {
