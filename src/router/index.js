@@ -23,10 +23,10 @@ const SuccessRentPageComponent = () => import('@/Renting/pages/success-rent-page
 
 const PaymentInformationComponent = () => import("@/UserManagement/pages/payment-information.component.vue");
 const PaymentInformationEditComponent = () => import("@/UserManagement/pages/payment-information-edit.component.vue");
-const bookingPageComponent = () => import "@/Booking/pages/booking-page.component.vue";
-const BookingSuccessComponent = () => import "@/Booking/pages/booking-success.component.vue";
-const BookingConfirmComponent = () => import "@/Booking/pages/booking-confirm.component.vue";
-const BookingCancelComponent = () => import "@/Booking/pages/booking-cancel.component.vue";
+const bookingPageComponent = () => import ("@/Booking/pages/booking-page.component.vue");
+const BookingSuccessComponent = () => import ("@/Booking/pages/booking-success.component.vue");
+const BookingConfirmComponent = () => import ("@/Booking/pages/booking-confirm.component.vue");
+const BookingCancelComponent = () => import ("@/Booking/pages/booking-cancel.component.vue");
 
 /**
  * @description Lazy-loaded component imports for route configuration
