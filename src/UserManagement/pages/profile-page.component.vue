@@ -5,9 +5,17 @@ export default {
   name: "profile-page",
   components: {HeaderContent},
   methods:{
+    /**
+     * @function goChangePass
+     * @description Handles the redirection to change password page.
+     */
     goChangePass(){
       this.$router.push("/profile/changePassword")
     },
+    /**
+     * @function goChangePass
+     * @description Handles the redirection to edit profile page.
+     */
     goEditProfile(){
       this.$router.push("/profile/edit")
     }

@@ -1,27 +1,54 @@
 <script>
-import TouringCard from "@/Touring/components/touring-card.component.vue";
 import {TouringEntity} from "@/Touring/model/touringEntity.js";
+import HeaderContent from "@/public/components/header-content.component.vue";
+import {TourApiService} from "@/Touring/services/tour-api.service.js";
+import TouringList from "@/Touring/components/touring-list.component.vue";
+import {TouringAssembler} from "@/Touring/services/touringAssembler.js";
 
 export default {
   name: "touringSelectComponent",
-  components: {TouringCard},
+  components: {TouringList, HeaderContent},
   data(){
     return {
-      tourData: new TouringEntity(
-          "City Tour",
-          "10:00 AM",
-          "https://www.infobae.com/resizer/v2/JIJZTMOTYNGSHGI7S22JZSJ65A.jpg?auth=d32c05c95ae4fe628d89d320ab0b13ff30b55cf004f437c5fd575b9fabee1f70&smart=true&width=1200&height=675&quality=85",
-          "2h 30m"
-      ),
-      
+      tourData : Array[TouringEntity]
+    }
+  },
+  created(){
+    this.getTourData().then(tourData=>{
+      this.tourData = tourData;
+    })
+  }
+  ,
+  methods:{
+    /**
+     * @function getTourData
+     * @description Send a request with TourApiService and then converts to Touring Entity
+     */
+    async getTourData(){
+      try {
+        const tourApiService = new TourApiService();
+        const toursRaw = await tourApiService.getAllTours();
+        return TouringAssembler.ToursFromResponse(toursRaw);
+      }
+      catch(error){
+        console.log(error)
+      }
+    },
+    /**
+     * @function createCard
+     * @description Push to touring-detail view with tour id
+     */
+    createCard(){
+      this.router.push({name: 'touring-detail', params: {tourId: this.tourData.id}});
     }
   }
 }
 </script>
 
 <template>
-
-  <touring-card :tour="tourData"></touring-card>
+ <header-content></header-content>
+  <touring-list
+     @selectedTour="createCard" :tourList=tourData></touring-list>
 </template>
 
 <style scoped>

@@ -5,13 +5,17 @@ import {zodResolver} from "@primevue/forms/resolvers/zod";
 import {z} from "zod";
 import FormsAuthentication from "@/public/components/forms-authentication.component.vue";
 import {UserService} from "@/UserManagement/services/users.service.js";
-
-const userService = new UserService();
+import {Tourist} from "@/UserManagement/model/tourist.entity.js";
 
 
 export default {
   name: "sign-up-tourist",
   components: {FormsAuthentication, EmptyHeader},
+  /**
+   * @function data
+   * @description Defines the reactive properties of the component
+   * @returns {Object} Reactive object for form validation
+   */
   data() {
     return {
       resolver: zodResolver(
@@ -32,6 +36,10 @@ export default {
                 path: ['repeatPassword'],
               })
       ),
+      /**
+       * @property {Array<Object>} fields
+       * @description Defines the structure of form fields to be rendered dynamically
+       */
       fields: [
         { name: 'email', type: 'text', inputType: 'text', placeholder: 'Email', initialValue: '' },
         { name: 'passport', type: 'text', inputType: 'text', placeholder: 'Passport', initialValue: '' },
@@ -40,15 +48,30 @@ export default {
         { name: 'repeatPassword', type: 'password', inputType: 'password', placeholder: 'Repeat Password', initialValue: '' }
       ]
     };
-  },
+  },created() {
+  this.userService = new UserService();
+},
   methods: {
+    /**
+     * @function onFormSubmit
+     * @description Handles the registration form submission. Validates input, checks for existing email, and registers a new tourist if everything is valid, then redirects to sign in page.
+     *  @param {boolean} valid - Indicates whether the form is valid.
+     *  @param {Object} values - The form input values.
+     *  @param {string} values.username - The user's chosen username.
+     *   @param {string} values.passport - The user's passport.
+     *  @param {string} values.email - The user's school email.
+     *  @param {string} values.password - The user's password.
+     *  @param {string} values.repeatPassword - The repeated password for confirmation.
+     */
     async onFormSubmit({ valid, values }) {
       if (!valid) {
         console.log("INVALID TOURIST")
         return;
       }
 
-      const checkResponse = await userService.getByEmail(values.educationalEmail);
+
+      try {
+      const checkResponse = await this.userService.getByEmail(values.email);
 
       if (checkResponse.data.length > 0) {
         this.$root.$refs.toast.add({
@@ -58,30 +81,29 @@ export default {
         });
         console.warn("Email already exists");
         return;
+      }}catch (err){
+
       }
 
-      const touristToSend = {
-        id: undefined,
+      const touristToSend = new Tourist({
+        id: 0,
         username: values.username,
+        passport: values.passport,
         email: values.email,
         password: values.password,
-        repeatPassword: values.repeatPassword,
-        type: "tourist",
-        maxDailyReservationHours: 7,
-        paymentInformation:
-            {
-              cardNumber:"",
-              type: "",
-              holder: ""
-            }
-      };
+        maxDailyReservationHours: 12,
+        paymentInformation: {
+          cardNumber: "",
+          type: "",
+          holder: ""
+        }
+      });
 
       try {
-        const response = await userService.create(touristToSend);
+        const response = await this.userService.create(touristToSend);
         console.log("User created:", response.data);
         this.$router.push("/signIn");
 
-        this.$router.push("/signIn");
 
       } catch (err) {
         console.error("Registration failed:", err);

@@ -4,7 +4,6 @@
       "username": "andraice",
       "email": "albertosanchez@upc.edu.pe",
       "password": "vue",
-      "repeatPassword": "vue",
       "type": "student",
       "maxDailyReservationHours": 7,
       "id": 1,
@@ -18,7 +17,6 @@
       "username": "carlo123",
       "email": "carlo@upc.edu.pe",
       "password": "123",
-      "repeatPassword": "123",
       "type": "student",
       "maxDailyReservationHours": 7,
       "id": 2,
@@ -29,32 +27,16 @@
       }
     },
     {
-      "username": "FranchiscoItaly",
-      "email": "franchiscoSpaguetti@gmail.com",
-      "password": "pasta",
-      "repeatPassword": "pasta",
-      "type": "tourist",
-      "maxDailyReservationHours": 7,
       "id": 3,
-      "paymentInformation": {
-        "cardNumber": "91919191919191",
-        "type": "MASTER",
-        "holder": "Franchesco Virgolini"
-      }
-    },
-    {
-      "username": "tourist123",
+      "username": "turista",
       "email": "turista@gmail.com",
-      "password": "123",
-      "repeatPassword": "123",
-      "type": "tourist",
-      "maxDailyReservationHours": 7,
+      "passport": "9123412494",
+      "password": "1234",
       "paymentInformation": {
         "cardNumber": "",
         "type": "",
         "holder": ""
-      },
-      "id": 4
+      }
     }
   ],
   "bikeStations": [
@@ -108,6 +90,37 @@
       "id": 1,
       "idUser": 1,
       "idBike": 4
+    }
+  ],
+  "tours" : [
+    {
+      "name" : "Cultural Places Tour",
+      "hour" : "1:30 hours",
+      "img" : "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/12/6a/a0/24/20180322-145842-largejpg.jpg?w=1200&h=1200&s=1",
+      "price" : 4.00
+    },
+    {
+      "name" : "Culinary Places Tour",
+      "hour" : "1:00 hours",
+      "img" : "https://incaexperience.com/wp-content/uploads/2024/07/ceviche-peruano.webp",
+      "price" : 2.50
+    },
+    {
+      "name" : "Statues Tour",
+      "hour" : "2:30 hours",
+      "img" : "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/07/a6/13/14/francisco-pizzaro.jpg?w=500&h=500&s=1",
+      "price" : 6.50
+    }
+  ],
+  "tour_booked" : [
+    {
+      "id" : 1,
+      "name" : "Status Tour",
+      "start_date" : "10/04/2025",
+      "start_hour" : "2:00 pm",
+      "bike_station" : "Centro Civico",
+      "duration" : "2:30",
+      "cost" : "6.50 S/."
     }
   ]
 }

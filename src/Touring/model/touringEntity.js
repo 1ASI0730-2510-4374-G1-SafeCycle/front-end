@@ -1,13 +1,18 @@
+/**
+ * Represents a Touring on the web application
+ */
 export class TouringEntity {
     constructor(
+        id = 0,
         name = "",
         hour = "",
         img = "",
-        timeDuration = ""
+        price = 0.0,
     ) {
+        this.id = id;
         this.name = name;
         this.hour = hour;
         this.img = img;
-        this.timeDuration = timeDuration;
+        this.price = price;
     }
 }
