@@ -60,6 +60,7 @@ import HeaderContent from "@/public/components/header-content.component.vue";
 import BackButton from "@/public/components/back-button.component.vue";
 import DatePicker from "primevue/datepicker";
 import { Select as PvSelect } from "primevue";
+import {BikeService} from "@/Renting/services/renting.service.js";
 
 export default {
   name: "booking-page",
@@ -71,9 +72,25 @@ export default {
       endDate: null,
       endHour: null,
       selectedStation: null,
-      stations: [{ name: "Surco", id: 1 }],
+      stations: [],
       bookingImage: new URL('@/assets/booking2.png', import.meta.url).href
     };
+  },
+  /**
+   * @function created
+   * @description Lifecycle hook that runs after the component is created.
+   * Fetches all available bike stations from the API for the list.
+   */
+  async created() {
+    const rentingService = new BikeService();
+
+    const response = await rentingService.getBikeStations();
+    if (!response.status === "OK") {
+      console.error("Failed to fetch stations");
+      return;
+    }
+    this.stations = await response.data;
+    console.log(this.stations);
   },
   methods: {
     calculate() {
