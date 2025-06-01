@@ -45,6 +45,30 @@ export default {
   },
   methods: {
     /**
+     * @function noEmailRegistered
+     * @description handles the toast for no registered email
+     *  **/
+    noEmailRegistered(){
+      this.$root.$refs.toast.add({
+        severity: 'warn',
+        summary: 'No registered email found',
+        life: 3000
+      });
+      console.warn("Email doesnt exist");
+
+    },
+    /**
+     * @function noEmailRegistered
+     * @description handles the toast for wrong password
+     *  **/
+    wrongPassword(){
+      this.$root.$refs.toast.add({
+        severity: 'warn',
+        summary: 'Wrong Password',
+        life: 3000});
+      console.warn("wrong password");
+    },
+    /**
      * @function onFormSubmit
      * @description Handles the registration form submission. Validates input, checks for existing email, and logs in a user if everything is valid.
      *  @param {boolean} valid - Indicates whether the form is valid.
@@ -56,30 +80,30 @@ export default {
       if (!valid) {
         console.log("INVALID USER")
       }
+      try {
+
+
       const checkResponse = await this.userService.getByEmail(values.email);
 
       if(checkResponse.data.length === 0) {
-        this.$root.$refs.toast.add({
-          severity: 'warn',
-          summary: 'No registered email found',
-          life: 3000
-        });
-        console.warn("Email doesnt exist");
+        this.noEmailRegistered();
         return;
       }
-
+      }catch(err) {
+        this.noEmailRegistered();
+        return;
+      }
+      try {
       const checkPassResponse = await this.userService.getUserByEmailAndPassword(values.email, values.password);
-
       if(checkPassResponse.data.length === 0) {
-        this.$root.$refs.toast.add({
-          severity: 'warn',
-          summary: 'Wrong Password',
-          life: 3000});
-          console.warn("wrong password");
+        this.wrongPassword();
+        return;
+      }}
+      catch(err){
+        this.wrongPassword();
+        return;
       }
-      else{
-        this.$router.push("/rent");
-      }
+      this.$router.push("/rent");
     }}
 };
 </script>

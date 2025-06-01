@@ -5,6 +5,8 @@
  */
 
 import {createRouter, createWebHistory} from "vue-router";
+const TouringBookComponent = () => import("@/Touring/pages/touringBookComponent.vue");
+const TouringSuccessComponent = () => import("@/Touring/pages/touringSuccessComponent.vue");
 const EntryScreenComponent = () => import("@/UserManagement/pages/entry-screen.component.vue");
 const SignUpStudentComponent = () => import("@/UserManagement/pages/sign-up-student.component.vue");
 const SignUpTouristComponent = () => import("@/UserManagement/pages/sign-up-tourist.component.vue");
@@ -23,9 +25,10 @@ const SuccessRentPageComponent = () => import('@/Renting/pages/success-rent-page
 
 const PaymentInformationComponent = () => import("@/UserManagement/pages/payment-information.component.vue");
 const PaymentInformationEditComponent = () => import("@/UserManagement/pages/payment-information-edit.component.vue");
-
-const TouringBookComponent = () => import("@/Touring/pages/touringBookComponent.vue");
-const TouringSuccessComponent = () => import("@/Touring/pages/touringSuccessComponent.vue");
+const bookingPageComponent = () => import ("@/Booking/pages/booking-page.component.vue");
+const BookingSuccessComponent = () => import ("@/Booking/pages/booking-success.component.vue");
+const BookingConfirmComponent = () => import ("@/Booking/pages/booking-confirm.component.vue");
+const BookingCancelComponent = () => import ("@/Booking/pages/booking-cancel.component.vue");
 const TouringBookDetailsComponent = () => import("@/Touring/pages/touringBookDetailsComponent.vue");
 /**
  * @description Lazy-loaded component imports for route configuration
@@ -54,10 +57,13 @@ const router = createRouter({
         { path : '/touring/success/:id', name: 'touring-success', component: TouringSuccessComponent },
         { path : '/touring/details', name: 'touring-details', component: TouringBookDetailsComponent },
         { path: '/signIn', name: 'signIn', component: SignInComponent },
-
+        { path: '/booking/confirm', name: 'booking-confirm', component: BookingConfirmComponent },
         { path: '/rent', name: 'rent', component: RentPageComponent, meta: {title: 'Rent Page'}},
         { path: '/rent/choose', name: 'rent-choose-station', component: RentChoosePageComponent, meta: {title: 'Rent Choose Station Page'} },
         { path: '/rent/successRent', name: 'rent-success', component: SuccessRentPageComponent, meta: {title: 'Rent Success Page'} },
+        { path: '/booking', name: 'booking-page', component: bookingPageComponent },
+        { path: '/booking/success', name: 'booking-success', component: BookingSuccessComponent },
+        { path: '/booking/cancel', name: 'booking-cancel', component: BookingCancelComponent },
         { path: '/currentRent', name: 'current-rent', component: CurrentRentalPageComponent, meta: {title: 'Current Rent Page'} },
 
         { path: '/landing', name: 'landing', beforeEnter() {

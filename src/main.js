@@ -9,6 +9,7 @@ import { definePreset } from '@primeuix/themes';
 import './assets/main.css'
 import 'primeicons/primeicons.css';
 
+import { GoogleMap, AdvancedMarker, MarkerCluster, InfoWindow } from 'vue3-google-map'
 
 import {Avatar, Toolbar, Menu, Image, RadioButton, RadioButtonGroup, InputText, Password, Card, Select, DatePicker} from "primevue";
 import { Form,FormField} from '@primevue/forms';
@@ -93,6 +94,10 @@ app
     .component('pv-message', Message)
     .component('pv-password', Password)
     .component('pv-card', Card)
+    .component('pv-google-map', GoogleMap)
+    .component('pv-google-marker', AdvancedMarker)
+    .component('pv-google-marker-cluster', MarkerCluster)
+    .component('pv-google-info-window', InfoWindow)
     .component('pv-select', Select)
     .component('pv-toast', Toast);
 
