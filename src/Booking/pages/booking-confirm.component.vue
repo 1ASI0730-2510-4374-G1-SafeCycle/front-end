@@ -9,15 +9,15 @@
           <h2 class="section-title">Booking Details</h2>
           <div class="row">
             <div class="column">
-              <p><strong>Start Date:</strong> {{ startDate }}</p>
-              <p><strong>End Date:</strong> {{ endDate }}</p>
+              <p><strong>Start Date</strong><br>{{ startDate }}</p>
+              <p><strong>End Date</strong><br>{{ endDate }}</p>
             </div>
             <div class="column">
-              <p><strong>Start Hour:</strong> {{ startHour }}</p>
-              <p><strong>End Hour:</strong> {{ endHour }}</p>
+              <p><strong>Start Hour</strong><br>{{ startHour }}</p>
+              <p><strong>End Hour</strong><br>{{ endHour }}</p>
             </div>
           </div>
-          <p><strong>Bike Station:</strong> {{ station }}</p>
+          <p><strong>Bike Station</strong><br>{{ station }}</p>
 
           <h3 class="section-title">Time</h3>
           <div class="row">
@@ -79,59 +79,31 @@ export default {
 
 <style scoped>
 .booking-confirm-page {
-  padding: 0;
-  background-color: #ffffff;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  font-family: 'Arial', sans-serif;
 }
 
-.content-wrapper {
+.confirm-box {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.grid-box {
+  display: flex;
+  max-width: 900px;
+  width: 100%;
+  gap: 2rem;
   align-items: flex-start;
-  padding: 3rem 5rem 4rem;
-  flex-wrap: wrap;
-  gap: 3rem;
 }
 
-.left-section {
+.details {
   flex: 1;
-  min-width: 300px;
-  max-width: 500px;
 }
 
-.right-section {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2.5rem;
-}
-
-.image-wrapper {
-  padding: 0;
-  border-radius: 0;
-  background: none;
-}
-
-.image-wrapper img {
-  width: 480px;
-  max-width: 100%;
-}
-
-.title {
-  font-size: 1.8rem;
-  font-weight: bold;
+.section-title {
   color: #003e4d;
-  margin-bottom: 2rem;
-}
-
-.subtitle {
-  font-size: 1.3rem;
-  font-weight: bold;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
 }
 
 .row {
@@ -142,7 +114,12 @@ export default {
 
 .column {
   flex: 1;
-  font-size: 1.05rem;
+}
+
+p {
+  font-size: 1rem;
+  color: #333;
+  margin: 0.5rem 0;
 }
 
 .confirm-btn {
@@ -151,13 +128,20 @@ export default {
   color: white;
   font-weight: bold;
   font-size: 1.1rem;
-  padding: 0.9rem 2.2rem;
+  padding: 0.8rem 2rem;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  margin-top: 1.5rem;
 }
 
 .confirm-btn:hover {
   background-color: #45a049;
 }
+
+.image img {
+  width: 350px;
+  max-width: 100%;
+  object-fit: contain;
+}
+
 </style>

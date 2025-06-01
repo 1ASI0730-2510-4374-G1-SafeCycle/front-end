@@ -29,7 +29,7 @@ const bookingPageComponent = () => import ("@/Booking/pages/booking-page.compone
 const BookingSuccessComponent = () => import ("@/Booking/pages/booking-success.component.vue");
 const BookingConfirmComponent = () => import ("@/Booking/pages/booking-confirm.component.vue");
 const BookingCancelComponent = () => import ("@/Booking/pages/booking-cancel.component.vue");
-
+const TouringBookDetailsComponent = () => import("@/Touring/pages/touringBookDetailsComponent.vue");
 /**
  * @description Lazy-loaded component imports for route configuration
  * Using dynamic imports to enable code splitting and improve initial load performance
