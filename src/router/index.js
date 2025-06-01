@@ -5,6 +5,8 @@
  */
 
 import {createRouter, createWebHistory} from "vue-router";
+const TouringBookComponent = () => import("@/Touring/pages/touringBookComponent.vue");
+const TouringSuccessComponent = () => import("@/Touring/pages/touringSuccessComponent.vue");
 const EntryScreenComponent = () => import("@/UserManagement/pages/entry-screen.component.vue");
 const SignUpStudentComponent = () => import("@/UserManagement/pages/sign-up-student.component.vue");
 const SignUpTouristComponent = () => import("@/UserManagement/pages/sign-up-tourist.component.vue");
@@ -51,6 +53,8 @@ const router = createRouter({
         { path: '/signup/student', name: 'signup-page-student', component: SignUpStudentComponent , meta: {title: 'Sign Up Student Page'} },
         { path: '/signup/tourist', name: 'signup-page-tourist', component: SignUpTouristComponent , meta: {title: 'Sign Up Tourist Page'} },
         { path : '/touring', name: 'touring-page', component : TouringSelectComponent , meta: {title: 'Rent Choose Station Page'} },
+        {path : '/touring/:id', name: 'touring-detail', component: TouringBookComponent},
+        { path : '/touring/success/:id', name: 'touring-success', component: TouringSuccessComponent },
         { path: '/signIn', name: 'signIn', component: SignInComponent },
         { path: '/booking/confirm', name: 'booking-confirm', component: BookingConfirmComponent },
         { path: '/rent', name: 'rent', component: RentPageComponent, meta: {title: 'Rent Page'}},
