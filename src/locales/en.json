@@ -1,0 +1,163 @@
+{
+  "notFoundPage": "Page not found",
+
+  "general": {
+    "bike": "Bike",
+    "station": "Station",
+    "bikestation": "Bike Station",
+    "minutes": "minutes",
+    "hours": "hours",
+    "submit": "Submit",
+    "signin": "Sign In",
+    "username": "Username",
+    "email": "Email",
+    "password": "password",
+    "passport": "passport",
+    "type": "Type",
+    "price": "Price",
+    "go": "Go",
+    "tour": "Tour"
+  },
+
+  "header": {
+    "buttons": {
+      "rent": "Rent",
+      "touring": "Touring",
+      "booking": "Booking"
+    },
+    "smallbox": {
+      "hello": "Hello Luciana",
+      "profile": "My Profile",
+      "payinfo": "Payment Information",
+      "rentals": "Current Rentals",
+      "logout": "Logout"
+    }
+  },
+
+  "entryscreen": {
+    "welcome": "Welcome",
+    "first": "First. Let's get to know each other!",
+    "student": "Student",
+    "tourist": "Tourist",
+    "submit": "Submit"
+  },
+
+  "booking": {
+    "large": {
+      "wasmade": "Your booking was successfully made",
+      "willsent": "Your booking information will be sent to your email address",
+      "yourecieve": "You will receive your bike code one hour before the start of your booking"
+    },
+    "date": {
+      "enter": "Enter Booking Information",
+      "startdate": "Start Date",
+      "starthour": "Start Hour",
+      "enddate": "End Date",
+      "endhour": "End Hour",
+      "duration": "Duration"
+    },
+
+    "enter": "Enter the Bike Station",
+    "calculate": "Calculate",
+    "time": {
+      "time": "Time",
+      "hourmin": "Hours or Minutes",
+      "minhour": "Hours and Minutes"
+    },
+
+    "return": {
+      "fill":"Please fill all fields",
+      "invalidtime": "Invalid time range"
+    },
+    "confirmation": {
+      "details": "Booking Details",
+      "cost": "Cost",
+      "bookit": "Book It",
+      "cancel": "Cancel Booking"
+    },
+    "cancel": {
+      "cancel": "Canceled booking details",
+      "yourcan": "Your booking was canceled"
+    }
+  },
+
+  "user": {
+    "profile": {
+      "hello": "Hello",
+      "edit": "Edit Profile",
+      "change": "Change Password",
+      "language": "Language",
+      "fee": "Actual Fee"
+    },
+    "log": {
+      "failed": "failed validation",
+      "succes": "Changing Profile",
+      "user": "Username is required.",
+      "email": "Email is required.",
+      "emailvalid": "Invalid email address",
+      "password": "Password is required",
+      "passport": "Passport is required",
+      "repeatPassword": "Password does not match",
+      "edu": "Educational Peruvian Email is required.",
+      "fifteen": "Username must be under 15 characters.",
+      "invalidemail": "Email must end with .com or .edu.pe"
+    },
+    "regist": {
+      "failedval": "Failed Validation",
+      "nothermail": "A user with this email already exists",
+      "already": "Already a member? Sign In",
+      "notemail": "No registered email found"
+    },
+    "password": {
+      "wrong": "Wrong Password",
+      "change": "Change Password",
+      "currentpass": "Current Password",
+      "newpass": "New Password",
+      "repeatnewpass": "Repeat New Password",
+      "repeatpass": "Repeat Password",
+      "edu": "Educational Email",
+      "personal": "Email must be personal - end with .com"
+    },
+    "pay": {
+      "paymentinfo": "Payment Information",
+      "card": "Card Number",
+      "holder": "Holder",
+      "edit": "Edit Payment Information",
+      "confirm": "Confirm Changes"
+    }
+  },
+
+  "rent": {
+    "minutes": "minutes to rent",
+    "paymentmethod": "Payment Method",
+    "text": {
+      "total": "Enter total minutes",
+      "access": "Provide access to Localization in web browser",
+      "nobikes": "No bikes in Station, Please choose another one",
+      "centrals": "SafeCycles centrals near you",
+      "select": "Select a Station",
+      "succes": "Succesfully Rented in Station",
+      "email": "A confirmation email has been sent"
+    }
+  },
+
+  "touring": {
+    "welcome": "Welcome to the",
+    "details": "Details",
+    "for": "for",
+    "cant": "Start Hour cant be greater than End Hour",
+    "book": "Book",
+    "succesfully": "Sucessfully Booked the Tour!",
+    "return": "Return",
+    "current": "Current Tour",
+    "cancel": "Cancel Booking",
+    "form": {
+      "date": "Date is required",
+      "start": "Start hour is required",
+      "end": "End Hour is required",
+      "station": "Station is required",
+      "select":"Select a Station"
+    }
+  }
+
+}
