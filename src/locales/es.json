@@ -1,0 +1,154 @@
+{
+  "notFoundPage": "No se encontro la pagina",
+  "general": {
+    "bike": "Bicicleta",
+    "station": "Estación",
+    "bikestation": "Estación de Bicicletas",
+    "minutes": "minutos",
+    "hours": "horas",
+    "submit": "Enviar",
+    "signin": "Iniciar Sesión",
+    "username": "Usuario",
+    "email": "Correo electronico",
+    "password": "Contraseña",
+    "passport": "pasaporte",
+    "type": "Tipo",
+    "price": "Precio",
+    "go": "Ir",
+    "tour": "Recorrido"
+  },
+  "header": {
+    "buttons": {
+      "rent": "Alquilar",
+      "touring": "Turismo",
+      "booking": "Reserva"
+    },
+    "smallbox": {
+      "hello": "Hola Luciana",
+      "profile": "Mi Perfil",
+      "payinfo": "Información de Pago",
+      "rentals": "Alquileres Actuales",
+      "logout": "Cerrar Sesión"
+    }
+  },
+  "entryscreen": {
+    "welcome": "Bienvenido",
+    "first": "Primero. ¡Conozcamonos mejor!",
+    "student": "Estudiante",
+    "tourist": "Turista",
+    "submit": "Enviar"
+  },
+  "booking": {
+    "large": {
+      "wasmade": "Su reserva se ha realizado exitosamente",
+      "willsent": "Su información de reserva se ha enviado al correo",
+      "yourecieve": "Usted va a recibir su código de bicicleta una hora antes de que empiece su reserva"
+    },
+    "date": {
+      "enter": "Ingrese su informacion de reserva",
+      "startdate": "Fecha de inicio",
+      "starthour": "Hora de inicio",
+      "enddate": "Fecha de fin",
+      "endhour": "Hora de fin",
+      "duration": "Duración"
+    },
+    "enter": "Ingrese la estación de Bicicleta",
+    "calculate": "Calcular",
+    "time": {
+      "time": "Tiempo",
+      "hourmin": "Horas o minutos",
+      "minhour": "Horas y Minutos"
+    },
+    "return": {
+      "fill": "Por favor relleno todos los campos",
+      "invalidtime": "Rango de tiempo invalido"
+    },
+    "confirmation": {
+      "details": "Detalles de la reserva",
+      "cost": "Costo",
+      "bookit": "Reservar",
+      "cancel": "Cancelar la reserva"
+    },
+    "cancel": {
+      "cancel": "Detalles de la reserva cancelada",
+      "yourcan": "Su reserva fue cancelada"
+    }
+  },
+  "user": {
+    "profile": {
+      "hello": "Hola",
+      "edit": "Editar Perfil",
+      "change": "Cambiar Contraseña",
+      "language": "Lenguaje",
+      "fee": "Mora actual"
+    },
+    "log": {
+      "failed": "Validación fallida",
+      "succes": "Cambiando el perfil",
+      "user": "Se requiere de un nombre de usuario.",
+      "email": "Se requiere de un correo electronico.",
+      "emailvalid": "El correo electrónico debe ser valido.",
+      "password": "Se requiere de una contraseña",
+      "passport": "se requiere de un pasaporte",
+      "repeatPassword": "La contraseña no coincide",
+      "edu": "Se requiere de un correo institucional.",
+      "fifteen": "Su nombre debe ser menor a 15 caracteres.",
+      "invalidemail": "Correo debe acabar .com o .edu.pe"
+    },
+    "regist": {
+      "failedval": "Validación fallida",
+      "nothermail": "Ya existe un usuario con este correo",
+      "already": "¿Ya eres miembro? Inicie sesión",
+      "notemail": "Este correo no esta registrado"
+    },
+    "password": {
+      "wrong": "Contraseña equivocada",
+      "change": "Cambiar contraseña",
+      "currentpass": "Contraseña actual",
+      "newpass": "Nueva contraseña",
+      "repeatnewpass": "Repetir nueva contraseña",
+      "repeatpass": "Repita la contraseña",
+      "edu": "Correo Institucional",
+      "personal": "El correo debe ser personal - acabar con .com"
+    },
+    "pay": {
+      "paymentinfo": "Información de pago",
+      "card": "Número de tarjeta",
+      "holder": "Titular",
+      "edit": "Cambiar información de pago",
+      "confirm": "Confirmar cambios"
+    }
+  },
+
+  "rent": {
+    "minutes": "minutos a alquilar",
+    "paymentmethod": "Metodo de Pago",
+    "text": {
+      "total": "Ingrese la cantidad de minutos",
+      "access": "Permite a tu navegador acceso a tu ubicación",
+      "nobikes": "Ho hay bicicletas en el almacen, Por favor escoge otro",
+      "centrals": "Centrales de Safecycle cerca de ti",
+      "select": "Escoge una central",
+      "succes": "alquilado con éxito en la estación",
+      "email": "Se envió un correo de confirmación"
+    }
+  },
+
+  "touring": {
+    "welcome": "Bienvenido a",
+    "details": "Detalles",
+    "for": "por",
+    "book": "Alquilar",
+    "succesfully": "Alquilaste el tour exitosamente!",
+    "return": "Retornar",
+    "current": "Recorrido actual",
+    "cancel": "Cancelar recorrido",
+    "form": {
+      "date": "Se requiere una fecha",
+      "start": "Se requiere una hora de inicio",
+      "end": "Se requiere una hora de finalización",
+      "station": "Se requiere de una estación",
+      "select":"Escoge una estación"
+    }
+  }
+}
