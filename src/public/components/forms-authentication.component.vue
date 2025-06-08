@@ -19,7 +19,7 @@ export default {
           <pv-password v-if="field.type === 'password'" :type="field.inputType" :placeholder="field.placeholder" :feedback="false" toggleMask fluid />
           <pv-message v-if="$field?.invalid" severity="error" size="small" variant="simple">{{ $field.error?.message }}</pv-message>
         </pv-form-field>
-        <pv-button type="submit" severity="secondary" label="Submit" />
+        <pv-button type="submit" severity="secondary" :label="$t('general.submit')" />
       </pv-form>
       <slot name="footer-link"></slot>
     </div>

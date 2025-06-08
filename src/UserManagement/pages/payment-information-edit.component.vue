@@ -31,24 +31,24 @@ export default {
 
   <div class="flex flex-1 align-items-center justify-content-center">
     <div class="flex flex-column w-3 gap-4">
-      <h1 class="font-bold">Payment Information</h1>
+      <h1 class="font-bold">{{$t('user.pay.paymentinfo')}}</h1>
 
       <div class="flex flex-column gap-1">
-        <label for="cardNumber">Card Number</label>
+        <label for="cardNumber">{{$t('user.pay.card')}}</label>
         <pv-input-text id="cardNumber" type="text" v-model="cardNumber" />
       </div>
 
       <div class="flex flex-column gap-1">
-        <label for="cardType">Type</label>
+        <label for="cardType">{{$t('general.type')}}</label>
         <pv-input-text id="cardType" type="text" v-model="cardType" />
       </div>
 
       <div class="flex flex-column gap-1">
-        <label for="holderName">Holder Name</label>
+        <label for="holderName">{{$t('user.pay.holder')}}</label>
         <pv-input-text id="holderName" type="text" v-model="holderName" />
       </div>
 
-      <pv-button label="Confirm Changes" class="mt-2" @click="saveChanges()"></pv-button>
+      <pv-button :label="$t('user.pay.confirm')" class="mt-2" @click="saveChanges()"></pv-button>
     </div>
   </div>
   </div>

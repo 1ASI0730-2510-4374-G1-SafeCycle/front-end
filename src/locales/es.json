@@ -99,6 +99,7 @@
       "failedval": "Validación fallida",
       "nothermail": "Ya existe un usuario con este correo",
       "already": "¿Ya eres miembro? Inicie sesión",
+      "unalready": "¿Aún no es miembro? Registrese",
       "notemail": "Este correo no esta registrado"
     },
     "password": {

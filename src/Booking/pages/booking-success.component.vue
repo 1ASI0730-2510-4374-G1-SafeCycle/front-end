@@ -4,30 +4,30 @@
     <back-button />
 
     <div class="success-box">
-      <h2 class="title">Your booking was successfully made</h2>
+      <h2 class="title">{{ $t('booking.large.wasmade') }}</h2>
       <p class="info">
-        Your booking information will be sent to your email address: <strong>luciana123@gmail.com</strong><br />
-        You will receive your bike code one hour before the start of your booking.
+        {{$t('booking.large.willsent')}}: <strong>luciana123@gmail.com</strong><br />
+        {{$t('booking.large.yourecieve')}}.
       </p>
 
       <div class="details-grid">
         <div>
-          <h3>Booking Details</h3>
-          <p><strong>Start Date:</strong> {{ startDate }}</p>
-          <p><strong>End Date:</strong> {{ endDate }}</p>
-          <p><strong>Bike Station:</strong> {{ station }}</p>
+          <h3>{{$t('booking.confirmation.details')}}</h3>
+          <p><strong>{{$t('booking.date.startdate')}}:</strong> {{ startDate }}</p>
+          <p><strong>{{$t('booking.date.enddate')}}:</strong> {{ endDate }}</p>
+          <p><strong>{{$t('general.bikestation')}}:</strong> {{ station }}</p>
         </div>
 
         <div>
-          <h3>Time</h3>
-          <p><strong>Start Hour:</strong> {{ startHour }}</p>
-          <p><strong>End Hour:</strong> {{ endHour }}</p>
-          <p><strong>Duration:</strong> {{ hours }} hours</p>
-          <p><strong>Cost:</strong> {{ cost }} S/.</p>
+          <h3>{{$t('booking.time.time')}}</h3>
+          <p><strong>{{$t('booking.date.starthour')}}:</strong> {{ startHour }}</p>
+          <p><strong>{{$t('booking.date.endhour')}}:</strong> {{ endHour }}</p>
+          <p><strong>{{$t('booking.date.duration')}}:</strong> {{ hours }} {{ $t('general.hours') }}</p>
+          <p><strong>{{$t('booking.confirmation.cost')}}:</strong> {{ cost }} S/.</p>
         </div>
       </div>
 
-      <button class="cancel-btn" @click="goToCancel">Cancel Booking</button>
+      <button class="cancel-btn" @click="goToCancel">{{$t('booking.confirmation.cancel')}}</button>
     </div>
   </div>
 </template>

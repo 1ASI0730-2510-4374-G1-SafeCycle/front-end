@@ -1,55 +1,41 @@
 <script>
-import {BikeService} from "@/Renting/services/renting.service.js";
-
 export default {
   name: "touring-form",
   data() {
     return {
-      stations: [],
-      dateSelected: null,
+      fechaSeleccionada: null,
       startHour: null,
       endHour: null,
       selectedStation: null,
       errors: {
-        date: false,
+        fecha: false,
         startHour: false,
         endHour: false,
         station: false,
         hours : false
       }
     };
-  },   /**
-   * @function created
-   * @description Lifecycle hook that runs after the component is created.
-   * Fetches all available bike stations from the API for the list.
-   */
-  async created() {
-    const rentingService = new BikeService();
-
-    const response = await rentingService.getBikeStations();
-    if (!response.status === "OK") {
-      console.error("Failed to fetch stations");
-      return;
-    }
-    this.stations = await response.data;
-    console.log(this.stations);
   },
   methods: {
-
     /**
      * @function sendToSuccess
      * @description Validate that all the sub-components send information
      */
     sendToSuccess() {
       this.errors = {
-        date: !this.dateSelected,
+        fecha: !this.fechaSeleccionada,
         startHour: !this.startHour,
+        endHour: !this.endHour,
         station: !this.selectedStation
       };
 
       const hasErrors = Object.values(this.errors).some(e => e);
       if (hasErrors) return;
 
+      if (this.endHour < this.startHour) {
+        this.errors.hours = true;
+        return;
+      }
       else{
         this.errors.hours = false;
       }
@@ -65,14 +51,20 @@ export default {
     <div class="form-grid">
       <div class="form-item">
         <label for="fecha" class="form-label">Date</label>
-        <pv-date-picker id="fecha" v-model="dateSelected" :minDate="new Date()" showIcon />
-        <pv-message v-if="errors.date" severity="error" variant="simple" size="small"> Date is required</pv-message>
+        <pv-date-picker id="fecha" v-model="fechaSeleccionada" :minDate="new Date()" showIcon />
+        <pv-message v-if="errors.fecha" severity="error" variant="simple" size="small"> {{$t('touring.form.date')}}</pv-message>
       </div>
 
       <div class="form-item">
         <label for="start-hour" class="form-label">Start Hour</label>
         <pv-date-picker id="start-hour" v-model="startHour" :minDate="new Date()" timeOnly fluid />
-        <pv-message v-if="errors.startHour" severity="error" variant="simple" size="small">Start hour is required</pv-message>
+        <pv-message v-if="errors.startHour" severity="error" variant="simple" size="small">{{$t('touring.form.start')}}</pv-message>
+      </div>
+
+      <div class="form-item">
+        <label for="end-hour" class="form-label">End Hour</label>
+        <pv-date-picker id="end-hour" v-model="endHour" :minDate="new Date()" timeOnly fluid />
+        <pv-message v-if="errors.endHour" severity="error" variant="simple" size="small">{{$t('touring.form.end')}} </pv-message>
       </div>
 
       <div class="form-item">
@@ -80,15 +72,14 @@ export default {
         <pv-select
             id="station"
             v-model="selectedStation"
-            :options="stations"
-            optionLabel="name"
-            placeholder="Select a Station"
+            :options="['Centro civico', 'San Isidro']"
+            :placeholder="$t('touring.form.select')"
         />
-        <pv-message v-if="errors.station" severity="error" variant="simple" size="small">Station is required</pv-message>
+        <pv-message v-if="errors.station" severity="error" variant="simple" size="small">{{$t('touring.form.station')}}</pv-message>
       </div>
       <div class="final">
-        <pv-message v-if="errors.hours" severity="error" variant="simple" size="small">Start Hour cant be greater than End Hour</pv-message>
-        <pv-button type="submit" label="Book" class="w-full" />
+        <pv-message v-if="errors.hours" severity="error" variant="simple" size="small">{{$t('touing.cant')}}</pv-message>
+        <pv-button type="submit" :label="$t('touring.book')" class="w-full" />
       </div>
 
     </div>
@@ -117,6 +108,7 @@ export default {
 .form-label {
   font-size: 1.2rem;
   font-weight: bold;
+  color: #fff;
   margin-bottom: 0.5rem;
 }
 </style>

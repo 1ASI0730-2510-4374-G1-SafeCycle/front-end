@@ -20,15 +20,15 @@ export default {
           z.object({
             email: z
                 .string()
-                .min(3, { message: 'Email is required.' })
-                .email({ message: 'Invalid email address.' })
+                .min(3, { message: this.$t('user.log.email') })
+                .email({ message: this.$t('user.log.emailvalid') })
                 .refine(
                     val => val.endsWith('.com') || val.endsWith('.edu.pe'),
                     {
-                      message: 'Email must end with .com or .edu.pe',
+                      message: this.$t('user.log.invalidemail'),
                     }
                 ),
-            password: z.string().min(3, { message: 'Password is required.' }),
+            password: z.string().min(3, { message: this.$t('user.log.password') }),
           })
       ),
       /**
@@ -36,8 +36,8 @@ export default {
        * @description Defines the structure of form fields to be rendered dynamically
        */
       fields: [
-        { name: 'email', type: 'text', inputType: 'text', placeholder: 'Email', initialValue: '' },
-        { name: 'password', type: 'password', inputType: 'password', placeholder: 'Password', initialValue: '' }
+        { name: 'email', type: 'text', inputType: 'text', placeholder: this.$t('general.email'), initialValue: '' },
+        { name: 'password', type: 'password', inputType: 'password', placeholder: this.$t('general.password'), initialValue: '' }
       ]
     };
   }, created() {
@@ -51,7 +51,7 @@ export default {
     noEmailRegistered(){
       this.$root.$refs.toast.add({
         severity: 'warn',
-        summary: 'No registered email found',
+        summary: this.$t('user.regist.notemail'),
         life: 3000
       });
       console.warn("Email doesnt exist");
@@ -64,7 +64,7 @@ export default {
     wrongPassword(){
       this.$root.$refs.toast.add({
         severity: 'warn',
-        summary: 'Wrong Password',
+        summary: this.$t('user.password.wrong'),
         life: 3000});
       console.warn("wrong password");
     },
@@ -110,7 +110,7 @@ export default {
 
 <template>
 
-  <empty-header button-text="Sign Up" button-route="/signUp" ></empty-header>
+  <empty-header :button-text="$t('general.signin')" button-route="/signUp" ></empty-header>
   <forms-authentication
       :resolver="resolver"
       :fields="fields"
@@ -119,7 +119,7 @@ export default {
     <template #footer-link>
       <p class="text-center mt-4">
         <router-link to="/signUp" class="inline text-sm text-blue-600 hover:underline">
-          Not a member yet? Sign Up
+          {{$t('user.regist.unalready')}}
         </router-link>
       </p>
     </template>
