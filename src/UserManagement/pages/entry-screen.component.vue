@@ -44,12 +44,12 @@ export default {
 
 <template>
 
-<empty-header button-text="Sign In" button-route="/signIn" ></empty-header>
+  <empty-header :button-text="$t('general.signin')" button-route="/signIn" ></empty-header>
 
   <div style="width: 100%; display: flex; flex-wrap: wrap-reverse; align-items: center; justify-content: center; gap:5rem; margin-top: 9rem;">
     <div style="display: flex; flex-direction: column;align-items: center;">
-      <h1 class="font-bold">Welcome</h1>
-      <p>First. Let's get to know each other!</p>
+      <h1 class="font-bold">{{ $t('entryscreen.welcome') }}</h1>
+      <p>{{ $t('entryscreen.first') }}</p>
       <div class="card flex flex-col items-center gap-5 m-4">
 
         <div class="card flex justify-center">
@@ -58,16 +58,16 @@ export default {
               <pv-radio-button-group name="typeOfUser" class="flex flex-wrap gap-5">
                 <div class="flex items-center gap-2">
                   <pv-radio-button inputId="student" value="Student" />
-                  <label for="Student">Student</label>
+                  <label for="Student">{{ $t('entryscreen.student') }}</label>
                 </div>
                 <div class="flex items-center gap-2">
                   <pv-radio-button inputId="tourist" value="Tourist" />
-                  <label for="tourist">Tourist</label>
+                  <label for="tourist">{{ $t('entryscreen.tourist') }}</label>
                 </div>
               </pv-radio-button-group>
               <pv-message v-if="$form.typeOfUser?.invalid" severity="error" size="small" variant="simple">{{ $form.typeOfUser.error?.message }}</pv-message>
             </div>
-            <pv-button type="submit" severity="secondary" label="Submit" />
+            <pv-button type="submit" severity="secondary" :label='$t("entryscreen.submit")' />
           </pv-form>
         </div>
       </div>

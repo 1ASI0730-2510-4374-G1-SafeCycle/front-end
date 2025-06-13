@@ -6,30 +6,30 @@
     <div class="confirm-box">
       <div class="grid-box">
         <div class="details">
-          <h2 class="section-title">Booking Details</h2>
+          <h2 class="section-title">{{ $t('booking.confirmation.details') }}</h2>
           <div class="row">
             <div class="column">
-              <p><strong>Start Date</strong><br>{{ startDate }}</p>
-              <p><strong>End Date</strong><br>{{ endDate }}</p>
+              <p><strong>{{$t('booking.date.startdate')}}</strong><br>{{ startDate }}</p>
+              <p><strong>{{$t('booking.date.enddate')}}</strong><br>{{ endDate }}</p>
             </div>
             <div class="column">
-              <p><strong>Start Hour</strong><br>{{ startHour }}</p>
-              <p><strong>End Hour</strong><br>{{ endHour }}</p>
+              <p><strong>{{$t('booking.date.starthour')}}</strong><br>{{ startHour }}</p>
+              <p><strong>{{$t('booking.date.endhour')}}</strong><br>{{ endHour }}</p>
             </div>
           </div>
-          <p><strong>Bike Station</strong><br>{{ station }}</p>
+          <p><strong>{{$t('general.bikestation')}}</strong><br>{{ station }}</p>
 
-          <h3 class="section-title">Time</h3>
+          <h3 class="section-title">{{$t('booking.time.time')}}</h3>
           <div class="row">
             <div class="column">
-              <p><strong>Hours o Minutes:</strong> {{ hours }} hours</p>
+              <p><strong>{{$t('booking.time.hourmin')}}:</strong> {{ hours }} {{ $t('general.hours') }}</p>
             </div>
             <div class="column">
-              <p><strong>Cost:</strong> {{ cost }} S/.</p>
+              <p><strong>{{$t('booking.confirmation.cost')}}:</strong> {{ cost }} S/.</p>
             </div>
           </div>
 
-          <button class="confirm-btn" @click="confirmBooking">Book It</button>
+          <button class="confirm-btn" @click="confirmBooking">{{$t('booking.confirmation.bookit')}}</button>
         </div>
 
         <div class="image">

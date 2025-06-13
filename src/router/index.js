@@ -5,6 +5,8 @@
  */
 
 import {createRouter, createWebHistory} from "vue-router";
+const TouringBookComponent = () => import("@/Touring/pages/touringBookComponent.vue");
+const TouringSuccessComponent = () => import("@/Touring/pages/touringSuccessComponent.vue");
 const EntryScreenComponent = () => import("@/UserManagement/pages/entry-screen.component.vue");
 const SignUpStudentComponent = () => import("@/UserManagement/pages/sign-up-student.component.vue");
 const SignUpTouristComponent = () => import("@/UserManagement/pages/sign-up-tourist.component.vue");
@@ -27,9 +29,6 @@ const bookingPageComponent = () => import ("@/Booking/pages/booking-page.compone
 const BookingSuccessComponent = () => import ("@/Booking/pages/booking-success.component.vue");
 const BookingConfirmComponent = () => import ("@/Booking/pages/booking-confirm.component.vue");
 const BookingCancelComponent = () => import ("@/Booking/pages/booking-cancel.component.vue");
-
-const TouringBookComponent = () => import("@/Touring/pages/touringBookComponent.vue");
-const TouringSuccessComponent = () => import("@/Touring/pages/touringSuccessComponent.vue");
 const TouringBookDetailsComponent = () => import("@/Touring/pages/touringBookDetailsComponent.vue");
 /**
  * @description Lazy-loaded component imports for route configuration
@@ -53,10 +52,10 @@ const router = createRouter({
         { path: '/signup', name: 'signup-page-entry', component: EntryScreenComponent , meta: {title: 'Entry screen for sign up Page'} },
         { path: '/signup/student', name: 'signup-page-student', component: SignUpStudentComponent , meta: {title: 'Sign Up Student Page'} },
         { path: '/signup/tourist', name: 'signup-page-tourist', component: SignUpTouristComponent , meta: {title: 'Sign Up Tourist Page'} },
-        { path: '/touring', name: 'touring-page', component : TouringSelectComponent , meta: {title: 'Rent Choose Station Page'} },
+        { path : '/touring', name: 'touring-page', component : TouringSelectComponent , meta: {title: 'Rent Choose Station Page'} },
         {path : '/touring/:id', name: 'touring-detail', component: TouringBookComponent},
-        { path :'/touring/success/:id', name: 'touring-success', component: TouringSuccessComponent },
-        { path :'/touring/details', name: 'touring-details', component: TouringBookDetailsComponent },
+        { path : '/touring/success/:id', name: 'touring-success', component: TouringSuccessComponent },
+        { path : '/touring/details', name: 'touring-details', component: TouringBookDetailsComponent },
         { path: '/signIn', name: 'signIn', component: SignInComponent },
         { path: '/booking/confirm', name: 'booking-confirm', component: BookingConfirmComponent },
         { path: '/rent', name: 'rent', component: RentPageComponent, meta: {title: 'Rent Page'}},
@@ -79,7 +78,7 @@ const router = createRouter({
         { path: '/', name: 'start-page', component: EntryScreenComponent , meta: {title: 'Entry screen for sign up Page'} },
         {path: '/:pathMatch(.*)', name: '404 - nor found', component: NotFoundPageComponent, meta: {title: 'Not Found Page'} },
 
-           ]
+    ]
 });
 
 export default router;

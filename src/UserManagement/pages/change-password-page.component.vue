@@ -17,11 +17,11 @@ export default {
     return {
       resolver: zodResolver(
           z.object({
-            newPassword: z.string().min(3, { message: 'Password is required.' }),
-            repeatPassword: z.string().min(1, { message: 'Passwords do not match.' }),
+            newPassword: z.string().min(3, { message: this.$t('user.log.password') }),
+            repeatPassword: z.string().min(1, { message: this.$t('user.log.repeatPassword') }),
           })
               .refine((data) => data.newPassword === data.repeatPassword, {
-                message: 'Passwords do not match.',
+                message: this.$t('user.log.repeatPassword'),
                 path: ['repeatPassword'],
               })
       ),
@@ -30,9 +30,9 @@ export default {
        * @description Defines the structure of form fields to be rendered dynamically
        */
       fields: [
-        { name: 'currentPassword', type: 'password', inputType: 'password', placeholder: 'Current Password', initialValue: '' },
-        { name: 'newPassword', type: 'password', inputType: 'password', placeholder: 'New Password', initialValue: '' },
-        { name: 'repeatPassword', type: 'password', inputType: 'password', placeholder: 'Repeat New Password', initialValue: '' }
+        { name: 'currentPassword', type: 'password', inputType: 'password', placeholder: this.$t('user.password.currentpass'), initialValue: '' },
+        { name: 'newPassword', type: 'password', inputType: 'password', placeholder: this.$t('user.password.newpass'), initialValue: '' },
+        { name: 'repeatPassword', type: 'password', inputType: 'password', placeholder: this.$t('user.password.repeatnewpass'), initialValue: '' }
       ]
     };
   },
@@ -58,7 +58,7 @@ export default {
     <header-content></header-content>
     <back-button></back-button>
     <div class="flex flex-column align-items-center" style="margin-top: 5rem">
-      <h1 class="font-bold m-4">Change Password</h1>
+      <h1 class="font-bold m-4">{{$t('user.password.change')}}</h1>
     <forms-authentication
         :resolver="resolver"
         :fields="fields"

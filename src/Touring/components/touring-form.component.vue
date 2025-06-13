@@ -52,19 +52,19 @@ export default {
       <div class="form-item">
         <label for="fecha" class="form-label">Date</label>
         <pv-date-picker id="fecha" v-model="fechaSeleccionada" :minDate="new Date()" showIcon />
-        <pv-message v-if="errors.fecha" severity="error" variant="simple" size="small"> Date is required</pv-message>
+        <pv-message v-if="errors.fecha" severity="error" variant="simple" size="small"> {{$t('touring.form.date')}}</pv-message>
       </div>
 
       <div class="form-item">
         <label for="start-hour" class="form-label">Start Hour</label>
         <pv-date-picker id="start-hour" v-model="startHour" :minDate="new Date()" timeOnly fluid />
-        <pv-message v-if="errors.startHour" severity="error" variant="simple" size="small">Start hour is required</pv-message>
+        <pv-message v-if="errors.startHour" severity="error" variant="simple" size="small">{{$t('touring.form.start')}}</pv-message>
       </div>
 
       <div class="form-item">
         <label for="end-hour" class="form-label">End Hour</label>
         <pv-date-picker id="end-hour" v-model="endHour" :minDate="new Date()" timeOnly fluid />
-        <pv-message v-if="errors.endHour" severity="error" variant="simple" size="small">End Hour is required </pv-message>
+        <pv-message v-if="errors.endHour" severity="error" variant="simple" size="small">{{$t('touring.form.end')}} </pv-message>
       </div>
 
       <div class="form-item">
@@ -73,13 +73,13 @@ export default {
             id="station"
             v-model="selectedStation"
             :options="['Centro civico', 'San Isidro']"
-            placeholder="Select a Station"
+            :placeholder="$t('touring.form.select')"
         />
-        <pv-message v-if="errors.station" severity="error" variant="simple" size="small">Station is required</pv-message>
+        <pv-message v-if="errors.station" severity="error" variant="simple" size="small">{{$t('touring.form.station')}}</pv-message>
       </div>
       <div class="final">
-        <pv-message v-if="errors.hours" severity="error" variant="simple" size="small">Start Hour cant be greater than End Hour</pv-message>
-        <pv-button type="submit" label="Book" class="w-full" />
+        <pv-message v-if="errors.hours" severity="error" variant="simple" size="small">{{$t('touing.cant')}}</pv-message>
+        <pv-button type="submit" :label="$t('touring.book')" class="w-full" />
       </div>
 
     </div>

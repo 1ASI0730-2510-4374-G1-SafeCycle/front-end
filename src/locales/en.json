@@ -106,6 +106,9 @@
       "failedval": "Failed Validation",
       "nothermail": "A user with this email already exists",
       "already": "Already a member? Sign In",
+
+      "unalready": "Not a member yet? Sign Up",
+
       "notemail": "No registered email found"
     },
     "password": {

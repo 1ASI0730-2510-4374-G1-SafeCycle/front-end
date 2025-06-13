@@ -37,12 +37,12 @@ export default {
     </template>
 
     <template #content>
-      <p class="tour-desc">{{ tour.hour }}</p>
+      <p class="tour-desc">{{ tour.hour }} {{$t('general.hours')}}</p>
     </template>
 
     <template #footer>
       <div class="flex gap-4 mt-1">
-        <pv-button v-if="showCard" @click="sendId" label="Go" class="w-full" />
+        <pv-button v-if="showCard" @click="sendId" :label="$t('general.go')" class="w-full" />
       </div>
     </template>
   </pv-card>

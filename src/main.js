@@ -8,7 +8,7 @@ import Lara from '@primevue/themes/lara'
 import { definePreset } from '@primeuix/themes';
 import './assets/main.css'
 import 'primeicons/primeicons.css';
-
+import i18n from './i18n'
 
 import {
     Avatar,
@@ -106,7 +106,7 @@ app
     .component('pv-card', Card)
     .component('pv-select', Select)
     .component('pv-toast', Toast);
-
+app.use(i18n);
 app.use(router);
 app.use(ToastService);
 

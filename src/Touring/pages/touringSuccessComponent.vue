@@ -38,14 +38,14 @@ export default {
 </script>
 
 <template>
-<header-content></header-content>
+  <header-content></header-content>
   <div class="container">
     <div class="main">
-    <touring-card :tour=this.tour :show-card="false" ></touring-card>
-    <div class="text">
-      <h1>Sucessfully Booked the Tour!</h1>
-      <pv-button @click="returnToMain" label="Return"></pv-button>
-    </div>
+      <touring-card :tour=this.tour :show-card="false" ></touring-card>
+      <div class="text">
+        <h1>{{$t('touring.succesfully')}}</h1>
+        <pv-button @click="returnToMain" :label="$t('touring.return')"></pv-button>
+      </div>
     </div>
   </div>
 
