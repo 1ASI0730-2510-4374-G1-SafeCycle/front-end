@@ -60,7 +60,7 @@ export default {
       console.log("No bikes in Station.");
       this.$root.$refs.toast.add({
         severity: 'warn',
-        summary: 'No bikes in Station, Please choose another one',
+        summary: this.$t('rent.text.nobikes'),
         life: 3000
       });
     },
@@ -142,11 +142,11 @@ export default {
   <div class="flex align-items-center justify-content-center gap-6 flex-wrap">
   <div class="flex flex-column gap-3 w-3 align-items-center">
     <hr class="w-full border">
-      <h2>Time: {{ $route.query.minutes }} minutes</h2>
-      <h2>Price: {{ (($route.query.minutes * 0.045)+1).toFixed(2)  }} S/.</h2>
+      <h2>{{$t('booking.time.time')}}: {{ $route.query.minutes }} minutes</h2>
+      <h2>{{$t('booking.confirmation.cost')}}: {{ (($route.query.minutes * 0.045)+1).toFixed(2)  }} S/.</h2>
     <hr class="w-full border">
-    <h3>2 SafeCycles centrals near you</h3>
-    <pv-button label="Rent" :disabled="!selectedStation" @click="onRentClick()"></pv-button>
+    <h3>2 {{$t('rent.text.centrals')}}</h3>
+    <pv-button :label="$t('header.buttons.rent')" :disabled="!selectedStation" @click="onRentClick()"></pv-button>
   </div>
     <div class="flex flex-column gap-3 align-items-center" style="width:40rem">
 
@@ -174,7 +174,7 @@ export default {
 
 
 
-    <pv-select v-model="selectedStation" :options="stations" optionLabel="name" placeholder="Select a Station" class="w-full"></pv-select>
+    <pv-select v-model="selectedStation" :options="stations" optionLabel="name" :placeholder="$t('rent.text.select')" class="w-full"></pv-select>
     </div>
   </div>
 </template>

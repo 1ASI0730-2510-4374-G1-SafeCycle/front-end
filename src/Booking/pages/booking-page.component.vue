@@ -6,43 +6,42 @@
     <div class="content-wrapper">
       <!-- Formulario -->
       <div class="form-section">
-        <h2 class="title">Enter Booking Information</h2>
+        <h2 class="title">{{ $t('booking.date.enter') }}</h2>
 
         <div class="row">
           <div class="input-group">
-            <label>Start Date</label>
+            <label>{{$t('booking.date.startdate')}}</label>
             <DatePicker v-model="startDate" showIcon dateFormat="dd/mm/yy" />
           </div>
           <div class="input-group">
-            <label>Start Hour</label>
+            <label>{{$t('booking.date.starthour')}}</label>
             <DatePicker v-model="startHour" showIcon timeOnly hourFormat="24" />
           </div>
         </div>
 
         <div class="row">
           <div class="input-group">
-            <label>End Date</label>
+            <label>{{$t('booking.date.enddate')}}</label>
             <DatePicker v-model="endDate" showIcon dateFormat="dd/mm/yy" />
           </div>
           <div class="input-group">
-            <label>End Hour</label>
+            <label>{{$t('booking.date.endhour')}}</label>
             <DatePicker v-model="endHour" showIcon timeOnly hourFormat="24" />
           </div>
         </div>
 
-        <h3 class="subtitle">Enter the Bike Station</h3>
+        <h3 class="subtitle">{{$t('booking.enter')}}</h3>
         <div class="input-group full">
-          <label>Bike</label>
           <pv-select
               v-model="selectedStation"
               :options="stations"
               optionLabel="name"
-              placeholder="Station"
+              :placeholder="$t('general.station')"
               class="w-full"
           />
         </div>
 
-        <button class="calculate-btn" @click="calculate">Calculate</button>
+        <button class="calculate-btn" @click="calculate">{{$t('booking.calculate')}}</button>
       </div>
 
       <!-- Imagen -->
@@ -95,7 +94,7 @@ export default {
   methods: {
     calculate() {
       if (!this.startDate || !this.endDate || !this.startHour || !this.endHour || !this.selectedStation) {
-        alert("Please fill all fields");
+        alert(this.$t('booking.return.fill'));
         return;
       }
 
@@ -107,7 +106,7 @@ export default {
 
       const diffMs = end - start;
       if (diffMs <= 0) {
-        alert("Invalid time range");
+        alert('booking.return.invalidtime');
         return;
       }
 

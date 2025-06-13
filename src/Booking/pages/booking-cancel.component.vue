@@ -4,25 +4,25 @@
     <back-button />
 
     <div class="success-box">
-      <h2 class="title">Your booking was canceled</h2>
+      <h2 class="title">{{$t('booking.cancel.yourcan')}}</h2>
       <p class="info">
 
       </p>
 
       <div class="details-grid">
         <div>
-          <h3>Canceled booking details</h3>
-          <p><strong>Start Date:</strong> {{ startDate }}</p>
-          <p><strong>End Date:</strong> {{ endDate }}</p>
-          <p><strong>Bike Station:</strong> {{ station }}</p>
+          <h3>{{$t('booking.cancel.cancel')}}</h3>
+          <p><strong>{{$t('booking.date.startdate')}}:</strong> {{ startDate }}</p>
+          <p><strong>{{ $t('booking.date.starthour') }}:</strong> {{ endDate }}</p>
+          <p><strong>{{$t('general.bikestation')}}:</strong> {{ station }}</p>
         </div>
 
         <div>
-          <h3>Time</h3>
-          <p><strong>Start Hour:</strong> {{ startHour }}</p>
-          <p><strong>End Hour:</strong> {{ endHour }}</p>
-          <p><strong>Duration:</strong> {{ hours }} hours</p>
-          <p><strong>Cost:</strong> {{ cost }} S/.</p>
+          <h3>{{$t('booking.time.time')}}</h3>
+          <p><strong>{{$t('booking.date.enddate')}}:</strong> {{ startHour }}</p>
+          <p><strong>{{$t('booking.date.endhour')}}:</strong> {{ endHour }}</p>
+          <p><strong>{{$t('booking.date.duration')}}:</strong> {{ hours }} {{ $t('general.hours') }}</p>
+          <p><strong>{{$t('booking.confirmation.cost')}}:</strong> {{ cost }} S/.</p>
         </div>
       </div>
 

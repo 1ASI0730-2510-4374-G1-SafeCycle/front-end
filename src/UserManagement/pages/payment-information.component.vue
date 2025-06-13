@@ -22,16 +22,16 @@ export default {
 
 <div class="flex flex-1 align-items-center justify-content-center">
   <div class="flex flex-column align-center justify-center w-3 gap-2">
-    <h1 class="font-bold">Payment Information</h1>
+    <h1 class="font-bold">{{$t('user.pay.paymentinfo')}}</h1>
     <div class="flex align-center justify-center">
-      <p>Card Number: {{number}}</p>
+      <p>{{$t('user.pay.card')}}: {{number}}</p>
       <div class="flex-1"></div>
       <p>VISA</p>
     </div>
-    <p>Holder: {{name}}</p>
-    <pv-button label="Edit Payment Information" @click="editPayment()"></pv-button>
+    <p>{{$t('user.pay.holder')}}: {{name}}</p>
+    <pv-button :label="$t('user.pay.edit')" @click="editPayment()"></pv-button>
   </div>
-  </div></div>
+</div></div>
 </template>
 
 <style scoped>

@@ -8,10 +8,20 @@ import Lara from '@primevue/themes/lara'
 import { definePreset } from '@primeuix/themes';
 import './assets/main.css'
 import 'primeicons/primeicons.css';
+import i18n from './i18n'
 
-import { GoogleMap, AdvancedMarker, MarkerCluster, InfoWindow } from 'vue3-google-map'
-
-import {Avatar, Toolbar, Menu, Image, RadioButton, RadioButtonGroup, InputText, Password, Card, Select, DatePicker} from "primevue";
+import {
+    Avatar,
+    Toolbar,
+    Menu,
+    Image,
+    RadioButton,
+    RadioButtonGroup,
+    InputText,
+    Password,
+    Card,
+    DatePicker, Select
+} from "primevue";
 import { Form,FormField} from '@primevue/forms';
 import Button from 'primevue/button';
 import Toast from 'primevue/toast';
@@ -94,13 +104,9 @@ app
     .component('pv-message', Message)
     .component('pv-password', Password)
     .component('pv-card', Card)
-    .component('pv-google-map', GoogleMap)
-    .component('pv-google-marker', AdvancedMarker)
-    .component('pv-google-marker-cluster', MarkerCluster)
-    .component('pv-google-info-window', InfoWindow)
     .component('pv-select', Select)
     .component('pv-toast', Toast);
-
+app.use(i18n);
 app.use(router);
 app.use(ToastService);
 

@@ -26,10 +26,10 @@ export default {
        * @description Defines the structure of form fields to be rendered dynamically
        */
       fields: [
-        { name: 'minutes', type: 'number', inputType: 'number', placeholder: 'Minutes to Rent', initialValue: '' }
+        { name: 'minutes', type: 'number', inputType: 'number', placeholder: this.$t('rent.minutes'), initialValue: '' }
       ]
     };
-},
+  },
   methods: {
     /**
      * @function onFormSubmit
@@ -57,8 +57,8 @@ export default {
     <header-content />
     <div class="flex-1 flex align-items-center justify-content-center">
       <div class="flex flex-column justify-center gap-2">
-        <h1 class="font-bold">Enter total minutes</h1>
-        <p>Provide access to Localization in web browser</p>
+        <h1 class="font-bold">{{$t('rent.text.total')}}</h1>
+        <p>{{$t('rent.text.access')}}</p>
         <forms-authentication
             :resolver="resolver"
             :fields="fields"

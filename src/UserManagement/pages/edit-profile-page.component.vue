@@ -17,8 +17,8 @@ export default {
   return {
     resolver: zodResolver(
         z.object({
-          username: z.string().min(5, { message: 'Username is required.' }),
-          email: z.string().min(1, { message: 'Email is required.' }).email({ message: 'Must be a valid email address.' })
+          username: z.string().min(5, { message: this.$t('user.log.user') }),
+          email: z.string().min(1, { message: this.$t('user.log.email') }).email({ message: this.$t('user.log.emailvalid') }),
         })
     ),
     /**
@@ -26,9 +26,9 @@ export default {
      * @description Defines the structure of form fields to be rendered dynamically
      */
     fields: [
-      { name: 'username', type: 'text', inputType: 'text', placeholder: 'Username', initialValue: '' },
-      { name: 'email', type: 'text', inputType: 'text', placeholder: 'Email', initialValue: '' },
-       ]
+      { name: 'username', type: 'text', inputType: 'text', placeholder: this.$t('general.username'), initialValue: '' },
+      { name: 'email', type: 'text', inputType: 'text', placeholder: this.$t('general.email'), initialValue: '' },
+    ]
   };
 },
 methods: {
@@ -39,11 +39,11 @@ methods: {
    */
   async onFormSubmit({valid}){
     if (!valid) {
-      console.log("failed validation")
+      console.log(this.$t('user.log.failed'))
       return;
     }
-    console.log("Changing Profile")
-}}}
+    console.log(this.$t('user.log.success'));
+  }}}
 </script>
 
 <template>
@@ -51,7 +51,7 @@ methods: {
     <header-content></header-content>
     <back-button></back-button>
     <div class="flex flex-column align-items-center" style="margin-top: 5rem">
-      <h1 class="font-bold m-4">Edit Profile</h1>
+      <h1 class="font-bold m-4">{{$t('user.profile.edit')}}</h1>
       <forms-authentication
           :resolver="resolver"
           :fields="fields"
