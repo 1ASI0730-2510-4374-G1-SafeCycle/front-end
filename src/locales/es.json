@@ -39,6 +39,9 @@
     "submit": "Enviar"
   },
   "booking": {
+    "step1": "Llenar detalles de reserva",
+    "step2": "Confirmar detalles de reserva",
+    "step3": "Reserva Completada",
     "large": {
       "wasmade": "Su reserva se ha realizado exitosamente",
       "willsent": "Su información de reserva se ha enviado al correo",
@@ -124,6 +127,11 @@
   "rent": {
     "minutes": "minutos a alquilar",
     "paymentmethod": "Metodo de Pago",
+    "title1": "Página de Alquiler",
+    "title2": "Elegir Estación de Alquiler",
+    "step1": "Elegir Minutos a Alquilar",
+    "step2": "Elegir Estación",
+    "step3": "Alquiler Completo",
     "text": {
       "total": "Ingrese la cantidad de minutos",
       "access": "Permite a tu navegador acceso a tu ubicación",
@@ -144,6 +152,11 @@
     "return": "Retornar",
     "current": "Recorrido actual",
     "cancel": "Cancelar recorrido",
+    "title1": "Elige el Tour que deseas",
+    "title2": "Rellena el formulario para el Tour",
+    "step1": "Elegir Tour",
+    "step2": "Seleccionar Detalles de tour",
+    "step3": "Tour Alquilado",
     "form": {
       "date": "Se requiere una fecha",
       "start": "Se requiere una hora de inicio",

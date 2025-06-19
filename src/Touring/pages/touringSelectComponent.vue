@@ -47,8 +47,18 @@ export default {
 
 <template>
  <header-content></header-content>
+  <h1 class="font-bold mt-5 ml-5">{{$t('touring.title1')}}</h1>
   <touring-list
      @selectedTour="createCard" :tourList=tourData></touring-list>
+  <div class="flex align-items-center justify-content-center">
+  <pv-stepper value="1" linear class="w-6 mb-7 align-self-center ">
+    <pv-step-list>
+      <pv-step value="1">{{$t('touring.step1')}}</pv-step>
+      <pv-step value="2">{{$t('touring.step2')}}</pv-step>
+      <pv-step value="3">{{$t('touring.step3')}}</pv-step>
+    </pv-step-list>
+  </pv-stepper>
+  </div>
 </template>
 
 <style scoped>

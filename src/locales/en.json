@@ -43,6 +43,9 @@
   },
 
   "booking": {
+    "step1": "Fill details of Booking",
+    "step2": "Confirm Details of Booking",
+    "step3": "Booking Completed",
     "large": {
       "wasmade": "Your booking was successfully made",
       "willsent": "Your booking information will be sent to your email address",
@@ -133,6 +136,11 @@
   "rent": {
     "minutes": "minutes to rent",
     "paymentmethod": "Payment Method",
+    "title1": "Rent Page",
+    "title2": "Rent Choose Station",
+    "step1": "Choose Minutes",
+    "step2": "Choose Station",
+    "step3": "Rent Completed",
     "text": {
       "total": "Enter total minutes",
       "access": "Provide access to Localization in web browser",
@@ -154,6 +162,11 @@
     "return": "Return",
     "current": "Current Tour",
     "cancel": "Cancel Booking",
+    "title1": "Choose the tour you would like",
+    "title2": "Enter the details for the tour",
+    "step1": "Choose Tour",
+    "step2": "Fill details of tour",
+    "step3": "Rent of Tour Completed",
     "form": {
       "date": "Date is required",
       "start": "Start hour is required",

@@ -139,6 +139,9 @@ export default {
 
   <header-content></header-content>
   <back-button></back-button>
+
+  <h1 class="font-bold m-2">{{$t('rent.title2')}}</h1>
+
   <div class="flex align-items-center justify-content-center gap-6 flex-wrap">
     <div class="flex flex-column gap-3 w-3 align-items-center">
       <hr class="w-full border">
@@ -176,6 +179,13 @@ export default {
 
       <pv-select v-model="selectedStation" :options="stations" optionLabel="name" :placeholder="$t('rent.text.select')" class="w-full"></pv-select>
     </div>
+    <pv-stepper value="2" linear class="w-6 mb-7 align-self-center ">
+      <pv-step-list>
+        <pv-step value="1">{{$t('rent.step1')}}</pv-step>
+        <pv-step value="2">{{$t('rent.step2')}}</pv-step>
+        <pv-step value="3">{{$t('rent.step3')}}</pv-step>
+      </pv-step-list>
+    </pv-stepper>
   </div>
 </template>
 
