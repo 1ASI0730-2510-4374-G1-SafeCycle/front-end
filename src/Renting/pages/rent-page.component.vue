@@ -56,6 +56,11 @@ export default {
   <div class="flex flex-column min-h-screen">
     <header-content />
     <h1 class="font-bold m-5">{{$t('rent.title1')}}</h1>
+    <img
+        src="/assets/authentication/sign_in-img.png"
+        alt="Rent your bike"
+        class="w-3 max-w-full mx-auto rounded-lg shadow-md"
+    />
     <div class="flex-1 flex align-items-center justify-content-center">
       <div class="flex flex-column justify-center gap-2">
         <h1 class="font-bold">{{$t('rent.text.total')}}</h1>
