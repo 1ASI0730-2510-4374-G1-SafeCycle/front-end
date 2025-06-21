@@ -1,32 +1,25 @@
 <script>
 import HeaderContent from "@/public/components/header-content.component.vue";
-import i18n from "@/i18n.js";
 
 export default {
   name: "profile-page",
   components: {HeaderContent},
-  methods:{
+  methods: {
     /**
      * @function goChangePass
      * @description Handles the redirection to change password page.
      */
-    goChangePass(){
+    goChangePass() {
       this.$router.push("/profile/changePassword")
     },
     /**
      * @function goChangePass
      * @description Handles the redirection to edit profile page.
      */
-    goEditProfile(){
+    goEditProfile() {
       this.$router.push("/profile/edit")
     },
-    changeLanguageEn(){
-      i18n.global.locale = "en"
-    },
-    changeLanguageEs(){
-      i18n.global.locale = "es"
-    }
-  }
+  },
 }
 </script>
 
@@ -47,10 +40,7 @@ export default {
         </div>
         <div class="flex-1"></div>
         <div>
-          <h3>{{$t('user.profile.language')}}</h3>
           <div class="flex gap-2">
-            <pv-button @click="changeLanguageEn">EN</pv-button>
-            <pv-button @click="changeLanguageEs">ES</pv-button>
           </div>
         </div>
       </div>
