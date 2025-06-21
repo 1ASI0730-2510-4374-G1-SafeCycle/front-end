@@ -1,17 +1,20 @@
 <script>
 
 import router from "@/router/index.js";
+import {useI18n} from "vue-i18n";
+import i18n from "@/i18n.js";
 
 export default {
   name: "header-content",
   data() {
-    return{
+    return {
       items: [
         {label: this.$t('header.smallbox.profile'), icon: 'pi pi-user', to: "/profile"},
         {label: this.$t('header.smallbox.payinfo'), icon: 'pi pi-credit-card', to: '/paymentInformation'},
         {label: this.$t('header.smallbox.rentals'), icon: 'pi pi-book', to: '/currentRent'},
         {separator: true},
-        {label: this.$t('logout'), icon: 'pi pi-sign-out',
+        {
+          label: this.$t('logout'), icon: 'pi pi-sign-out',
           command: () => {
             console.log('Logout clicked');
           }
@@ -28,6 +31,12 @@ export default {
     },
     toggleMenu(event) {
       this.$refs.menu.toggle(event);
+    },
+    changeLanguageEn() {
+      i18n.global.locale = "en"
+    },
+    changeLanguageEs() {
+      i18n.global.locale = "es"
     }
   }
 }
@@ -38,9 +47,9 @@ export default {
 
   <pv-toolbar style="border-radius: 0; padding: 0 2rem; background-color:#A7E3EF" class="flex items-center">
     <template #start>
-     <router-link to="/rent" class="flex items-center">
-      <img class="h-2rem w-auto" src="../../assets/logo.svg" alt="Logo SafeCycle" />
-    </router-link>
+      <div class="flex items-center">
+        <img class="h-2rem w-auto" src="../../assets/logo.svg" alt="Logo SafeCycle"/>
+      </div>
     </template>
 
     <template #end>
@@ -51,6 +60,10 @@ export default {
 
 
         <pv-avatar image="https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png" @click="toggleMenu" ref="menu" class="w-2rem h-2rem"/>
+        <div class="flex gap-1 ml-2">
+          <pv-button @click="changeLanguageEn" class=" px-2 py-1 rounded text-sm font-bold text-black">EN</pv-button>
+          <pv-button @click="changeLanguageEs" class=" px-2 py-1 rounded text-sm font-bold text-black">ES</pv-button>
+        </div>
         <pv-menu ref="menu" :model="items" :popup="true" class="p-3" style="background-color: #C9F0C4;">
 
           <template #start>
