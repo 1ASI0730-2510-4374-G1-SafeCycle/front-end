@@ -38,9 +38,9 @@ export default {
 
   <pv-toolbar style="border-radius: 0; padding: 0 2rem; background-color:#A7E3EF" class="flex items-center">
     <template #start>
-      <div class="flex items-center">
-        <img class="h-2rem w-auto" src="../../assets/logo.svg" alt="Logo SafeCycle"/>
-      </div>
+     <router-link to="/rent" class="flex items-center">
+      <img class="h-2rem w-auto" src="../../assets/logo.svg" alt="Logo SafeCycle" />
+    </router-link>
     </template>
 
     <template #end>
