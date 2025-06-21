@@ -26,21 +26,7 @@ export const http = axios.create({
         "Access-Control-Allow-Origin": "*",
     },
 });
-/**
- * Configured axios instance for making HTTP requests
- * @const {import('axios').AxiosInstance}
- * @description Creates a pre-configured axios instance with base URL and default headers
- * @property {string} baseURL - The base URL for all requests from environment variable
- * @property {Object} headers - Default headers for all requests
- * @property {string} headers.Content-Type - Sets JSON as the default content type
- * @property {string} headers.Access-Control-Allow-Origin - CORS header to allow all origins
- */
-export const httpBikes = axios.create({
-    baseURL: BIKES_API_URL,
-    headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-    },
-});
+
+
 
 //comentar

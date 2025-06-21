@@ -7,9 +7,8 @@ import { http, httpBikes } from "@/shared/services/http-common.js";
 
 export class BikeService {
     /** @type {string} The API endpoint for bike stations */
-    bikeStationsEndpoint = "/bikeStations";
+    bikeStationsEndpoint = "/BikeStation";
     /** @type {string} The API endpoint for bikes */
-    bikes = "/bikes";
 
 
     /**
@@ -18,7 +17,7 @@ export class BikeService {
      * * @returns {Promise<AxiosResponse<any>>} Promise that resolves to the category object
      * */
     getAvailableBikesByStationId(stationId) {
-        return httpBikes.get(`${this.bikes}?idStation=${stationId}&available=true`);
+        return http.get(`/Bikes/available/${stationId}`);
     }
 
     /**

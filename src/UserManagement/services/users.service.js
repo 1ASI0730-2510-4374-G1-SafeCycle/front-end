@@ -5,7 +5,7 @@ import {http} from "@/shared/services/http-common.js"
  */
 export class UserService {
     /** @type {string} The API endpoint for users */
-    resourceEndpoint = "/users";
+    resourceEndpoint = "/User";
 
     /**
      * Retrieves a user by its email
@@ -13,7 +13,7 @@ export class UserService {
      * @returns {Promise<AxiosResponse<any>>} Promise that resolves to the category object
      */
     getByEmail(email) {
-        console.log(`${this.resourceEndpoint}?email=${email}`);
+        console.log(`${this.resourceEndpoint}/email=${email}`);
         return http.get(`${this.resourceEndpoint}?email=${email}`);
     }
     /**
@@ -23,7 +23,7 @@ export class UserService {
      * @returns {Promise<AxiosResponse<any>>} Promise that resolves to the category object
      */
     getUserByEmailAndPassword(email, password) {
-        return http.get(`${this.resourceEndpoint}?email=${email}&password=${password}`);
+        return http.get(`${this.resourceEndpoint}/secret/${email}/${password}`);
     }
 
     /**
