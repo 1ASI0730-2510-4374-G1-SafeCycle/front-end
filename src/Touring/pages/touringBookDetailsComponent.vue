@@ -35,6 +35,7 @@ export default {
   <div class="container">
     <touring-details :booked="tourBook" />
   </div>
+
 </template>
 
 <style scoped>

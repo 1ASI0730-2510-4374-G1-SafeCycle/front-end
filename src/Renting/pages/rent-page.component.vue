@@ -55,6 +55,7 @@ export default {
 <template>
   <div class="flex flex-column min-h-screen">
     <header-content />
+    <h1 class="font-bold m-5">{{$t('rent.title1')}}</h1>
     <div class="flex-1 flex align-items-center justify-content-center">
       <div class="flex flex-column justify-center gap-2">
         <h1 class="font-bold">{{$t('rent.text.total')}}</h1>
@@ -66,9 +67,17 @@ export default {
         />
       </div>
     </div>
+
+    <pv-stepper value="1" linear class="w-6 mb-7 align-self-center">
+      <pv-step-list>
+        <pv-step value="1">{{$t('rent.step1')}}</pv-step>
+        <pv-step value="2">{{$t('rent.step2')}}</pv-step>
+        <pv-step value="3">{{$t('rent.step3')}}</pv-step>
+      </pv-step-list>
+    </pv-stepper>
   </div>
+
 </template>
 
 <style scoped>
-
 </style>

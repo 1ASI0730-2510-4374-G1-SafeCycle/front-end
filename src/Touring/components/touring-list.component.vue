@@ -42,7 +42,7 @@ export default {
   align-items: center;
   flex-wrap: wrap;
   gap: 2rem;
-  min-height: 100vh;
+  min-height: 70vh;
   padding: 2rem;
 }
 </style>

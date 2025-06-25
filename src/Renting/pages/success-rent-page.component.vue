@@ -22,8 +22,15 @@ export default {
       <hr class="w-full border">
     </div>
     <div class="flex flex-column gap-3 align-items-center" style="width:40rem">
-      <img src="https://i.ibb.co/ZpQJn7Vq/image-2025-05-12-170659856.png" alt="Map Image">
+      <img src="https://img.freepik.com/premium-vector/man-riding-bicycle-cyclist-summer-cyclist-driving-cycling-person-bike-eco-city-transport_442961-292.jpg" alt="Map Image">
     </div>
+    <pv-stepper value="3" linear class="w-6 mb-7 align-self-center">
+      <pv-step-list>
+        <pv-step value="1">{{$t('rent.step1')}}</pv-step>
+        <pv-step value="2">{{$t('rent.step2')}}</pv-step>
+        <pv-step value="3">{{$t('rent.step3')}}</pv-step>
+      </pv-step-list>
+    </pv-stepper>
   </div>
 
 

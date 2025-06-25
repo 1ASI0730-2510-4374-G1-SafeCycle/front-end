@@ -29,6 +29,16 @@
 
       <button class="cancel-btn" @click="goToCancel">{{$t('booking.confirmation.cancel')}}</button>
     </div>
+
+  </div>
+  <div class="flex align-items-center justify-content-center mt-6">
+    <pv-stepper value="3" linear class="w-6 mb-7 align-self-center ">
+      <pv-step-list>
+        <pv-step value="1">{{$t('booking.step1')}}</pv-step>
+        <pv-step value="2">{{$t('booking.step2')}}</pv-step>
+        <pv-step value="3">{{$t('booking.step3')}}</pv-step>
+      </pv-step-list>
+    </pv-stepper>
   </div>
 </template>
 
@@ -71,8 +81,7 @@ export default {
 
 <style scoped>
 
-header-content
-.booking-success-page {
+header-content .booking-success-page {
   padding: 3rem;
   background-color: #fff;
 }

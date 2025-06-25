@@ -1,6 +1,5 @@
 import {http} from '@/shared/services/http-common.js'
 
-const tourApiURL =  import.meta.env.VITE_BIKES_API_BASE_URL;
 
 /**
  * @class TourApiService
@@ -13,7 +12,7 @@ export class TourApiService {
      * @returns {Promise<AxiosResponse<any>>} Promise that resolves to the category object
      */
     getAllTours() {
-        return http.get(`${tourApiURL}/tours`);
+        return http.get(`/Tour`);
     }
     /**
      * Retrieves a tour by its id
@@ -21,6 +20,6 @@ export class TourApiService {
      * @returns {Promise<AxiosResponse<any>>} Promise that resolves to the category object
      */
     getTourById(id) {
-        return http.get(`${tourApiURL}/tours?id=${id}`);
+        return http.get(`/Tour/${id}`);
     }
 }

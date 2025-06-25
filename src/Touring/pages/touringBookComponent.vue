@@ -48,12 +48,22 @@ export default {
 <template>
 
   <header-content></header-content>
+  <h1 class="font-bold m-5">{{$t('touring.title2')}}</h1>
   <div class="tittle">
     <h1>Welcome to the {{this.tour.name}} for <span class="font-bold">{{this.tour.price}} soles</span></h1>
   </div>
   <div class="main">
     <touring-card :show-card=false :tour=tour></touring-card>
     <touring-form @sendToSuccess="sendSuccess"></touring-form>
+  </div>
+  <div class="flex align-items-center justify-content-center mt-6">
+    <pv-stepper value="2" linear class="w-6 mb-7 align-self-center ">
+      <pv-step-list>
+        <pv-step value="1">{{$t('touring.step1')}}</pv-step>
+        <pv-step value="2">{{$t('touring.step2')}}</pv-step>
+        <pv-step value="3">{{$t('touring.step3')}}</pv-step>
+      </pv-step-list>
+    </pv-stepper>
   </div>
 
 </template>

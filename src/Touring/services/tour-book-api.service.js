@@ -1,7 +1,6 @@
 import {http} from '@/shared/services/http-common.js'
 
-const apiURL = import.meta.env.VITE_API_BASE_URL
-const tourBookApi = import.meta.env.VITE_API_TOUR_BOOKE_ENDPOINT
+
 
 export class TourBookApiService{
     /**
@@ -9,7 +8,7 @@ export class TourBookApiService{
      * @returns {Promise<AxiosResponse<any>>} Promise that resolves to the category object
      */
     getAllTourBooks(){
-        return http.get(`${apiURL}/${tourBookApi}`);
+        return http.get(`/TourBooking`);
     }
     /**
      * Retrieves a tour booked by its id
@@ -17,6 +16,6 @@ export class TourBookApiService{
      * @returns {Promise<AxiosResponse<any>>} Promise that resolves to the category object
      */
     getTourBook(id){
-        return http.get(`${apiURL}/${tourBookApi}/${id}`);
+        return http.get(`TourBooking/${id}`);
     }
 }
