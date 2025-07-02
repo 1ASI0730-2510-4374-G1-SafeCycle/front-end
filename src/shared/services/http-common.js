@@ -6,7 +6,6 @@ const BIKES_API_URL = import.meta.env.VITE_BIKES_API_BASE_URL;
 /**
  * @fileoverview HTTP client configuration using axios
  * @module http
- * @module httpBikes
  */
 
 /**

@@ -5,7 +5,7 @@ import {http} from "@/shared/services/http-common.js"
  */
 export class UserService {
     /** @type {string} The API endpoint for users */
-    resourceEndpoint = "/User";
+    resourceEndpoint = "/users";
 
     /**
      * Retrieves a user by its email
