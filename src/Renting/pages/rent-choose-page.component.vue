@@ -164,7 +164,7 @@ export default {
           <pv-google-marker
               v-for="(station, index) in stations"
               :key="index"
-              :options="{ position: { lat: station.lat, lng: station.lng }, label: getInitialsOfStation(station.name)}"
+              :options="{ position: { lat: station.location.latitude, lng: station.location.longitude }, label: getInitialsOfStation(station.name)}"
           >
             <pv-google-info-window>
               <div>

@@ -27,6 +27,17 @@ export const http = axios.create({
     },
 });
 
+http.interceptors.request.use(
+    (config) => {
+        const token = localStorage.getItem("token");
 
+        const isAuthRoute = config.url.includes("/Authorization/sign-in") || config.url.includes("/Authorization/sign-up");
 
-//comentar
+        if (token && !isAuthRoute) {
+            config.headers.Authorization = `Bearer ${token}`;
+        }
+
+        return config;
+    },
+    (error) => Promise.reject(error)
+);
