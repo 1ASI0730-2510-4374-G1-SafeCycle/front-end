@@ -19,4 +19,6 @@ export class UserService {
 
     signIn(userData) {
         return http.post(this.AuthResourceEndpoint+"/sign-in", userData);
-    }}
+    }
+
+}

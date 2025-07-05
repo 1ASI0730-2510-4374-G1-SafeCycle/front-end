@@ -48,7 +48,8 @@ export default {
         { name: 'repeatPassword', type: 'password', inputType: 'password', placeholder: this.$t('user.password.repeatpass'), initialValue: '' }
       ]
     };
-  },created() {
+  },
+  created() {
   this.userService = new UserService();
 },
   methods: {
