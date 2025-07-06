@@ -68,11 +68,12 @@ export default {
       </div>
     </div>
 
-    <pv-stepper value="1" linear class="w-6 mb-7 align-self-center">
+    <pv-stepper value="1" linear class="w-6 mb-7 align-self-center ">
       <pv-step-list>
         <pv-step value="1">{{$t('rent.step1')}}</pv-step>
         <pv-step value="2">{{$t('rent.step2')}}</pv-step>
         <pv-step value="3">{{$t('rent.step3')}}</pv-step>
+        <pv-step value="4">{{$t('rent.step4')}}</pv-step>
       </pv-step-list>
     </pv-stepper>
   </div>

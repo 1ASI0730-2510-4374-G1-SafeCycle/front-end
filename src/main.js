@@ -20,7 +20,7 @@ import {
     InputText,
     Password,
     Card,
-    DatePicker, Select, Stepper, StepList, Step
+    DatePicker, Select, Stepper, StepList, Step, InputNumber
 } from "primevue";
 import { Form,FormField} from '@primevue/forms';
 import Button from 'primevue/button';
@@ -108,7 +108,9 @@ app
     .component('pv-toast', Toast)
     .component('pv-stepper', Stepper)
     .component('pv-step-list', StepList)
-    .component('pv-step',Step);
+    .component('pv-step',Step)
+    .component('pv-input-number', InputNumber);
+
 
 
 

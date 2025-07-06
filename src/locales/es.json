@@ -131,7 +131,8 @@
     "title2": "Elegir Estación de Alquiler",
     "step1": "Elegir Minutos a Alquilar",
     "step2": "Elegir Estación",
-    "step3": "Alquiler Completo",
+    "step3" : "Pagar la Renta ",
+    "step4": "Alquiler Completo",
     "text": {
       "total": "Ingrese la cantidad de minutos",
       "access": "Permite a tu navegador acceso a tu ubicación",

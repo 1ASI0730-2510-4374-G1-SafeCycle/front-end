@@ -140,7 +140,8 @@
     "title2": "Rent Choose Station",
     "step1": "Choose Minutes",
     "step2": "Choose Station",
-    "step3": "Rent Completed",
+    "step3" : "Rent Payment",
+    "step4": "Rent Completed",
     "text": {
       "total": "Enter total minutes",
       "access": "Provide access to Localization in web browser",

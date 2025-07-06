@@ -1,4 +1,6 @@
 import { http } from "@/shared/services/http-common.js";
+import {getDatePlusMinutes} from "@/shared/services/time.service.js";
+import {now} from "@/shared/services/time.service.js";
 
 /**
  * @class BikeService
@@ -9,7 +11,7 @@ export class BikeService {
     /** @type {string} The API endpoint for bike stations */
     bikeStationsEndpoint = "/BikeStation";
     /** @type {string} The API endpoint for bikes */
-
+    rentsEndpoint = "/Rent";
 
     /**
      * Retrieves all available bikes from a specific station id
@@ -26,5 +28,12 @@ export class BikeService {
      */
     getBikeStations() {
         return http.get(`${this.bikeStationsEndpoint}`);
+    }
+
+    create(rentData){
+        var starTime = now;
+        var endTime =  getDatePlusMinutes(rentData.minutes);
+
+        return http.post(this.rentsEndpoint, rentData);
     }
 }
