@@ -10,21 +10,32 @@ export default {
     return {
        minutes: null,
        price : null,
-      bikeId: null
+      bikeId: null,
+      rentService :  new BikeService()
     };
   },
   created(){
     this.minutes = this.$route.query.minutes;
     this.price = this.$route.query.price;
     this.bikeId = this.$route.query.bikeId;
-    this.rentService = new BikeService();
   },
   methods:{
-    async OnRentSumbit(){// antes del rent hace el payment
+    async OnRentSumbit(){
       const rentData = {
         minutes: this.minutes,
-
+        price: this.price,
+        bikeId: this.bikeId,
+        paymentId : this.$route.query.paymentId,
+        userId : localStorage.getItem("user"),
+        bikeStationId : this.$route.query.bikeId
       };
+
+      const response =await this.rentService.createRent(rentData);
+      console.log(response);
+
+      if(response.status === 201){
+        this.$router.push({path : "/landing"});
+      }
     }
   }
 }
@@ -41,6 +52,7 @@ export default {
       <h2>{{$t('general.price')}}: {{ $route.query.price }} S/.</h2>
       <h2>{{$t('rent.paymentmethod')}}: VISA</h2>
       <h3>{{$t('rent.text.email')}}</h3>
+      <pv-button label="Rent my bike!" @click="OnRentSumbit"></pv-button>
       <hr class="w-full border">
     </div>
     <div class="flex flex-column gap-3 align-items-center" style="width:40rem">

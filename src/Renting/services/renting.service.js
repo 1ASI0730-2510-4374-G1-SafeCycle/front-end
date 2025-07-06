@@ -13,6 +13,9 @@ export class BikeService {
     /** @type {string} The API endpoint for bikes */
     rentsEndpoint = "/Rent";
 
+    paymentEndpoint = "/Payment";
+
+    paymentInformationEndpoint = "/PaymentInformation";
     /**
      * Retrieves all available bikes from a specific station id
      * * @param {number} id - The ID of the station to access
@@ -30,10 +33,23 @@ export class BikeService {
         return http.get(`${this.bikeStationsEndpoint}`);
     }
 
-    create(rentData){
-        var starTime = now;
-        var endTime =  getDatePlusMinutes(rentData.minutes);
+    createRent(rentData){
 
-        return http.post(this.rentsEndpoint, rentData);
+        const data = {
+            startTime: now,
+            endTime: getDatePlusMinutes(parseInt(rentData.minutes)),
+            paymentId: rentData.paymentId,
+            userId: rentData.userId,
+            bikeStationId: rentData.bikeStationId
+        };
+
+        return http.post(this.rentsEndpoint, data);
+    }
+
+    async createPaymentMethod(cardData){
+        return await http.post(this.paymentInformationEndpoint,cardData);
+    }
+    async createPayment(paymentData){
+        return await http.post(this.paymentEndpoint, paymentData);
     }
 }

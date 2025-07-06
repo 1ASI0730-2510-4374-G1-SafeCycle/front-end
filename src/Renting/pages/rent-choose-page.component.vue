@@ -89,7 +89,7 @@ export default {
           const price = ((minutes * 0.045) + 1).toFixed(2);
 
           this.$router.push({
-            path: "/rent/successRent",
+            path: "/rent/payment",
             query: {
               minutes,
               price: price,

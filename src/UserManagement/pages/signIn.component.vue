@@ -83,7 +83,7 @@ export default {
       try {
         const response = await this.userService.signIn({"email":values.email, "password":values.password});
         console.log(response);
-        localStorage.setItem("user", response.data.user);
+        localStorage.setItem("user", response.data.id);
         localStorage.setItem("token", response.data.token);
         this.$router.push("/rent");
       } catch (e) {
