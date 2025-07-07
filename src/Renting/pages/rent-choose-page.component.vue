@@ -73,6 +73,7 @@ export default {
     async onRentClick(){
       try {
         const bikesInStation = await this.rentingService.getAvailableBikesByStationId(this.selectedStation.id);
+        console.log("selected station",this.selectedStation.id)
         console.log(bikesInStation)
         if (!bikesInStation.status === "OK") {
           console.error("Failed to fetch bikes");
@@ -84,16 +85,15 @@ export default {
           this.noBikesAvailable();
         }
         else{
-          const bike = bikesInStation.data[0];
           const minutes = this.$route.query.minutes;
           const price = ((minutes * 0.045) + 1).toFixed(2);
 
           this.$router.push({
-            path: "/rent/successRent",
+            path: "/rent/payment",
             query: {
               minutes,
               price: price,
-              bikeId: bike.id
+              station: this.selectedStation.id
             }})
         }
       }catch (error) {
@@ -164,13 +164,8 @@ export default {
           <pv-google-marker
               v-for="(station, index) in stations"
               :key="index"
-              :options="{
-                    position: {
-                      lat: station.location.latitude,
-                      lng: station.location.longitude
-                    },
-                    label: getInitialsOfStation(station.name)
-                  }"          >
+              :options="{ position: { lat: station.location.latitude, lng: station.location.longitude }, label: getInitialsOfStation(station.name)}"
+          >
             <pv-google-info-window>
               <div>
                 <strong>{{ station.name }}</strong>
@@ -189,6 +184,7 @@ export default {
         <pv-step value="1">{{$t('rent.step1')}}</pv-step>
         <pv-step value="2">{{$t('rent.step2')}}</pv-step>
         <pv-step value="3">{{$t('rent.step3')}}</pv-step>
+        <pv-step value="4">{{$t('rent.step4')}}</pv-step>
       </pv-step-list>
     </pv-stepper>
   </div>

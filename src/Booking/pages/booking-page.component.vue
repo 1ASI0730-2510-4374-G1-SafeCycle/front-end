@@ -57,7 +57,8 @@
       <pv-step-list>
         <pv-step value="1">{{$t('booking.step1')}}</pv-step>
         <pv-step value="2">{{$t('booking.step2')}}</pv-step>
-        <pv-step value="3">{{$t('booking.step3')}}</pv-step>
+        <pv-step value="3">{{$t('rent.step3')}}</pv-step>
+        <pv-step value="4">{{$t('booking.step3')}}</pv-step>
       </pv-step-list>
     </pv-stepper>
   </div>

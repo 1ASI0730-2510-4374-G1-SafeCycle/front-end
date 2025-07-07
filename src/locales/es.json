@@ -24,10 +24,10 @@
       "booking": "Reserva"
     },
     "smallbox": {
-      "hello": "Hola Luciana",
+      "hello": "Hola",
       "profile": "Mi Perfil",
       "payinfo": "Información de Pago",
-      "rentals": "Alquileres Actuales",
+      "rentals": "Alquiler Actual",
       "logout": "Cerrar Sesión"
     }
   },
@@ -131,15 +131,17 @@
     "title2": "Elegir Estación de Alquiler",
     "step1": "Elegir Minutos a Alquilar",
     "step2": "Elegir Estación",
-    "step3": "Alquiler Completo",
+    "step3" : "Pagar la Renta ",
+    "step4": "Alquiler Completo",
     "text": {
       "total": "Ingrese la cantidad de minutos",
       "access": "Permite a tu navegador acceso a tu ubicación",
       "nobikes": "Ho hay bicicletas en el almacen, Por favor escoge otro",
       "centrals": "Centrales de Safecycle cerca de ti",
       "select": "Escoge una central",
-      "succes": "alquilado con éxito en la estación",
-      "email": "Se envió un correo de confirmación"
+      "succes": "Alquilando en la estación",
+      "email": "Se envió un correo de confirmación",
+      "nomorerents": "No puedes realizar mas de una renta a la vez"
     }
   },
 

@@ -81,30 +81,20 @@ export default {
         console.log("INVALID USER")
       }
       try {
-
-
-      const checkResponse = await this.userService.getByEmail(values.email);
-
-      if(checkResponse.data.length === 0) {
+        const response = await this.userService.signIn({"email":values.email, "password":values.password});
+        console.log(response);
+        localStorage.setItem("user", response.data.id);
+        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("name", response.data.username);
+        this.$router.push("/rent");
+      } catch (e) {
+        if (e.response?.status === 401 && e.response?.data === 'NO_EMAIL_FOUND') {
         this.noEmailRegistered();
-        return;
-      }
-      }catch(err) {
-        this.noEmailRegistered();
-        return;
-      }
-      try {
-      const checkPassResponse = await this.userService.getUserByEmailAndPassword(values.email, values.password);
-      if(checkPassResponse.data.length === 0) {
-        this.wrongPassword();
-        return;
-      }}
-      catch(err){
-        this.wrongPassword();
-        return;
-      }
-      this.$router.push("/rent");
-    }}
+        }
+        else {
+          console.error("Unexpected sign-in error:", e);
+        }
+      }}}
 };
 </script>
 

@@ -65,34 +65,15 @@
         console.log(this.$t('user.regist.failedval'))
          return;
         }
-        try{
-        const checkResponse = await this.userService.getByEmail(values.email);
-        console.log(checkResponse.data.length);
-        if (checkResponse.data.length > 0) {
-          this.$root.$refs.toast.add({
-            severity: 'warn',
-            summary: this.$t('user.regist.nothermail'),
-            life: 3000
-          });
-          console.warn("Email already exists");
-          return;
-        }}
-        catch(err) {
 
-        }
-
-        const studentToSend = new Student({
-          id: 0,
+        const studentToSend ={
           username: values.username,
+          identificationUser: "",
           email: values.email,
           password: values.password,
-          maxDailyReservationHours: 7,
-          paymentInformation: {
-            cardNumber: "",
-            type: "",
-            holder: ""
-          }
-        });
+          typeUser: 'student',
+          maxDailyReservationHours: "07:00:00",
+        };
         try {
           const response = await this.userService.create(studentToSend);
           console.log("User created:", response.data);

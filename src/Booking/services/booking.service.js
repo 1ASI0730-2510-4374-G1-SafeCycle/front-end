@@ -7,7 +7,7 @@ import {now} from "@/shared/services/time.service.js";
  * @description Service class for handling CRUD operations on bikes and bike stations using HTTP requests
  */
 
-export class BikeService {
+export class BookingService {
     /** @type {string} The API endpoint for bike stations */
     bikeStationsEndpoint = "/BikeStation";
     /** @type {string} The API endpoint for bikes */
@@ -16,14 +16,7 @@ export class BikeService {
     paymentEndpoint = "/Payment";
 
     paymentInformationEndpoint = "/PaymentInformation";
-    /**
-     * Retrieves all available bikes from a specific station id
-     * * @param {number} id - The ID of the station to access
-     * * @returns {Promise<AxiosResponse<any>>} Promise that resolves to the category object
-     * */
-    getAvailableBikesByStationId(stationId) {
-        return http.get(`/Bikes/available/${stationId}`);
-    }
+
 
     /**
      * Retrieves all bike stations
@@ -54,9 +47,5 @@ export class BikeService {
     }
     async getCurrentRental(id) {
         return await http.get(`${this.rentsEndpoint}/user/${id}`);
-    }
-
-    async getBikeStationById(id) {
-        return await http.get(`${this.bikeStationsEndpoint}/${id}`);
     }
 }

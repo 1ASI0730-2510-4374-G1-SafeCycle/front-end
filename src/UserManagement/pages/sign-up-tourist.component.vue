@@ -48,7 +48,8 @@ export default {
         { name: 'repeatPassword', type: 'password', inputType: 'password', placeholder: this.$t('user.password.repeatpass'), initialValue: '' }
       ]
     };
-  },created() {
+  },
+  created() {
   this.userService = new UserService();
 },
   methods: {
@@ -69,47 +70,38 @@ export default {
         return;
       }
 
+      const touristToSend = {
+        username: values.username,
+        identificationUser: values.passport,
+        email: values.email,
+        typeUser: 'tourist',
+        password: values.password,
+        maxDailyReservationHour: "12:00:00"
+      };
+
+      console.log("Tourist to Send:",touristToSend);
 
       try {
-      const checkResponse = await this.userService.getByEmail(values.email);
+        const response = await this.userService.create(touristToSend);
 
-      if (checkResponse.data.length > 0) {
+        console.log("User created:", response.data);
+        this.$router.push("/signIn");
+      }catch (e) {
+      if (e.response?.status === 401 && e.response?.data === 'NO_EMAIL_FOUND') {
         this.$root.$refs.toast.add({
           severity: 'warn',
           summary: this.$t('user.regist.nothermail'),
           life: 3000
         });
         console.warn("Email already exists");
-        return;
-      }}catch (err){
-
-      }
-
-      const touristToSend = new Tourist({
-        id: 0,
-        username: values.username,
-        passport: values.passport,
-        email: values.email,
-        password: values.password,
-        maxDailyReservationHours: 12,
-        paymentInformation: {
-          cardNumber: "",
-          type: "",
-          holder: ""
-        }
-      });
-
-      try {
-        const response = await this.userService.create(touristToSend);
-        console.log("User created:", response.data);
-        this.$router.push("/signIn");
-
-
-      } catch (err) {
-        console.error("Registration failed:", err);
-      }}
-  }
-};
+      } else {
+        console.error("Unexpected error during user creation:", e);
+        this.$root.$refs.toast.add({
+          severity: 'error',
+          summary: this.$t('errors.unexpected'),
+          life: 3000
+        });
+}}}}};
 </script>
 
 <template>

@@ -30,6 +30,10 @@ const BookingSuccessComponent = () => import ("@/Booking/pages/booking-success.c
 const BookingConfirmComponent = () => import ("@/Booking/pages/booking-confirm.component.vue");
 const BookingCancelComponent = () => import ("@/Booking/pages/booking-cancel.component.vue");
 const TouringBookDetailsComponent = () => import("@/Touring/pages/touringBookDetailsComponent.vue");
+
+const RentPaymentComponent = () => import("@/Renting/pages/rent-payment-page.component.vue")
+
+const RentBookingComponent = () => import("@/Booking/pages/booking-payment-page.component.vue");
 /**
  * @description Lazy-loaded component imports for route configuration
  * Using dynamic imports to enable code splitting and improve initial load performance
@@ -60,6 +64,7 @@ const router = createRouter({
         { path: '/booking/confirm', name: 'booking-confirm', component: BookingConfirmComponent },
         { path: '/rent', name: 'rent', component: RentPageComponent, meta: {title: 'Rent Page'}},
         { path: '/rent/choose', name: 'rent-choose-station', component: RentChoosePageComponent, meta: {title: 'Rent Choose Station Page'} },
+        {path : '/rent/payment', name: 'rent-payment-page', component: RentPaymentComponent },
         { path: '/rent/successRent', name: 'rent-success', component: SuccessRentPageComponent, meta: {title: 'Rent Success Page'} },
         { path: '/booking', name: 'booking-page', component: bookingPageComponent },
         { path: '/booking/success', name: 'booking-success', component: BookingSuccessComponent },
@@ -76,8 +81,8 @@ const router = createRouter({
         { path: '/paymentInformation', name: 'payment-information', component: PaymentInformationComponent, meta: {title: 'Payment Information Page'} },
         { path: '/paymentInformation/edit', name: 'payment-information-edit', component: PaymentInformationEditComponent, meta: {title: 'Edit Payment Information Page'} },
         { path: '/', name: 'start-page', component: EntryScreenComponent , meta: {title: 'Entry screen for sign up Page'} },
-        {path: '/:pathMatch(.*)', name: '404 - nor found', component: NotFoundPageComponent, meta: {title: 'Not Found Page'} },
-
+        { path: '/:pathMatch(.*)', name: '404 - nor found', component: NotFoundPageComponent, meta: {title: 'Not Found Page'} },
+        { path : '/booking/payment', name: 'booking-payment', component:  RentBookingComponent, meta: {title: 'Booking Payment Page'} },
     ]
 });
 
