@@ -51,7 +51,6 @@ export default {
       <h2>{{$t('booking.time.time')}}: {{$route.query.minutes}} {{$t('general.minutes')}}</h2>
       <h2>{{$t('general.price')}}: {{ $route.query.price }} S/.</h2>
       <h2>{{$t('rent.paymentmethod')}}: VISA</h2>
-      <h3>{{$t('rent.text.email')}}</h3>
       <pv-button label="Rent my bike!" @click="OnRentSumbit"></pv-button>
       <hr class="w-full border">
     </div>

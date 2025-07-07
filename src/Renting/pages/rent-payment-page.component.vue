@@ -23,21 +23,25 @@ export default {
   },
   watch: {
     cardNumber(value) {
-      const regex = /^[0-9]*$/;
-      if (!regex.test(value)) {
+      const cleaned = value.replace(/\s+/g, '');
+
+      if (!cleaned) {
+        this.numberError = "Card number is required";
+      } else if (!/^\d+$/.test(cleaned)) {
         this.numberError = "Only numbers are allowed";
+      } else if (cleaned.length !== 16) {
+        this.numberError = "Card number must be 16 digits long";
       } else {
         this.numberError = "";
-      }
-    }
-  },
+      }}
+    },
   methods: {
     async SubmitPaymentInformation() {
       const cardData = {
         cardNumber: this.cardNumber,
         type: this.selectedOption,
         holder: this.cardHolder,
-        amount: parseFloat(this.$route.query.price),
+        amount: 100000,
         userId : parseInt(localStorage.getItem("user")),
       };
 

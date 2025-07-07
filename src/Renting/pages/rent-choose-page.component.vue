@@ -73,6 +73,7 @@ export default {
     async onRentClick(){
       try {
         const bikesInStation = await this.rentingService.getAvailableBikesByStationId(this.selectedStation.id);
+        console.log("selected station",this.selectedStation.id)
         console.log(bikesInStation)
         if (!bikesInStation.status === "OK") {
           console.error("Failed to fetch bikes");

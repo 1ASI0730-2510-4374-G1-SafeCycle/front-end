@@ -52,4 +52,7 @@ export class BikeService {
     async createPayment(paymentData){
         return await http.post(this.paymentEndpoint, paymentData);
     }
+    async getCurrentRental(id) {
+        return await http.get(`${this.rentsEndpoint}/user/${id}`);
+    }
 }
