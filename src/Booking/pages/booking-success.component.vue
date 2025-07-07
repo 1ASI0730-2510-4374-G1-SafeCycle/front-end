@@ -32,11 +32,12 @@
 
   </div>
   <div class="flex align-items-center justify-content-center mt-6">
-    <pv-stepper value="3" linear class="w-6 mb-7 align-self-center ">
+    <pv-stepper value="4" linear class="w-6 mb-7 align-self-center ">
       <pv-step-list>
         <pv-step value="1">{{$t('booking.step1')}}</pv-step>
         <pv-step value="2">{{$t('booking.step2')}}</pv-step>
-        <pv-step value="3">{{$t('booking.step3')}}</pv-step>
+        <pv-step value="3">{{$t('rent.step3')}} </pv-step>
+        <pv-step value="4">{{$t('booking.step3')}}</pv-step>
       </pv-step-list>
     </pv-stepper>
   </div>
