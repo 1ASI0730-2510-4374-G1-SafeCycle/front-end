@@ -27,7 +27,7 @@
       "hello": "Hola",
       "profile": "Mi Perfil",
       "payinfo": "Información de Pago",
-      "rentals": "Alquileres Actuales",
+      "rentals": "Alquiler Actual",
       "logout": "Cerrar Sesión"
     }
   },
@@ -139,8 +139,9 @@
       "nobikes": "Ho hay bicicletas en el almacen, Por favor escoge otro",
       "centrals": "Centrales de Safecycle cerca de ti",
       "select": "Escoge una central",
-      "succes": "alquilado con éxito en la estación",
-      "email": "Se envió un correo de confirmación"
+      "succes": "Alquilando en la estación",
+      "email": "Se envió un correo de confirmación",
+      "nomorerents": "No puedes realizar mas de una renta a la vez"
     }
   },
 
