@@ -3,6 +3,8 @@ import HeaderContent from "@/public/components/header-content.component.vue";
 import {zodResolver} from "@primevue/forms/resolvers/zod";
 import {z} from "zod";
 import FormsAuthentication from "@/public/components/forms-authentication.component.vue";
+import {http} from "@/shared/services/http-common.js";
+import {BikeService} from "@/Renting/services/renting.service.js";
 
 export default {
   name: "rent-page",
@@ -27,7 +29,8 @@ export default {
        */
       fields: [
         { name: 'minutes', type: 'number', inputType: 'number', placeholder: this.$t('rent.minutes'), initialValue: '' }
-      ]
+      ],
+      rentingService: new BikeService()
     };
   },
   methods: {
@@ -39,16 +42,47 @@ export default {
      */
     async onFormSubmit({valid, values}) {
       if (!valid) {
-        console.log("INVALID MINUTES ENTERED")
+        console.log("❌ MINUTOS INVÁLIDOS");
         return;
       }
 
-      this.$router.push({
-        path: "/rent/choose",
-        query: { minutes: values.minutes }
-      });
+      const canRent = await this.canMakeMoreRent(); // ⚠️ IMPORTANTE: usar await
 
-    }
+      if (canRent) {
+        console.log("✅ Puede alquilar");
+        this.$router.push({
+          path: "/rent/choose",
+          query: {minutes: values.minutes}
+        });
+      } else {
+        console.log("⚠️ Ya tiene una renta activa");
+        this.$root.$refs.toast.add({
+          severity: 'warn',
+          summary: this.$t('rent.text.nomorerents'),
+          life: 3000
+        });
+      }
+    },
+
+
+    async canMakeMoreRent() {
+      const id = localStorage.getItem("user");
+
+      try {
+        const res = await this.rentingService.getCurrentRental(id);
+        console.log("✅ Tiene renta activa:", res.data);
+        return false;
+      } catch (error) {
+        if (error.response && error.response.status === 404) {
+          console.log("✅ No tiene renta activa (404)");
+          return true;
+        }
+
+        console.error("❌ Error inesperado al verificar rentas:", error);
+        return false;
+      }
+    },
+
   }}
 </script>
 

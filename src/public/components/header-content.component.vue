@@ -8,7 +8,6 @@ export default {
     return{
       items: [
         {label: this.$t('header.smallbox.profile'), icon: 'pi pi-user', to: "/profile"},
-        {label: this.$t('header.smallbox.payinfo'), icon: 'pi pi-credit-card', to: '/paymentInformation'},
         {label: this.$t('header.smallbox.rentals'), icon: 'pi pi-book', to: '/currentRent'},
         {separator: true},
         {label: this.$t('logout'), icon: 'pi pi-sign-out', command: () => {console.log('Logout clicked'); this.logout();}

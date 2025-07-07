@@ -85,7 +85,6 @@ export default {
           this.noBikesAvailable();
         }
         else{
-          const bike = bikesInStation.data[0];
           const minutes = this.$route.query.minutes;
           const price = ((minutes * 0.045) + 1).toFixed(2);
 
@@ -94,7 +93,7 @@ export default {
             query: {
               minutes,
               price: price,
-              bikeId: bike.id
+              station: this.selectedStation.id
             }})
         }
       }catch (error) {

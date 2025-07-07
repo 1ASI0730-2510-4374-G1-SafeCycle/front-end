@@ -60,7 +60,7 @@ export default {
             query: {
               minutes: this.$route.query.minutes,
               price: this.$route.query.price,
-              bikeId: this.$route.query.bikeId,
+              station: this.$route.query.station,
               paymentId: responsePayment.data.id,
             }})
         }

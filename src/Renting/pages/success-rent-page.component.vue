@@ -10,14 +10,25 @@ export default {
     return {
        minutes: null,
        price : null,
+      stationName: '',
       bikeId: null,
       rentService :  new BikeService()
     };
   },
-  created(){
+  async created(){
     this.minutes = this.$route.query.minutes;
     this.price = this.$route.query.price;
-    this.bikeId = this.$route.query.bikeId;
+    const station = this.$route.query.station;
+    console.log(station);
+    if (station) {
+      const response = await this.rentService.getBikeStationById(parseInt(station));
+      if (response.status === 200) {
+        this.stationName = response.data.name;
+        console.log("sation",this.stationName);
+      } else {
+        console.warn("Station not found");
+      }
+    }
   },
   methods:{
     async OnRentSumbit(){
@@ -27,14 +38,14 @@ export default {
         bikeId: this.bikeId,
         paymentId : this.$route.query.paymentId,
         userId : localStorage.getItem("user"),
-        bikeStationId : this.$route.query.bikeId
+        bikeStationId : this.$route.query.station
       };
 
       const response =await this.rentService.createRent(rentData);
       console.log(response);
 
       if(response.status === 201){
-        this.$router.push({path : "/landing"});
+        this.$router.push({path : "/currentRent"});
       }
     }
   }
@@ -44,7 +55,7 @@ export default {
 <template>
   <header-content></header-content>
   <back-button></back-button>
-  <h1 style="font-weight: bolder; text-align: center; margin-bottom: 50px">{{$t('general.bike')}} <span style="color: #65AE5B; font-weight: bold;">{{$route.query.bikeId}}</span> {{$t('rent.text.succes')}}</h1>
+  <h1 style="font-weight: bolder; text-align: center; margin-bottom: 50px">{{$t('general.bike')}} <span style="color: #65AE5B; font-weight: bold;"></span> {{$t('rent.text.succes')}} {{this.stationName}}</h1>
   <div class="flex align-items-center justify-content-center gap-6 flex-wrap">
     <div class="flex flex-column gap-3 w-3 align-items-center">
       <hr class="w-full border">

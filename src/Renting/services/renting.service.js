@@ -55,4 +55,8 @@ export class BikeService {
     async getCurrentRental(id) {
         return await http.get(`${this.rentsEndpoint}/user/${id}`);
     }
+
+    async getBikeStationById(id) {
+        return await http.get(`${this.bikeStationsEndpoint}/${id}`);
+    }
 }
