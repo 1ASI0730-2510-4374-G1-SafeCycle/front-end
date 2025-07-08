@@ -169,6 +169,7 @@
     "step1": "Choose Tour",
     "step2": "Fill details of tour",
     "step3": "Rent of Tour Completed",
+    "pay": "Pay for Tour",
     "form": {
       "date": "Date is required",
       "start": "Start hour is required",

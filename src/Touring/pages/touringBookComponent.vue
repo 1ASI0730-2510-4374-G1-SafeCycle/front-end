@@ -40,7 +40,7 @@ export default {
      * @description Handler a emit and if is true the Book was correctly created
      */
     sendSuccess(){
-      this.$router.push({name:'touring-success',params:{id:this.tourId}});
+      this.$router.push({name:'touring-payment',params:{id:this.tourId}});
     }
   }
 }
@@ -62,7 +62,8 @@ export default {
       <pv-step-list>
         <pv-step value="1">{{$t('touring.step1')}}</pv-step>
         <pv-step value="2">{{$t('touring.step2')}}</pv-step>
-        <pv-step value="3">{{$t('touring.step3')}}</pv-step>
+        <pv-step value="3">{{$t('touring.pay')}}</pv-step>
+        <pv-step value="4">{{$t('touring.step3')}}</pv-step>
       </pv-step-list>
     </pv-stepper>
   </div>

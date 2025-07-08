@@ -49,11 +49,12 @@ export default {
     </div>
   </div>
   <div class="flex align-items-center justify-content-center mt-6">
-    <pv-stepper value="3" linear class="w-6 mb-7 align-self-center ">
+    <pv-stepper value="4" linear class="w-6 mb-7 align-self-center ">
       <pv-step-list>
         <pv-step value="1">{{$t('touring.step1')}}</pv-step>
         <pv-step value="2">{{$t('touring.step2')}}</pv-step>
-        <pv-step value="3">{{$t('touring.step3')}}</pv-step>
+        <pv-step value="3">{{$t('touring.pay')}}</pv-step>
+        <pv-step value="4">{{$t('touring.step3')}}</pv-step>
       </pv-step-list>
     </pv-stepper>
   </div>
