@@ -21,17 +21,18 @@ export default {
     }
   },
   mounted() {
-    this.obtenerDetalle();
+    this.getDetails();
   },
   methods: {
     /**
-     * @function obtenerDetalle
+     * @function getDetails
      * @description Send a request with TourApiService and then converts to Touring Entity
      */
-    async obtenerDetalle() {
+    async getDetails() {
       const tourApiService = new TourApiService();
       console.log(this.tourId);
-      const tourEnt = (await tourApiService.getTourById(this.tourId)).data[0]
+      const tourEnt = (await tourApiService.getTourById(this.tourId)).data
+      console.log(tourEnt);
       this.tour = TouringAssembler.TourFromResponse(tourEnt);
     },
     /**

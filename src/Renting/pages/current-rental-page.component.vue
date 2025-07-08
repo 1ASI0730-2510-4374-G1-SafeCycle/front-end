@@ -40,6 +40,7 @@ export default {
       var respose = await this.rentService.removeRent(userdata);
       window.location.reload();
       console.log(respose);
+      this.$router.push("/rent")
     }
   }
 };

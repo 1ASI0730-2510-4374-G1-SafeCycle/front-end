@@ -23,8 +23,8 @@ export default {
      */
     async fetchTour(){
       const tourApi = new TourApiService();
-      this.tour = TouringAssembler.TourFromResponse((await tourApi.getTourById(this.$route.params.id)).data[0]);
-      console.log(this.tour);
+      this.tour = (await tourApi.getTourById(this.$route.params.id)).data;
+      console.log("pineapple",this.tour);
     },
     /**
      * @function returnToMain
