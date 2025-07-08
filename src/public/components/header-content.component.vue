@@ -5,19 +5,23 @@ import router from "@/router/index.js";
 export default {
   name: "header-content",
   data() {
-    return{
+    return {
+      name: localStorage.getItem('name'),
+      type: localStorage.getItem('type'),
       items: [
-        {label: this.$t('header.smallbox.profile'), icon: 'pi pi-user', to: "/profile"},
-        {label: this.$t('header.smallbox.rentals'), icon: 'pi pi-book', to: '/currentRent'},
-        {separator: true},
-        {label: this.$t('logout'), icon: 'pi pi-sign-out', command: () => {console.log('Logout clicked'); this.logout();}
+        { label: this.$t('header.smallbox.profile'), icon: 'pi pi-user', to: "/profile" },
+        { label: this.$t('header.smallbox.rentals'), icon: 'pi pi-book', to: '/currentRent' },
+        { separator: true },
+        {
+          label: this.$t('logout'),
+          icon: 'pi pi-sign-out',
+          command: () => {
+            console.log('Logout clicked');
+            this.logout();
+          }
         }
       ],
-      name: localStorage.getItem('name'),
-
-    }
-  },
-  created() {
+    };
   },
   methods: {
     router() {
@@ -29,6 +33,9 @@ export default {
     logout(){
       localStorage.clear();
       this.$router.push('/signin');
+    },
+    isTourist() {
+      return this.type === 'tourist';
     }
   }
 }
@@ -47,8 +54,15 @@ export default {
     <template #end>
       <div class="flex align-items-center gap-5 h-4rem">
         <pv-button class="w-8rem h-full text-xs p-0 rounded-0" style="border-radius: 0" :label="$t('header.buttons.rent')" @click="this.$router.push('/rent')" text plain />
-        <pv-button class="w-8rem h-full text-xs p-0 rounded-0" style="border-radius: 0" :label="$t('header.buttons.touring')" @click="this.$router.push('/touring')" text plain/>
-
+        <pv-button
+            v-if="isTourist()"
+            class="w-8rem h-full text-xs p-0 rounded-0"
+            style="border-radius: 0"
+            :label="$t('header.buttons.touring')"
+            @click="this.$router.push('/touring')"
+            text
+            plain
+        />
 
         <pv-avatar image="https://t3.ftcdn.net/jpg/15/52/90/62/360_F_1552906216_PNnK8BBCBslN76M83q9scuMFJVCdU587.jpg" @click="toggleMenu" ref="menu" class="w-2rem h-2rem" shape="circle"/>
         <pv-menu ref="menu" :model="items" :popup="true" class="p-3" style="background-color: #C9F0C4;">
