@@ -38,8 +38,7 @@ export default {
         userId : parseInt(localStorage.getItem("user"))};
 
       var respose = await this.rentService.removeRent(userdata);
-      window.location.reload();
-      console.log(respose);
+      console.log("bouta delete",respose);
       this.$router.push("/rent")
     }
   }
@@ -92,7 +91,7 @@ export default {
               lat: currentLocation.latitude,
               lng: currentLocation.longitude
             },
-            label: currentStationName[0]  // Primera letra del nombre
+            label: currentStationName[0]
           }"
         >
           <pv-google-info-window>

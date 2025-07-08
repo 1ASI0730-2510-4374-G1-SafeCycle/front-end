@@ -55,25 +55,46 @@ export default {
         console.log(responsePayment);
 
         if (responsePayment.status === 201) {
+
+          const rentData = {
+            minutes: this.$route.query.totalMinutes,
+            price: parseFloat(this.$route.query.price),
+            paymentId : responsePayment.data.id,
+            userId : localStorage.getItem("user"),
+            bikeStationId : this.$route.query.bikeStationId,
+          };
+
+          console.log(rentData);
+
+          const response =await this.rentService.createRent(rentData);
+          console.log("response",response);
+
+          if(response.status === 201){
+            this.$router.push({path : "/currentRent"});
+          }
+/*
+
+
+
           this.$router.push({
             path: "/Tour/success",
             query: {
-              minutes: this.$route.query.minutes,
-              price: this.$route.query.price,
-              station: this.$route.query.station,
-              paymentId: responsePayment.data.id,
-            }})
+              rentId: responsePayment.data.id,
+            }})*/
         }
       }
 
       return response;
     },
     async SubmitPayment(paymentId) {
+      console.log("Precio recibido en query:", this.$route.query.price);
       const paymentData = {
         payMoment : now,
         price : parseFloat(this.$route.query.price),
         paymentInformationId : parseInt(paymentId)
       }
+
+      console.log("paymentData",paymentData);
 
       var response = await this.rentService.createPayment(paymentData);
       return response;

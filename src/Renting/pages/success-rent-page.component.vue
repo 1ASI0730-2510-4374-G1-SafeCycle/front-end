@@ -24,7 +24,7 @@ export default {
       const response = await this.rentService.getBikeStationById(parseInt(station));
       if (response.status === 200) {
         this.stationName = response.data.name;
-        console.log("sation",this.stationName);
+        console.log("stataion",this.stationName);
       } else {
         console.warn("Station not found");
       }

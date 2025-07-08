@@ -20,6 +20,12 @@ export default {
       }
     };
   },
+  props: {
+    tour: {
+      type: Object,
+      required: true
+    }
+  },
   async created() {
     try {
       const res = await this.stationService.getBikeStations();
@@ -34,6 +40,10 @@ export default {
     }
   },
   methods: {
+    parseDurationToMinutes(durationStr) {
+      const [hours, minutes] = durationStr.split(":").map(Number);
+      return (hours * 60) + minutes;
+    },
 
     /**
      * @function sendToSuccess
@@ -53,13 +63,39 @@ export default {
       if (this.endHour < this.startHour) {
         this.errors.hours = true;
         return;
-      }
-      else{
+      } else {
         this.errors.hours = false;
       }
 
+      const combinedStart = new Date(this.fechaSeleccionada);
+      combinedStart.setHours(this.startHour.getHours(), this.startHour.getMinutes(), 0);
+
+      const combinedEnd = new Date(this.fechaSeleccionada);
+      combinedEnd.setHours(this.endHour.getHours(), this.endHour.getMinutes(), 0);
+
+      const diffMs = combinedEnd.getTime() - combinedStart.getTime();
+      const totalMinutes = Math.floor(diffMs / 60000);
+
+      const standardMinutes = this.parseDurationToMinutes(this.tour.hour);
+
+      let extraMinutes = 0;
+      let extraPrice = 0;
+
+      if (totalMinutes > standardMinutes) {
+        extraMinutes = totalMinutes - standardMinutes;
+        extraPrice = parseFloat((extraMinutes * 0.045).toFixed(2));
+      }
+
+      this.$emit("updateBikeStation", this.selectedStation);
+      this.$emit("updateTourInfo", {
+        totalMinutes,
+        extraMinutes,
+        extraPrice
+      });
+
       this.$emit("sendToSuccess");
-    }
+    },
+
   }
 };
 </script>

@@ -48,7 +48,6 @@ export default {
       <div class="flex align-items-center gap-5 h-4rem">
         <pv-button class="w-8rem h-full text-xs p-0 rounded-0" style="border-radius: 0" :label="$t('header.buttons.rent')" @click="this.$router.push('/rent')" text plain />
         <pv-button class="w-8rem h-full text-xs p-0 rounded-0" style="border-radius: 0" :label="$t('header.buttons.touring')" @click="this.$router.push('/touring')" text plain/>
-        <pv-button class="w-8rem h-full text-xs p-0 rounded-0" style="border-radius: 0" :label="$t('header.buttons.booking')" @click="this.$router.push('/booking')" text plain/>
 
 
         <pv-avatar image="https://t3.ftcdn.net/jpg/15/52/90/62/360_F_1552906216_PNnK8BBCBslN76M83q9scuMFJVCdU587.jpg" @click="toggleMenu" ref="menu" class="w-2rem h-2rem" shape="circle"/>
