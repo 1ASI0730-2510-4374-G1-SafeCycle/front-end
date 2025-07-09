@@ -58,7 +58,7 @@ const router = createRouter({
         { path: '/signup', name: 'signup-page-entry', component: EntryScreenComponent , meta: {title: 'Entry screen for sign up Page'} },
         { path: '/signup/student', name: 'signup-page-student', component: SignUpStudentComponent , meta: {title: 'Sign Up Student Page'} },
         { path: '/signup/tourist', name: 'signup-page-tourist', component: SignUpTouristComponent , meta: {title: 'Sign Up Tourist Page'} },
-        { path : '/touring', name: 'touring-page', component : TouringSelectComponent , meta: {title: 'Rent Choose Station Page'} },
+        { path : '/touring', name: 'touring-page', component : TouringSelectComponent , meta: {title: 'tour Choose Station Page'} },
         {path : '/touring/:id', name: 'touring-detail', component: TouringBookComponent},
         { path : '/touring/success/:id', name: 'touring-success', component: TouringSuccessComponent },
         { path : '/touring/details', name: 'touring-details', component: TouringBookDetailsComponent },
