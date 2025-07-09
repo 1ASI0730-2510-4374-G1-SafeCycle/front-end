@@ -21,4 +21,8 @@ export class UserService {
         return http.post(this.AuthResourceEndpoint+"/sign-in", userData);
     }
 
+    getUser(id) {
+        return http.get(`${this.userResourceEndpoint}/${id}`);
+    }
+
 }

@@ -31,6 +31,16 @@ export default {
     const userId = localStorage.getItem("user");
     this.rental = (await this.rentService.getCurrentRental(userId)).data;
     console.log(this.rental);
+  },
+  methods: {
+    async deleteRent(){
+      const userdata = {
+        userId : parseInt(localStorage.getItem("user"))};
+
+      var respose = await this.rentService.removeRent(userdata);
+      console.log("bouta delete",respose);
+      this.$router.push("/rent")
+    }
   }
 };
 </script>
@@ -63,7 +73,7 @@ export default {
       <h3>
         {{ rental.userId.email }}
       </h3>
-
+      <pv-button label="Delete Rent" severity="danger" @click="deleteRent"></pv-button>
       <hr class="w-full border" />
     </div>
 
@@ -81,7 +91,7 @@ export default {
               lat: currentLocation.latitude,
               lng: currentLocation.longitude
             },
-            label: currentStationName[0]  // Primera letra del nombre
+            label: currentStationName[0]
           }"
         >
           <pv-google-info-window>

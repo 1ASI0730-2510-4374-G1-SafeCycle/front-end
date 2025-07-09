@@ -33,6 +33,9 @@ export class BikeService {
         return http.get(`${this.bikeStationsEndpoint}`);
     }
 
+    removeRent(userId) {
+        return http.post(`${this.rentsEndpoint}/delete`,userId);
+    }
     createRent(rentData){
 
         const data = {

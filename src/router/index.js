@@ -5,6 +5,7 @@
  */
 
 import {createRouter, createWebHistory} from "vue-router";
+import tourPaymentPageComponent from "@/Touring/pages/tourPaymentPage.component.vue";
 const TouringBookComponent = () => import("@/Touring/pages/touringBookComponent.vue");
 const TouringSuccessComponent = () => import("@/Touring/pages/touringSuccessComponent.vue");
 const EntryScreenComponent = () => import("@/UserManagement/pages/entry-screen.component.vue");
@@ -30,6 +31,7 @@ const BookingSuccessComponent = () => import ("@/Booking/pages/booking-success.c
 const BookingConfirmComponent = () => import ("@/Booking/pages/booking-confirm.component.vue");
 const BookingCancelComponent = () => import ("@/Booking/pages/booking-cancel.component.vue");
 const TouringBookDetailsComponent = () => import("@/Touring/pages/touringBookDetailsComponent.vue");
+const TouringPaymentPageComponent = () => import("@/Touring/pages/tourPaymentPage.component.vue");
 
 const RentPaymentComponent = () => import("@/Renting/pages/rent-payment-page.component.vue")
 
@@ -60,6 +62,7 @@ const router = createRouter({
         {path : '/touring/:id', name: 'touring-detail', component: TouringBookComponent},
         { path : '/touring/success/:id', name: 'touring-success', component: TouringSuccessComponent },
         { path : '/touring/details', name: 'touring-details', component: TouringBookDetailsComponent },
+        { path : '/touring/details', name: 'touring-payment', component: TouringPaymentPageComponent },
         { path: '/signIn', name: 'signIn', component: SignInComponent },
         { path: '/booking/confirm', name: 'booking-confirm', component: BookingConfirmComponent },
         { path: '/rent', name: 'rent', component: RentPageComponent, meta: {title: 'Rent Page'}},

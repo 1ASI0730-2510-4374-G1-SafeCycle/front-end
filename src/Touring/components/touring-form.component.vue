@@ -1,4 +1,6 @@
 <script>
+import {BikeService} from "@/Renting/services/renting.service.js";
+
 export default {
   name: "touring-form",
   data() {
@@ -7,6 +9,8 @@ export default {
       startHour: null,
       endHour: null,
       selectedStation: null,
+      stationService: new BikeService(),
+      stations: [],
       errors: {
         fecha: false,
         startHour: false,
@@ -16,7 +20,31 @@ export default {
       }
     };
   },
+  props: {
+    tour: {
+      type: Object,
+      required: true
+    }
+  },
+  async created() {
+    try {
+      const res = await this.stationService.getBikeStations();
+      const rawStations = res.data || res;
+      this.stations = rawStations.map(station => ({
+        label: station.name,
+        value: station.id
+      }));
+      console.log("Estaciones cargadas:", this.stations);
+    } catch (error) {
+      console.error("Error al cargar estaciones:", error);
+    }
+  },
   methods: {
+    parseDurationToMinutes(durationStr) {
+      const [hours, minutes] = durationStr.split(":").map(Number);
+      return (hours * 60) + minutes;
+    },
+
     /**
      * @function sendToSuccess
      * @description Validate that all the sub-components send information
@@ -35,13 +63,39 @@ export default {
       if (this.endHour < this.startHour) {
         this.errors.hours = true;
         return;
-      }
-      else{
+      } else {
         this.errors.hours = false;
       }
 
+      const combinedStart = new Date(this.fechaSeleccionada);
+      combinedStart.setHours(this.startHour.getHours(), this.startHour.getMinutes(), 0);
+
+      const combinedEnd = new Date(this.fechaSeleccionada);
+      combinedEnd.setHours(this.endHour.getHours(), this.endHour.getMinutes(), 0);
+
+      const diffMs = combinedEnd.getTime() - combinedStart.getTime();
+      const totalMinutes = Math.floor(diffMs / 60000);
+
+      const standardMinutes = this.parseDurationToMinutes(this.tour.hour);
+
+      let extraMinutes = 0;
+      let extraPrice = 0;
+
+      if (totalMinutes > standardMinutes) {
+        extraMinutes = totalMinutes - standardMinutes;
+        extraPrice = parseFloat((extraMinutes * 0.045).toFixed(2));
+      }
+
+      this.$emit("updateBikeStation", this.selectedStation);
+      this.$emit("updateTourInfo", {
+        totalMinutes,
+        extraMinutes,
+        extraPrice
+      });
+
       this.$emit("sendToSuccess");
-    }
+    },
+
   }
 };
 </script>
@@ -72,7 +126,9 @@ export default {
         <pv-select
             id="station"
             v-model="selectedStation"
-            :options="['Centro civico', 'San Isidro']"
+            :options="stations"
+            optionLabel="label"
+            optionValue="value"
             :placeholder="$t('touring.form.select')"
         />
         <pv-message v-if="errors.station" severity="error" variant="simple" size="small">{{$t('touring.form.station')}}</pv-message>

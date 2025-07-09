@@ -86,6 +86,9 @@ export default {
         localStorage.setItem("user", response.data.id);
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("name", response.data.username);
+        const user = await this.userService.getUser(response.data.id)
+        console.log(user);
+        localStorage.setItem("type", user.data.typeUser);
         this.$router.push("/rent");
       } catch (e) {
         if (e.response?.status === 401 && e.response?.data === 'NO_EMAIL_FOUND') {

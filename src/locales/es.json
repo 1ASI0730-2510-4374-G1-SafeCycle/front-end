@@ -159,6 +159,7 @@
     "step1": "Elegir Tour",
     "step2": "Seleccionar Detalles de tour",
     "step3": "Tour Alquilado",
+    "pay": "Pagar por Tour",
     "form": {
       "date": "Se requiere una fecha",
       "start": "Se requiere una hora de inicio",
