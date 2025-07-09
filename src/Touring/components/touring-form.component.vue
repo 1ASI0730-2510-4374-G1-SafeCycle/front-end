@@ -134,7 +134,7 @@ export default {
         <pv-message v-if="errors.station" severity="error" variant="simple" size="small">{{$t('touring.form.station')}}</pv-message>
       </div>
       <div class="final">
-        <pv-message v-if="errors.hours" severity="error" variant="simple" size="small">{{$t('touing.cant')}}</pv-message>
+        <pv-message v-if="errors.hours" severity="error" variant="simple" size="small">Invalid Hour</pv-message>
         <pv-button type="submit" :label="$t('touring.book')" class="w-full" />
       </div>
 
